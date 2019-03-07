@@ -1,4 +1,4 @@
-package swingDraw;
+package demoDrawing;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public class GraphicsTester {
+public class GraphicsTester extends JFrame {
 	public GraphicsTester()
 	{
 		super("Font, Colour, Drawing");

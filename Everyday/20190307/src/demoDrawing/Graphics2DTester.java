@@ -1,8 +1,8 @@
-package swingDraw;
+package demoDrawing;
 import java.awt.*;
 import javax.swing.*;
 
-public class Graphics2DTester {
+public class Graphics2DTester extends  JApplet{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D)g;

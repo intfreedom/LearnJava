@@ -17,4 +17,5 @@ public class ArrayClassObj {
 	static void prt(String s) {
 		System.out.println(s);
 	}
+	//notes;
 }

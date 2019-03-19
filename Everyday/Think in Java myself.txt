@@ -1,0 +1,45 @@
+﻿1.1.6
+
+1.1.5
+弄明白面向对象class类中的this，调用时的堆栈结构时怎样的
+1.1.4
+输入输出流：字节流，字符流；
+1.1.3
+当导入import java.awt时总是报错，the import java.awt cannot be resolved找不到解决办法，很浪费时间
+
+右键项目->build path->configure build path
+在显示的界面选择libraries，JRE更换到J2SE-1.3(jdk-11.0.2)有作用，但其他包有问题；
+可以把这个文件设置为低版本的，就可以。但是会出现一个default package的包，报错
+去掉某文件：包package demoDrawing，如这样的注释掉，在cmd里可以运行
+1.1.2
+看看20190309与20190310有什么不同，为何后者会报错
+难道这种错误与设置项目文件夹有关，在这个例子里：
+Project： 20190309Demo ---- src设立包demoSwing --- 建立文件ImplementMouseListener.java
+1.1.2.1
+真tm奇怪，这样竟然可以：
+1.1.2.1.1打开eclipse设置Workspace，用一个新的文件夹，例如Everyday下，新建一个20190311，选择文件夹；
+点击launch， File---New---Java Project，Project name： 20190311Demo，出现Moudule name，填demoJava，
+在src上点击new package，name填写demoCard；在包里创建.class文件，正常编辑一样有问题，保存关闭后，用其他已打开的eclipse依旧有问题；
+1.1.2.1.1 mf，先新建一个文件夹，（这个文件夹里已有一些其他项目，.metadata文件(这个文件是在创建workspace时生成的)，20190312Demo文件夹），
+把这个文件作为Workspace， File---New---Project…---java project---Project name: 
+HelloWorld(选择的时候don’t create module， 和创建module有关，选择不要创建module,就不会报错)----
+src里创建包，com.cn.hello，包里创建.class文件。This can work , waste my time
+
+取消默认勾上的Create module-info.java file为何？？？
+
+1.1.1
+Java中return this, 是否可以实现阶乘，递归；
+public class Leaf {
+	private int i = 0;
+	Leaf increment() {
+		i++;
+		return this;
+	}
+	void print() {
+		System.out.println("i= "+i);
+	}
+	public static void main(String[] args) {
+		Leaf x = new Leaf();
+		x.increment().increment().increment().print();
+	}
+}

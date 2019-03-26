@@ -1,0 +1,34 @@
+package DemoVariety;
+
+public class DriverTest {
+	static public void main(String[] args) {
+		Driver a = new FemaleDriver();
+		Driver b = new MaleDriver();
+		Vehicle x = new Car();
+		Vehicle y = new Bus();
+		a.drives(x);
+		b.drivers(y);
+	}
+}
+
+
+abstract class Vehicle
+{
+	private String type;
+	public Vehicle() {}
+	public Vehicle(String s) {type = s;}
+	public abstract void driveByFemaleDriver();
+	public abstract void driveByMaleDriver();
+}
+
+class Bus extends Vehicle{
+	public Bus() {}
+	public void drivedByFemaleDriver()
+	{
+		System.out.println("A female driver drives a bus.");
+	}
+	public void drivedByMaaleDriver()
+	{
+		System.out.println("A male driver drives a bus.");
+	}
+}

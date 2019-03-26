@@ -1,0 +1,44 @@
+package Demo4_5;
+
+public class Tester {
+	public static void main(String[] args) {
+		MovingBall mb =  new MovingBall(10,20,40,"green",25);
+		System.out.println(mb);
+	}
+}
+
+class MovingBall extends Ball{
+	private double speed;
+	public MovingBall() {}
+	public MovingBall(double xValue, double yValue,double r, String)
+}
+
+
+//class Point {
+//	private double xCoordinate;
+//	private double yCoordinate;
+//	public Point() {}
+//	public Point(double x, double y) {
+//		xCoordinate = x;
+//		yCoordinate = y;
+//	}
+//	public String toString() {
+//		return "(" + Double.toString(xCoordinate)+"," + Double.toString(yCoordinate)+")";
+//	}
+//}
+
+//class Ball{
+//	private Point center;
+//	private double radius;
+//	private String colour;
+//	public Ball() {}
+//	public Ball(double xValue, double yValue, double r, String c, double s) {
+//		super(xValue,yValue, r, c);
+//		speed = s;
+//	}
+//	public String toString() {
+//		return super.toString()+", speed"+Double.toString(speed);
+//	}
+//	
+//
+//}

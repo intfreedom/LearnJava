@@ -1,0 +1,19 @@
+package Demo4_5_Glypy;
+
+class RoundGlypy() {
+	
+}
+public class PolyConstructors {
+	public static void main(String[] args) {
+		
+	}
+}
+
+abstract class Glypy{
+	abstract void draw();
+	Glypy(){
+		System.out.println("Glypy() before draw()");
+		draw();
+		System.out.println("Glyph() after draw()");
+	}
+}

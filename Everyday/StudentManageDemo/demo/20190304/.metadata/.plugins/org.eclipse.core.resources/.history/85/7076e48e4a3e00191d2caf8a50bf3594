@@ -1,0 +1,23 @@
+package java20190304;
+
+public class Demo3_4 {
+
+		public static void main(String[] args)
+		{
+			GeneralType<Integer> i = new GeneralType<Integer> (2);
+			GeneralType<Double> d = new GeneralType<Double> (0.33);
+			System.out.println("i.object= " + (Integer)i.getObj());
+		}
+}
+
+class GeneralType<Type>
+{
+	
+	Type object;
+	public GeneralType(Type object) {
+		this.object = object;
+	}
+	public Type getObj() {
+		return object;
+	}
+	}

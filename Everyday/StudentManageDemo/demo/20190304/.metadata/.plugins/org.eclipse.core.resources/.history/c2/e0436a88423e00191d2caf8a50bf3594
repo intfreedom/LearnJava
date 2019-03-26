@@ -1,0 +1,40 @@
+package java20190304;
+
+class A1
+{
+	static int x = 2;//静态成员不被继承，可以被子类访问
+	public void setx(int i)
+	{
+		x = i;	
+	}
+	void printa()
+	{
+		System.out.println(x);
+	}
+}
+class B1 extends A1
+{
+	int x = 100;
+	void printb()
+	{
+		super.x = super.x + 10;
+		System.out.println("super.x="+super.x+" x="+x);
+	}
+}
+public class ClassDemo {
+	public static void main(String[] args) {
+		A1 a1 = new A1();
+		a1.setx(4);
+		a1.printa();// 4
+		
+		B1 b1 = new B1();
+		b1.printb();// 12 100
+		b1.printa();// 12
+		
+		b1.setx(6);
+		b1.printb();// 16 100
+		b1.printa();// 16
+		a1.printa();// 4
+	
+	}
+}

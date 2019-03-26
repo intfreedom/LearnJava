@@ -1,0 +1,32 @@
+package java20190304;
+
+public class Demo3_6 {
+	private int x, y;
+	public Demo3_6(int x, int y) {
+		this.x=x;this.y=y;
+	}
+	public int GetX() {
+		return x;
+	}
+	public int GetY() {
+		return y;
+	}
+}
+
+class Plate{
+	public Plate(int i) {
+		System.out.println("Plate constructor");
+	}
+}
+
+class DinnerPlate extends Plate{
+	public DinnerPlate(int i) {
+		super(i);
+		System.out.println("DinnerPlate constructor");
+	}
+}
+//class Line
+//{
+//	private Demo3_6 p1,p2;
+//	Line(Point)
+//}

@@ -1,0 +1,17 @@
+package DemoVariety;
+
+public class DemoTest {
+
+}
+
+class Shape
+{
+	void draw()
+	{
+		
+	}
+	void erase()
+	{
+		
+	}
+}

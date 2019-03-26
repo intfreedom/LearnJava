@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+D:\02ability\003JavaKotlin\Java\.metadata\.plugins\org.eclipse.jdt.core
+3906685753.index
+2047742301.index
+2656998857.index
+155294201.index

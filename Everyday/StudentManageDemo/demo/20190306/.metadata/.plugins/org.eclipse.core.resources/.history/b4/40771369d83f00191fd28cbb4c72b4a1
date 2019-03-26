@@ -1,0 +1,5 @@
+package demoQingHua;
+
+public abstract class Glyph {
+
+}

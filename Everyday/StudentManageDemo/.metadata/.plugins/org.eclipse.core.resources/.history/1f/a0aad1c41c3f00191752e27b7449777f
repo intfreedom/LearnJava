@@ -1,0 +1,10 @@
+//:Overloading.java
+//Demonstration of both constructor
+//and ordinary method overloading
+
+package Demo4_5_Glypy;
+import java.util.*;
+
+public class Overloading {
+
+}

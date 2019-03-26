@@ -1,0 +1,20 @@
+package demoQingHua;
+
+class RoundGlypy extends Glyph{
+	int radius = 1;
+	RoundGlypy(int r){
+		radius = r;
+		System.out.println("RoundGlyph.RoundGlyph(), radius " + radius);
+	}
+	void draw() {
+		System.out.println("RoundGlyph.draw(), radius " + radius);
+	}
+	
+
+}
+
+public class PolyConstructors{
+	public static void main(String[] args) {
+		new RoundGlypy(5);
+	}
+}

@@ -1,0 +1,21 @@
+package java20190304;
+
+public class Demo3_4_1 {
+
+}
+
+class GeneralType<Type>{
+	Type object;
+	public GeneralType(Type object) {
+		this.object = object;
+	}
+	
+	public Type getObj() {
+		return object;
+	}
+	class ShowType{
+		public void show(GeneralType<?> o) {
+			System.out.println(o.getObj().getClass().getName());
+		}
+	}
+}

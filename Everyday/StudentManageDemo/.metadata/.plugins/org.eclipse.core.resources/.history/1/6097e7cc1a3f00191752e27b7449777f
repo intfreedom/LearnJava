@@ -1,0 +1,7 @@
+//:SimpleConstructor.java
+//Demonstration of a simple constructor
+package Demo4_5_Glypy;
+
+public class SimpleConstructor {
+
+}

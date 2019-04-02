@@ -34,7 +34,13 @@ public class RewardSystem {
     private static BluetoothSocket btSocket = null;
     private static OutputStream outStream = null;
     // Replace with your devices UUID and address
+    //这个UUID和address是平板设备吗？地址是指蓝牙地址吗？
+    //UUID 是 通用唯一识别码（Universally Unique Identifier）
+    //标准的UUID格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12),其中x为十六进制数字；
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    //地址：蓝牙地址FC:A6:21:D8:11:E4，WLAN MAC地址:FC:A6:21:D8:11:E5，在BluetoothDevice中使用，应该是蓝牙地址；
+//    private static String address = "FC:A6:21:D8:11:E4";//蓝牙地址
+//    private static String address = "FC:A6:21:D8:11:E5";//MAC地址
     private static String address = "20:16:06:08:64:22";
 
     public RewardSystem(Context context_in) {

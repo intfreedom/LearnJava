@@ -60,7 +60,9 @@ public class MainMenu extends Activity  {
             startTask();
         }
     }
-
+//Intent是一种运行时绑定（runtime binding)机制，它能在程序运行的过程中连接两个不同的组件。
+//通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来响应。
+//activity、service和broadcast receiver之间是通过Intent进行通信的，而另外一个组件Content Provider本身就是一种通信机制，不需要通过Intent。
     private void startTask() {
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setText("Loading..");

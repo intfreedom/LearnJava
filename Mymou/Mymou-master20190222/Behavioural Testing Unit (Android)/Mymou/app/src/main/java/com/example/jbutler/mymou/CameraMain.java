@@ -42,11 +42,13 @@ import java.util.Comparator;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-
+//fragment是一种控制器对象，管理用户界面，又称UI fragment,它自己也有产生于布局文件的视图；
+//
 public class CameraMain extends Fragment
         implements FragmentCompat.OnRequestPermissionsResultCallback {
 
     //  Generic variables
+    //一般变量
     private static String mCameraId;
     private static TextureView mTextureView;
     private static CameraCaptureSession mCaptureSession;
@@ -65,7 +67,8 @@ public class CameraMain extends Fragment
     public static CameraMain newInstance() {
         return new CameraMain();
     }
-
+//1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
+//2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

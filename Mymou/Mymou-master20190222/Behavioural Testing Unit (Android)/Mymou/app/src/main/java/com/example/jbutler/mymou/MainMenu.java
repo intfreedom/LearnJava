@@ -41,7 +41,8 @@ public class MainMenu extends Activity  {
         Manifest.permission.WRITE_SETTINGS,
     };
     private Button[] permissionButtons = new Button[6];
-
+    //activity子类的实例创建后，onCreate(Bundle)方法会被调用
+    //setContentView(int layoutResID)获取activity的用户界面；
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,7 +207,11 @@ public class MainMenu extends Activity  {
         ((ToggleButton)  findViewById(R.id.chanTwoButt)).setOnCheckedChangeListener(multiListener);
         ((ToggleButton)  findViewById(R.id.chanThreeButt)).setOnCheckedChangeListener(multiListener);
     }
-
+    //Android应用属于典型的事件驱动类型；为响应某个事件而创建的对象叫做事件监听器；（listener）
+    //监听器会实现特定事件的监听器接口（listener interface）
+    //监听用户的按钮点击事件-----实现View.OnClickListener接口；
+    //传入setOnClickListener(OnClickListener)方法的参数是一个监听器；
+    //需要实现该接口的唯一方法onClick(View);
     private View.OnClickListener buttonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

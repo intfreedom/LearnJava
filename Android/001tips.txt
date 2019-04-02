@@ -2,3 +2,6 @@
 Android Programming
 关于这本书里内容的资料可从以下获得；
 https://www.bignerdranch.com/books/android-programming/
+1.1.2第三章手动加上去
+添加注释的学习方法最好是看那一部分是一个完整的，这样，就可以分解学习；
+在第二张注释，那么第三章的内容要手动加上去啦；

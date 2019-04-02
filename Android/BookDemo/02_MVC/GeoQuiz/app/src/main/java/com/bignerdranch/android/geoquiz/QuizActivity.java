@@ -26,6 +26,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
     //activity子类的实例创建后，onCreate(Bundle)方法会被调用
+    //千万不要自己去调用onCreate(Bundle)方法或者任何其他activity生命周期方法
+    //为通知activity状态变化，你只需在Activity子类里覆盖这些方法，Android会适时调用他们
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

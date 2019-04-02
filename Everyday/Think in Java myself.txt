@@ -1,5 +1,6 @@
 ﻿1.1.6
-
+在使用Android Studio时，创建多个项目，运行可能出问题，可点击，Build-Clean Project(Rebuild project)
+重新运行；
 1.1.5
 弄明白面向对象class类中的this，调用时的堆栈结构时怎样的
 1.1.4

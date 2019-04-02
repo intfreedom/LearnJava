@@ -15,7 +15,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
+//AsyncTask,即异步任务,是Android给我们提供的一个处理异步任务的类.
+//通过此类,可以实现UI线程和后台线程进行通讯,后台线程执行异步任务,并把结果返回给UI线程.
 //Class is extending AsyncTask because this class is going to perform a networking operation
 public class SendMail extends AsyncTask<Void,Void,Void> {
 

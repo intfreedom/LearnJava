@@ -19,6 +19,14 @@ import android.view.WindowManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+//1.针对如下类型的异常，调用某些方法时，api也提示了可能会抛出某些异常，但该类异常不是一定要捕获的（不捕获编译也能通过），如下
+//int i = Integer.parseInt("ff");//该方法的完整声明public static int parseInt(String s) throws NumberFormatException
+//不进行try catch也一样能运行，但运行时如果出错，只会在控制台打印下，后面再发现程序有问题很难查找。
+//其实Java已经提供了对上述第二类异常问题的处理方法，那就是为Thread设置UncaughtExceptionHandler,
+//2.多线程环境下，无法使用try_catch捕获异常，需要设置UncaughtExceptionHandler
+//3.当某一线程因未捕获的异常而即将终止时，Java 虚拟机将使用 Thread.getUncaughtExceptionHandler()
+//查询该线程以获得其 UncaughtExceptionHandler 的线程，
+//并调用处理程序的 uncaughtException 方法，将线程和异常作为参数传递。
 
 public class TaskManager extends Activity implements Thread.UncaughtExceptionHandler {
 

@@ -15,7 +15,7 @@ import java.util.Random;
 // A basic object discrimination task showcasing the main features of the Mymou system:
 // Uses facial recognition to deliver seperate tasks to two different subjects
 // Offers choice of rewards for successful trial completion
-
+//1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
 public class TaskExample extends Fragment
         implements View.OnClickListener {
 
@@ -64,7 +64,7 @@ public class TaskExample extends Fragment
     private static Handler h0 = new Handler();  // Task timer
     private static Handler h1 = new Handler();  // Prepare for new trial
     private static Handler h2 = new Handler();  // Timeout go cues
-
+    //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

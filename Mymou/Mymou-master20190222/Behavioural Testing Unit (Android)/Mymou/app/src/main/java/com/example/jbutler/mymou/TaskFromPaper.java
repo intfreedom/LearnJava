@@ -28,6 +28,8 @@ import java.util.Random;
 // The task used in Butler & Kennerley (2018)
 // Used to teach a 4x4 discrete world
 
+//1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
+//2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
 public class TaskFromPaper extends Fragment
         implements View.OnClickListener {
 

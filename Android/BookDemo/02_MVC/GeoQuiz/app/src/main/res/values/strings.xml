@@ -16,3 +16,7 @@
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
 </resources>
+
+
+
+    <!--项目中的任何xml文件,只要引用到@string/false_button，应用运行时，就会得到文本“False”-->

@@ -1,8 +1,9 @@
 package com.bignerdranch.android.geoquiz;
 
 public class Question {
-
+    //mTextResId问题的文本；保存地理知识问题字符串的资源ID；
     private int mTextResId;
+    //mAnswerTrue问题的答案；保存地理知识问题的答案，true或者false；
     private boolean mAnswerTrue;
 
     public Question(int textResId, boolean answerTrue) {

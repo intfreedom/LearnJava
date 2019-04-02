@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--activity_quiz.xml布局的资源ID为R.layout.activity_quiz-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
-
+<!--+id是创建资源ID;而android:text="@string/true_button"只是引用
+没有+号-->
+    <!--设立了资源Id， 在QuizActivity中会用到question_text_view-->
     <TextView
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"

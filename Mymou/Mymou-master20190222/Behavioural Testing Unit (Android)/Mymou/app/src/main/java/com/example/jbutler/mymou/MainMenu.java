@@ -25,6 +25,9 @@ public class MainMenu extends Activity  {
     public static final boolean useBluetooth = false;
 
     // Can disable facial recognition here
+    //要使用faceRecog必须具有Mymou文件夹中存在的ANN（wo.txt，wi.txt，meanAndVar.txt）的权重
+    //这个图像识别程序是怎样的，是mymou先收集照片，然后再Artificial Neural Network (Python)中进行训练，
+    //然后得到的数据，分别保存为meanAndVar.txt，wi.txt - 输入隐藏层的权重，wo.txt - 隐藏输出层的权重，以供mymou使用；
     // To use faceRecog must have the weights for the ANN (wo.txt, wi.txt, meanAndVar.txt) present in the Mymou folder
     public static final boolean useFaceRecog = false;
 

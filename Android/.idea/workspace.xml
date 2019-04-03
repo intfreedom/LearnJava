@@ -23,49 +23,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Unnamed-0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2b40a73-62bb-4a91-8bb7-78341b6de20b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/androidTest/java/com/bignerdranch/android/getdeviceid/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/java/com/bignerdranch/android/getdeviceid/DeviceUuidFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/app/src/test/java/com/bignerdranch/android/getdeviceid/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getDeviceId/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/001tips.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mymou/Mymou-master20190222/Behavioural Testing Unit (Android)/Mymou/app/src/main/java/com/example/jbutler/mymou/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mymou/Mymou-master20190222/Behavioural Testing Unit (Android)/Mymou/app/src/main/java/com/example/jbutler/mymou/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mymou/Mymou-master20190222/Behavioural Testing Unit (Android)/Mymou/app/src/main/java/com/example/jbutler/mymou/RewardSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mymou/Mymou-master20190222/Behavioural Testing Unit (Android)/Mymou/app/src/main/java/com/example/jbutler/mymou/RewardSystem.java" afterDir="false" />
-    </list>
+    <list default="true" id="d2b40a73-62bb-4a91-8bb7-78341b6de20b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +41,11 @@
     <session id="-1318543518">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -125,8 +84,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="8" />
-    <option name="y" value="2" />
+    <option name="x" value="220" />
+    <option name="y" value="14" />
     <option name="width" value="3234" />
     <option name="height" value="2096" />
   </component>
@@ -242,7 +201,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="1" width="1617" height="1048" extended-state="0" />
+    <frame x="110" y="7" width="1617" height="1048" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32953826" />
@@ -257,7 +216,7 @@
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32969433" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50032073" side_tool="true" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50032073" side_tool="true" visible="true" weight="0.32969433" />
       <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32969433" />
       <window_info anchor="bottom" id="Find" order="8" />

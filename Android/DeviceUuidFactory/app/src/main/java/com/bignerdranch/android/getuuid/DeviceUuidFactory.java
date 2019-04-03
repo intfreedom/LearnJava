@@ -19,10 +19,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings.Secure;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +43,7 @@ import java.util.UUID;
  * targetSdkVersion 22 如果大于22增加动态权限管理
  * 获取设备唯一UUID
  */
-public class DeviceUuidFactory {
+public class DeviceUuidFactory extends AppCompatActivity {
     private static final String DEVICE_UUID_FILE_NAME = ".tobindevid.conf";
     private static final String DEVICE_IMEI_FILE_NAME = ".tobinimei.conf";
     private static final String PREFS_FILE = "tobindevice_id.xml";
@@ -48,9 +51,17 @@ public class DeviceUuidFactory {
     private static final String PREFS_IMEI = "imei";
     private static UUID uuid;
     private static String imei;
+    private static final String TAG="Tobin";
 
     private static DeviceUuidFactory deviceUuidFactory;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//        Log.i("Tobin", "获取UUID：" + DeviceUuidFactory.getInstance(this).getDeviceUuid());
+//
+//    }
     public static DeviceUuidFactory getInstance(Context context){
+
         if (deviceUuidFactory == null){
             deviceUuidFactory = new DeviceUuidFactory(context);
         }
@@ -201,3 +212,6 @@ public class DeviceUuidFactory {
 
 
 }
+
+
+//Log.i("Tobin", "获取UUID：" + DeviceUuidFactory.getInstance(this).getDeviceUuid());

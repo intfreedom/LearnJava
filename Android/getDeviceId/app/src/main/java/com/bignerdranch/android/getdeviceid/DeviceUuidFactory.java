@@ -19,6 +19,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
@@ -85,3 +87,46 @@ public class DeviceUuidFactory {
         return uuid;
     }
 }
+
+
+//private String getMyUUID(){
+//
+//
+//
+//        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(this.TELEPHONY_SERVICE);
+//
+//
+//
+//        final String tmDevice, tmSerial, tmPhone, androidId;
+//
+//
+//
+//        tmDevice = "" + tm.getDeviceId();
+//
+//
+//
+//        tmSerial = "" + tm.getSimSerialNumber();
+//
+//
+//
+//        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(),android.provider.Settings.Secure.ANDROID_ID);
+//
+//
+//
+//        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+//
+//
+//
+//        String uniqueId = deviceUuid.toString();
+//
+//
+//
+//        Log.d("debug","uuid="+uniqueId);
+//
+//
+//
+//        return uniqueId;
+//
+//
+//
+//}

@@ -104,12 +104,19 @@ public class QuizActivity extends AppCompatActivity {
         mCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //为通知CheatActivity当前问题的答案，需将以下语句的返回值传递给它
                 boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+                //该值将作为extra信息；再CheatActivity.java中，为extra数据信息新增键-值对中的键；
+
                 //注意：显示intent与隐式intent
                 //intent对象是component用来与操作系统通信的一种媒介工具
                 //component包括，正在用的activity,其他一些：service,broadcast receiver以及content provider;
                 //intent用来告诉ActivityManager该启动哪个activity
+
+
                 Intent intent = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
+                //需要从子Activity获取返回信息时，可调用Activity的startActivityForResult()，第二个参数为请求代码；
+                //在一个activity启动多个不同类型的子activity,且需要判断消息回馈方时，就会用到该请求代码；
                 startActivityForResult(intent, REQUEST_CODE_CHEAT);
             }
         });

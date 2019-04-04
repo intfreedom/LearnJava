@@ -24,11 +24,11 @@ public class MainMenu extends Activity  {
     // Can disable bluetooth and RewardSystem connectivity here
     public static final boolean useBluetooth = false;
 
-    // Can disable facial recognition here
+    //Can disable facial recognition here
     //要使用faceRecog必须具有Mymou文件夹中存在的ANN（wo.txt，wi.txt，meanAndVar.txt）的权重
     //这个图像识别程序是怎样的，是mymou先收集照片，然后再Artificial Neural Network (Python)中进行训练，
     //然后得到的数据，分别保存为meanAndVar.txt，wi.txt - 输入隐藏层的权重，wo.txt - 隐藏输出层的权重，以供mymou使用；
-    // To use faceRecog must have the weights for the ANN (wo.txt, wi.txt, meanAndVar.txt) present in the Mymou folder
+    //To use faceRecog must have the weights for the ANN (wo.txt, wi.txt, meanAndVar.txt) present in the Mymou folder
     public static final boolean useFaceRecog = false;
 
     public static RewardSystem rewardSystem;
@@ -70,7 +70,10 @@ public class MainMenu extends Activity  {
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setText("Loading..");
         rewardSystem.quitBt();  // Reconnect from next activity
+        //public Intent(Context packageContext, Class<?> cls),第一个参数告诉ActivityManager该启动哪个activity,第一个参数告诉在哪里可以找到它；
         Intent intent = new Intent(this, TaskManager.class);
+        //一个activity启动另一个activity最简单的方式就是使用startActivity方法；
+        //public void startActivity(Intent intent),activity调用该方法，调用请求实际发送给了操作系统的ActivityManager；
         startActivity(intent);
     }
 
@@ -95,7 +98,8 @@ public class MainMenu extends Activity  {
     }
 
     private void checkPermissions() {
-        // Check if all permissions granted
+        //Check if all permissions granted
+        //确保所有权限被授予
         boolean permissionFlag = true;
         for (int i = 0; i < permissionCodes.length; i++){
             if(!checkPermissionNested(i)) {

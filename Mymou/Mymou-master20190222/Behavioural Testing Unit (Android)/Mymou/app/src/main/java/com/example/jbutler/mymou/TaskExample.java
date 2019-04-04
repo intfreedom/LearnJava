@@ -11,32 +11,34 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
-
+//一个基本的对象识别任务，展示了Mymou系统的主要特征
 // A basic object discrimination task showcasing the main features of the Mymou system:
+//用面部识别传递不同的任务，对于不同的被实验者；
 // Uses facial recognition to deliver seperate tasks to two different subjects
+//为成功完成试验提供奖励选择
 // Offers choice of rewards for successful trial completion
 //1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
 public class TaskExample extends Fragment
         implements View.OnClickListener {
 
-    // Debug
+    // Debug//调试
     private static TextView textView;
-
+    //用于在需要时覆盖/禁用任务
     // Used to cover/disable task when required (e.g. no bluetooth connection)
     public View hideApplication;
-
+    //背景颜色
     // Background colours
     private static View backgroundRed, backgroundPink;
-
+    //主题错误选择的超时
     // Timeouts for wrong choices by subject
     private static int timeoutWrongGoCuePressed = 300;  // Timeout for now pressing their own Go cue
     private int timeoutWrongCueChosen = 1500;  // Timeout for getting the task wrong
-
+    //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
     private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
     private static boolean timerRunning;  // Signals if timer currently active
-
+    //分配给每个主题的唯一编号，用于面部识别
     // Unique numbers assigned to each subject, used for facial recognition
     private static int monkO = 0, monkV = 1;
 
@@ -48,7 +50,7 @@ public class TaskExample extends Fragment
 
     // Reward
     static int rewardAmount = 1000;  // Duration (ms) that rewardSystem activated for
-
+    //可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in
     private static int[] xLocs = new int[maxCueLocations];

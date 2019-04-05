@@ -12,12 +12,13 @@ import java.util.List;
 
 
 /**
- Uses opencsv parser library
+ Uses opencsv parser library使用opencsv解析器库
     Download from http://opencsv.sourceforge.net/
  Which in turn requires Apache Commons Lang 3.6 and Commons BeanUtils
     Download from http://commons.apache.org/proper/commons-beanutils/index.html and
     http://commons.apache.org/proper/commons-lang/download_lang.cgi respectively
  Place the three .jar file in libs folder
+ 将三个.jar文件放在libs文件夹中
  Build --> Edit Libraries and Dependencies --> Add opencsv JAR
  */
 

@@ -30,7 +30,7 @@ import java.util.Calendar;
 
 public class TaskManager extends Activity implements Thread.UncaughtExceptionHandler {
 
-    // Task you want to run goes here
+    //Task you want to run goes here
     private static TaskExample task = new TaskExample();
     //private static TaskFromPaper task = new TaskFromPaper();
     private static String taskId = "001";  // Unique string prefixed to all log entries
@@ -58,10 +58,11 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
 
         mContext = getApplicationContext();
         activity = (Activity) this;
-
+        //初始化屏幕设置
         initialiseScreenSetttings();
 
         if (MainMenu.useFaceRecog) {
+            //从主线程加载facerecog需要一段时间
             // Load facerecog off the main thread as takes a while
             Thread t = new Thread(new Runnable() {
                 public void run() {
@@ -88,7 +89,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
 //            });
 
         startTask();
-
+        //这是最后一次，因为它与任务中的对象进行交互
         // This is last as it interacts with objects in the task
         initaliseRewardSystem();
 

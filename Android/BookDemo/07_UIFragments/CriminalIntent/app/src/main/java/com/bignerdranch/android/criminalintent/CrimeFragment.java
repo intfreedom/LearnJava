@@ -13,20 +13,28 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import static android.widget.CompoundButton.*;
-
+//fragment是一种控制器对象；activity可委派它执行任务；这些任务通常就是管理用户界面；
+//管理用户界面的fragment又称UI fragment,它自己也有产生于布局文件的视图；
+//fragment的生命周期方法由托管他的activity调用，而activity由操作系统调用；
 public class CrimeFragment extends Fragment {
 
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckbox;
-
+    //Fragment.onCreate(Bundle)是公共方法，而Activity.onCreate(Bundle)是受保护方法；
+    //Fragment的生命周期方法，必须是公共方法，因为托管fragment的activity要调用它们；
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
     }
-
+    //Fragment的视图并没有在Fragment.onCreate(Bundle)方法中生成，该方法配置了fragment实例；
+    //onCreateView创建和配置了fragment视图，该方法实例化fragment视图的布局，
+    //然后将实例化的View返回给托管的activity;
+    //调用LayoutInflater.inflate(...)方法并传入布局的资源ID生成；
+    //ViewGroup是视图的父视图，需要父视图来正确配置组件；
+    //第三个参数告诉布局生成器是否将生成的视图添加给父视图；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);

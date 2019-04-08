@@ -42,7 +42,7 @@ class Producer extends Thread{
 				System.out.println("Producer puts ticket "
 						+(++t.number));
 				t.available=true;
-			}
+			}//释放对象t的锁；
 		}
 	}
 }
@@ -56,11 +56,16 @@ class Consumer extends Thread{
 	
 	public void run() {
 		while(i<t.size) {
-			if(t.available==true&&i<=t.number)
-				System.out.println("Consumer buys ticket"+(++i));
-			if(i==t.number)
-				t.available=false;
+			synchronized(t) {
+				if(t.available==true&&i<=t.number)
+					System.out.println("Consumer buys ticket"+(++i));
+				if(i==t.number) {
+					try {Thread.sleep(1);}catch(Exception e) {}
+					t.available=false;
+				}
+			}//释放对象t的锁
 		}
+		System.out.println("Consumer ends");
 	}
 	
 	

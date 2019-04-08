@@ -20,9 +20,11 @@ public class MainMenu extends Activity  {
     // If true this automatically starts the task upon application startup
     // Speeds up debugging/testing
     public static final boolean testingMode = true;
-
+    //可以在这里禁用蓝牙和RewardSystem连接
     // Can disable bluetooth and RewardSystem connectivity here
-    public static final boolean useBluetooth = false;
+//    public static final boolean useBluetooth = false;//原本值；
+    //修改之后界面上显示可以连接蓝牙，但是还是无法控制给水；
+    public static final boolean useBluetooth = true;//为了连接，修改为true；
 
     //Can disable facial recognition here
     //要使用faceRecog必须具有Mymou文件夹中存在的ANN（wo.txt，wi.txt，meanAndVar.txt）的权重

@@ -33,6 +33,7 @@ public class RewardSystem {
     private static BluetoothAdapter btAdapter = null;
     private static BluetoothSocket btSocket = null;
     private static OutputStream outStream = null;
+    //这里用https://wenku.baidu.com/view/5f1c944155270722192ef775.html 3.0蓝牙Android编程原理；
     // Replace with your devices UUID and address
     //这个UUID和address是平板设备的还是将要连接的Arduino Uno board的？地址是指蓝牙地址吗？
     //UUID 是 通用唯一识别码（Universally Unique Identifier）
@@ -41,11 +42,14 @@ public class RewardSystem {
     //网址中描述了不同服务对应的UUID,https://blog.csdn.net/zf_c_cqupt/article/details/52177723
     //本例中运用的是#蓝牙串口服务SerialPortServiceClass_UUID？我们买的同样的设备，与原文UUID一样？
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");//原文UUID
-    //三星平板地址：蓝牙地址FC:A6:21:D8:11:E4，WLAN MAC地址:FC:A6:21:D8:11:E5，在BluetoothDevice中使用，应该是蓝牙地址；
+    //试试蓝牙串口服务的另一个：LANAccessUsingPPPServiceClass_UUID = '{00001102-0000-1000-8000-00805F9B34FB}'
+//    private static final UUID MY_UUID = UUID.fromString("00001102-0000-1000-8000-00805F9B34FB");
+//    三星平板地址：蓝牙地址FC:A6:21:D8:11:E4，WLAN MAC地址:FC:A6:21:D8:11:E5，在BluetoothDevice中使用，应该是蓝牙地址；
 //    private static String address = "FC:A6:21:D8:11:E4";//三星平板设备蓝牙地址
 //    private static String address = "FC:A6:21:D8:11:E5";//三星平板设备MAC地址
     private static String address = "98:D3:81:FD:44:85";//Arduino Uno 设备连接的蓝牙接收发射的地址；
 //    private static String address = "20:16:06:08:64:22";//原文蓝牙地址
+//    private static String address = "48:2c:a0:be:7c:7c";//试一试小米note7
 
     public RewardSystem(Context context_in) {
 
@@ -117,6 +121,7 @@ public class RewardSystem {
         if (btAdapter == null) {
             Log.d("RewardSystem","Error: No Bluetooth support found");
         } else if (!btAdapter.isEnabled()) {
+            //提示用户打开蓝牙
             //Prompt user to turn on Bluetooth
             Log.d("RewardSystem", "Error: Bluetooth not enabled");
             Toast.makeText(context, "Bluetooth is disabled, please enable and restart", Toast.LENGTH_LONG).show();

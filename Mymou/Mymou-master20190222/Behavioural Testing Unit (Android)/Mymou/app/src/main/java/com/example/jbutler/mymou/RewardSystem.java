@@ -54,10 +54,14 @@ public class RewardSystem {
 
 
     //蓝牙模块能正确连通，看看通道模块，现在的奖励交付系统连接是二通道，修改下代码，
+
+    //Context应用程序环境中全局信息的接口，它整合了许多系统级的服务，可以用来获取应用中的类、资源，以及可以进行应用程序级的调起操作
+    //由于Context本身是abstract的，所以它只负责定义需要的操作，具体的实现它并不关心
+    //我们所能看到的对Context做第一层实现的，应该是位于android.app包下的ContextImpl
     public RewardSystem(Context context_in) {
 
         context = context_in;
-
+        //
         initialiseRewardChannelStrings();
         if (MainMenu.useBluetooth) {
             loopUntilConnected();
@@ -258,7 +262,7 @@ public class RewardSystem {
             }
         }
     };
-
+    //一直循环直到连接，连接手机可否，更改蓝牙地址？
     public static void loopUntilConnected() {
 
         connectToBluetooth();
@@ -276,7 +280,7 @@ public class RewardSystem {
         }
 
     }
-
+    //0代表所有通道关闭，1代表通道0打开，2代表通道0关闭？
     private static void initialiseRewardChannelStrings() {
         allChanOff = context.getString(R.string.allChanOff);
         chanZeroOn = context.getString(R.string.chanZeroOn);

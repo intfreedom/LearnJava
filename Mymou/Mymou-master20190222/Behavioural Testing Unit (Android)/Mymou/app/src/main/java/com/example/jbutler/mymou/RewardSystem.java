@@ -41,12 +41,18 @@ public class RewardSystem {
     //这个UUID是对应每个服务类别的不同，而不是每个设备拥有一个UUID
     //网址中描述了不同服务对应的UUID,https://blog.csdn.net/zf_c_cqupt/article/details/52177723
     //本例中运用的是#蓝牙串口服务SerialPortServiceClass_UUID？我们买的同样的设备，与原文UUID一样？
+    //以下是Android的BluetoothDevice.java文件中--如果您要连接蓝牙串行板，请尝试使用众所周知的SPP UUID
+   /* <p>Hint: If you are connecting to a Bluetooth serial board then try
+            * using the well-known SPP UUID 00001101-0000-1000-8000-00805F9B34FB.
+     * However if you are connecting to an Android peer then please generate
+     * your own unique UUID.*/
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");//原文UUID
     //试试蓝牙串口服务的另一个：LANAccessUsingPPPServiceClass_UUID = '{00001102-0000-1000-8000-00805F9B34FB}'
 //    private static final UUID MY_UUID = UUID.fromString("00001102-0000-1000-8000-00805F9B34FB");
 //    三星平板地址：蓝牙地址FC:A6:21:D8:11:E4，WLAN MAC地址:FC:A6:21:D8:11:E5，在BluetoothDevice中使用，应该是蓝牙地址；
 //    private static String address = "FC:A6:21:D8:11:E4";//三星平板设备蓝牙地址
 //    private static String address = "FC:A6:21:D8:11:E5";//三星平板设备MAC地址
+    //蓝牙地址必须6个字节，必须大写；
     private static String address = "98:D3:81:FD:44:85";//Arduino Uno 设备连接的蓝牙接收发射的地址；
 //    private static String address = "20:16:06:08:64:22";//原文蓝牙地址
 //    private static String address = "48:2c:a0:be:7c:7c";//试一试小米note7
@@ -61,15 +67,18 @@ public class RewardSystem {
     public RewardSystem(Context context_in) {
 
         context = context_in;
-        //
+        //初始化奖励通道，1代表chanZeroOn
         initialiseRewardChannelStrings();
         if (MainMenu.useBluetooth) {
             loopUntilConnected();
         }
 
     }
-
+    //注册蓝牙接收器
     private static void registerBluetoothReceivers() {
+            //IntentFilter翻译成中文就是“意图过滤器”，主要用来过滤隐式意图。当用户进行一项操作的时候，
+            //Android系统会根据配置的 “意图过滤器” 来寻找可以响应该操作的组件，服务。
+            //Android系统会进行“动作测试”，“数据测试”，“类别测试”，来寻找可以响应隐式意图的组件或服务
             IntentFilter bluetoothIntent = new IntentFilter();
             bluetoothIntent.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
             bluetoothIntent.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
@@ -77,16 +86,17 @@ public class RewardSystem {
     }
 
     private static void connectToBluetooth() {
-        checkBluetoothEnabled();
+        checkBluetoothEnabled();//该方法返回bluetoothEnabled=true;
         if (bluetoothEnabled) {
             establishConnection();
         }
     }
 
-
+    //建立蓝牙连接；（这是在检查蓝牙连接成功之后，也就是bluetoothEnabled=true）
     private static void establishConnection() {
-        Log.d("RewardSystem","Connecting to bluetooth..");
+        Log.d("RewardSystem","Connecting to bluetooth..");//日志
         // Set up a pointer to the remote node using it's address.
+        //用它的地址设立一个指向远程节点的指针；
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         try {
             btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
@@ -96,8 +106,8 @@ public class RewardSystem {
         }
 
         btAdapter.cancelDiscovery();
-
-        // Establish the connection.  This will block until it connects.
+        //建立连接。 这将阻塞直到它连接
+        //Establish the connection.  This will block until it connects.
         try {
             btSocket.connect();
             Log.d("RewardSystem", "Connected to Bluetooth");
@@ -120,7 +130,7 @@ public class RewardSystem {
         }
     }
 
-
+    //检查蓝牙是否连接成功；
     private static void checkBluetoothEnabled() {
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();

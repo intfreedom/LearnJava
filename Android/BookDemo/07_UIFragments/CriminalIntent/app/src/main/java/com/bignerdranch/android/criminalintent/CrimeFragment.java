@@ -35,11 +35,16 @@ public class CrimeFragment extends Fragment {
     //调用LayoutInflater.inflate(...)方法并传入布局的资源ID生成；
     //ViewGroup是视图的父视图，需要父视图来正确配置组件；
     //第三个参数告诉布局生成器是否将生成的视图添加给父视图；
+
+    //Fragment.onCreateView(...)方法中的组件引用几乎等同于Activity.onCreate(Bundle)方法的处理；
+    //唯一的区别是，调用了fragment视图的View.findViewById(int)方法，
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
-
+        //View.findViewById(int)方法
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
+        //创建实现TextWatcher监听器接口的匿名内部类，只需关注其中的onTextChanged(...)方法；
+        //在onTextChanged(...)方法中，调用CharSequence(代表用户输入)的toString()方法，该方法返回用来设置Crime标题的字符串；
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -56,11 +61,12 @@ public class CrimeFragment extends Fragment {
 
             }
         });
-
+        //处理Button组件，让它显示crime的发生日期，
         mDateButton = (Button) v.findViewById(R.id.crime_date);
         mDateButton.setText(mCrime.getDate().toString());
+        //暂时禁用Button按钮，按钮应处于灰色状态；
         mDateButton.setEnabled(false);
-
+        //处理CheckBox组件，应用它并设置监听器，根据用户操作，更新mSolved状态；
         mSolvedCheckbox = (CheckBox) v.findViewById(R.id.crime_solved);
         mSolvedCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override

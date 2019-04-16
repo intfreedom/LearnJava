@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Crime {
-
+    //UUID是Android框架里的Java工具类；在构造方法里，调用UUID.randomUUID()产生一个随机唯一ID值；
     private UUID mId;
     private String mTitle;
     private Date mDate;

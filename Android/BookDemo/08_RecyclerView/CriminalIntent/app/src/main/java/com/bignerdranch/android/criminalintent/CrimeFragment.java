@@ -20,13 +20,18 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckbox;
-
+    //Fragment.onCreate(Bundle)是公共方法，而Activity.onCreate(Bundle)是受保护方法；
+    //Fragment的生命周期方法，必须是公共方法，因为托管fragment的activity要调用它们；
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
     }
-
+    //onCreateView创建和配置了fragment视图，该方法实例化fragment视图的布局，
+    //然后将实例化的View返回给托管的activity;
+    //调用LayoutInflater.inflate(...)方法并传入布局的资源ID生成；
+    //ViewGroup是视图的父视图，需要父视图来正确配置组件；
+    //第三个参数告诉布局生成器是否将生成的视图添加给父视图；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

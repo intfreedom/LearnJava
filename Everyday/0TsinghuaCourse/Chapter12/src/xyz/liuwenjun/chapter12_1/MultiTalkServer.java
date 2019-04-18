@@ -1,5 +1,6 @@
 package xyz.liuwenjun.chapter12_1;
 //先开一个虚拟机，打开服务器Server，再开一个虚拟机，打开一个client;
+//需要启动若干个；
 //再开一个虚拟机，打开一个client;
 import java.io.*;
 import java.net.ServerSocket;
@@ -17,7 +18,7 @@ public class MultiTalkServer {
 			}
 			while(listening)
 			{
-				new ServerThread(serverSocket.accept(), clientnum).start();
+//				new ServerThread(serverSocket.accept(), clientnum).start();
 				clientnum++;
 			}
 			serverSocket.close();

@@ -59,7 +59,7 @@ public class CameraMain extends Fragment
     private static CaptureRequest.Builder mPreviewRequestBuilder;
     private static CaptureRequest mPreviewRequest;
     private static Semaphore mCameraOpenCloseLock = new Semaphore(1);
-    //Background threads and variables for saving images
+    //Background threads and variables for saving images用于保存图像的后台线程和变量
     private HandlerThread mBackgroundThread, mBackgroundThread2;
     private Handler mBackgroundHandler, mBackgroundHandler2;
     public static String timestamp;
@@ -69,9 +69,16 @@ public class CameraMain extends Fragment
     }
 //1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
 //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
+
+    //onCreateView方法实例化fragment视图的布局，然后将实例化的View返回给托管activity;
+    //LayoutInflater及ViewGroup是实例化的必要参数，Bundle用来存储恢复数据，可供该方法从保存状态下重建视图；
+    //从activity_camera_main布局中实例化并返回视图；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //fragment的视图是直接通过调用LayoutInflater.inflate(...)方法并传入布局的资源ID生成的，
+        //container是视图的父视图，我们通常需要父视图来正确配置组件；
+        //第三个参数：是否将生成的视图添加给父视图；传入false参数表示，将以代码的方式添加视图；
         return inflater.inflate(R.layout.activity_camera_main, container, false);
     }
 
@@ -88,7 +95,8 @@ public class CameraMain extends Fragment
         }
 
     }
-
+    //Fragment.onCreate(Bundle)是公共方法，而Activity.onCreate(Bundle)是受保护方法；
+    //Fragment的生命周期方法，必须是公共方法，因为托管fragment的activity要调用它们；
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -103,6 +111,7 @@ public class CameraMain extends Fragment
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture texture, int width, int height) {
             //Wait for surface texture ready before opening camera
+            //在打开相机之前等待表面纹理准备就绪
             openCamera();
         }
 
@@ -127,6 +136,7 @@ public class CameraMain extends Fragment
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
             // This method is called when the camera is opened.  We start camera preview here.
+            //打开相机时会调用此方法。 我们在这里开始相机预览。
             mCameraOpenCloseLock.release();
             mCameraDevice = cameraDevice;
             createCameraPreviewSession();
@@ -153,6 +163,7 @@ public class CameraMain extends Fragment
     };
 
     // "onImageAvailable" will be called when a still image is ready to be saved.
+    //当准备好保存静止图像时，将调用“onImageAvailable”。
     private final ImageReader.OnImageAvailableListener mOnImageAvailableListener
             = new ImageReader.OnImageAvailableListener() {
         @Override
@@ -164,6 +175,7 @@ public class CameraMain extends Fragment
     };
 
     // Handles events related to JPEG capture.
+    //处理与JPEG捕获相关的事件。
     private CameraCaptureSession.CaptureCallback mCaptureCallback
             = new CameraCaptureSession.CaptureCallback() {};
 
@@ -172,7 +184,7 @@ public class CameraMain extends Fragment
         super.onActivityCreated(savedInstanceState);
     }
 
-    //No onResume as app is oneShot
+    //No onResume as app is oneShot，没有onResume作为app是oneShot
     @Override
     public void onResume() {
         super.onResume();

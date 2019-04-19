@@ -18,6 +18,7 @@ import android.widget.ToggleButton;
 public class MainMenu extends Activity  {
 
     // If true this automatically starts the task upon application startup
+    //如果为true，则会在应用程序启动时自动启动任务
     // Speeds up debugging/testing
     public static final boolean testingMode = true;
     //可以在这里禁用蓝牙和RewardSystem连接

@@ -41,6 +41,7 @@ class CameraSavePhoto implements Runnable {
     @Override
     public void run() {
         // Convert photo (176 x 144) to byte array (1x25344) to bitmap (176 x 144)
+        //将照片（176 x 144）转换为字节数组（1x25344）到位图（176 x 144）
         ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
         byte[] bytes = new byte[buffer.remaining()];
         buffer.get(bytes);

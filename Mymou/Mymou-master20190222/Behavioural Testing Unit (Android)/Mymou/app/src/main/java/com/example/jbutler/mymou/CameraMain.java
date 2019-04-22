@@ -237,7 +237,7 @@ public class CameraMain extends Fragment
             e.printStackTrace();
         }
     }
-
+    //打开相机
     private void openCamera() {
         setUpCameraOutputs();
         Activity activity = getActivity();
@@ -257,7 +257,7 @@ public class CameraMain extends Fragment
             throw new RuntimeException("Interrupted while trying to lock camera opening.", e);
         }
     }
-
+    //关闭相机；
     private void closeCamera() {
         try {
             mCameraOpenCloseLock.acquire();
@@ -280,10 +280,17 @@ public class CameraMain extends Fragment
             mCameraOpenCloseLock.release();
         }
     }
-
+    //HandlerThread(继承Thread类 & 封装Handler类)本质上是一个线程类，继承了Thread
+    //通过继承Thread类，快速地创建1个带有Looper对象的新工作线程
+    //通过封装Handler类，快速创建Handler & 与其他线程进行通信
     private void startBackgroundThread() {
+        // 步骤1：创建HandlerThread实例对象
+        // 传入参数 = 线程名字，作用 = 标记该线程
         mBackgroundThread = new HandlerThread("CameraBackground");
+        // 步骤2：启动线程
         mBackgroundThread.start();
+        // 步骤3：创建工作线程Handler
+        // 作用：关联HandlerThread的Looper对象、实现消息处理操作 & 与其他线程进行通信
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
 
         mBackgroundThread2 = new HandlerThread("faceRecogBackground");
@@ -360,7 +367,7 @@ public class CameraMain extends Fragment
         }
     }
 
-    // Say cheese
+    // Say cheese笑一笑，拍照了；
     public static void captureStillPicture() {
         try {
             // This is the CaptureRequest.Builder that we use to take a picture.

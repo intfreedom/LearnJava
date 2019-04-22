@@ -30,7 +30,7 @@ import java.util.Calendar;
 
 public class TaskManager extends Activity implements Thread.UncaughtExceptionHandler {
 
-    //Task you want to run goes here
+    //Task you want to run goes here你想要运行的任务就在这里
     private static TaskExample task = new TaskExample();
     //private static TaskFromPaper task = new TaskFromPaper();
     private static String taskId = "001";  // Unique string prefixed to all log entries

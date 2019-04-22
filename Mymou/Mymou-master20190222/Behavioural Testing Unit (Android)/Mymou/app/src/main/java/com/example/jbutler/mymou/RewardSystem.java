@@ -251,7 +251,8 @@ public class RewardSystem {
             }
         }
     }
-
+    //BroadcastReceiver是对发送出来的 Broadcast进行过滤接受并响应的一类组件。
+    //Broadcast是一种广泛运用的在应用程序之间传输信息的机制
     private static final BroadcastReceiver bluetoothReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

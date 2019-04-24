@@ -12,6 +12,8 @@ public class Flower {
 	}
 	Flower(String ss){
 		System.out.println("Constructor w/ String arg only, s= "+ss);
+		System.out.println(this.s);
+		System.out.println(this.petalCount);
 		s=ss;
 	}
 	Flower(String s, int petals){
@@ -28,6 +30,8 @@ public class Flower {
 	}
 	public static void main(String[] args) {
 		Flower x = new Flower();
-		x.print();
+		System.out.println(222);
+//		x.print();
+		Flower y = new Flower("Yes, Yes");
 	}
 }

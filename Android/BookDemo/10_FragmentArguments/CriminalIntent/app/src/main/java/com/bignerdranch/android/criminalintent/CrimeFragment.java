@@ -37,6 +37,8 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //CrimeFragment直接使用getActivity()方法获取CrimeActivity的intent;
+        //取到CrimeActivity的intent内的extra信息；再用它获取Crime对象
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }

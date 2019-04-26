@@ -19,7 +19,7 @@ import java.util.Random;
 // Offers choice of rewards for successful trial completion
 //1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
 public class TaskExample extends Fragment
-        implements View.OnClickListener {
+        implements View.OnClickListener {//当前应用需要监听用户按钮“点击”事件，因此监听器需要实现View.OnClickListener接口；
 
     // Debug//调试
     private static TextView textView;
@@ -35,22 +35,24 @@ public class TaskExample extends Fragment
     private int timeoutWrongCueChosen = 1500;  // Timeout for getting the task wrong
     //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
-    private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets
+    private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
-    private static boolean timerRunning;  // Signals if timer currently active
-    //分配给每个主题的唯一编号，用于面部识别
+    private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号
+    // 分配给每个主题的唯一编号，用于面部识别
     // Unique numbers assigned to each subject, used for facial recognition
     private static int monkO = 0, monkV = 1;
 
     // Task objects
-    private static Button cueGo_O, cueGo_V; // Go cues to start a trial
+    // 任务主题
+    private static Button cueGo_O, cueGo_V; // Go cues to start a trial去提示开始实验
     private static Button[] cues_Reward = new Button[4];  // Reward cues for the different reward options
+    // 为Subject O， V列出所有的实验对象；
     private static Button[] cues_O = new Button[2];  // List of all trial objects for Subject O
     private static Button[] cues_V = new Button[2];  // List of all trial objects for Subject V
 
     // Reward
     static int rewardAmount = 1000;  // Duration (ms) that rewardSystem activated for
-    //可以在屏幕上显示提示的预定位置，
+    // 可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in
     private static int[] xLocs = new int[maxCueLocations];
@@ -63,6 +65,7 @@ public class TaskExample extends Fragment
     public static boolean shutdown = false;
 
     // Aync handlers used to posting delayed task events
+    // 异步处理程序用于发布延迟的任务事件
     private static Handler h0 = new Handler();  // Task timer
     private static Handler h1 = new Handler();  // Prepare for new trial
     private static Handler h2 = new Handler();  // Timeout go cues
@@ -72,12 +75,12 @@ public class TaskExample extends Fragment
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_task_example, container, false);
     }
-
+    // activity_task_example.java文件中有Monkey O Start, Monkey V Start, Monkey O Cue1, Monkey O Cue2等按钮；
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-
+        //引用组件；
         assignObjects();
-
+        //设置监听器，点击行为
         setOnClickListeners();
 
         calculateCueLocations();
@@ -89,17 +92,23 @@ public class TaskExample extends Fragment
         PrepareForNewTrial(0);
 
     }
-
+    // 引用组件： findViewById以组件的资源ID为参数，返回一个视图对象，赋值给对应的成员变量；
+   /* getView
+    在创建片段的活动并且实例化此片段的视图层次结构时调用。 一旦这些部分就位，它可用于进行最终初始化，例如检索
+    观点或恢复状态。 它对使用的片段也很有用{@link #setRetainInstance（boolean）}保留他们的实例，
+    因为这个回调告诉片段何时完全关联 新活动实例。 这是在{@link #onCreateView}之后调用的 在{@link #onViewStateRestored（Bundle）}之前
+    @param savedInstanceState如果正在重新创建片段先前保存的状态，这是状态。*/
     private void assignObjects() {
         backgroundRed = getView().findViewById(R.id.backgroundred);
         backgroundPink = getView().findViewById(R.id.backgroundpink);
         hideApplication = getView().findViewById(R.id.foregroundblack);
-        cueGo_O = getView().findViewById(R.id.buttonGoMonkO);
-        cueGo_V = getView().findViewById(R.id.buttonGoMonkV);
-        cues_O[0] = getView().findViewById(R.id.buttonCue1MonkO);
-        cues_O[1] = getView().findViewById(R.id.buttonCue2MonkO);
+        cueGo_O = getView().findViewById(R.id.buttonGoMonkO);//对应Monkey O Start
+        cueGo_V = getView().findViewById(R.id.buttonGoMonkV);//对应Monkey V Start
+        cues_O[0] = getView().findViewById(R.id.buttonCue1MonkO);//对应Monkey O Cue 1
+        cues_O[1] = getView().findViewById(R.id.buttonCue2MonkO);//对应Monkey O Cue2
         cues_V[0] = getView().findViewById(R.id.buttonCue1MonkV);
         cues_V[1] = getView().findViewById(R.id.buttonCue2MonkV);
+        //以下为奖励的四个通道，与外部接连无关，只要它返回的信号是 1，2，3， 4， 5， 6?
         cues_Reward[0]  = getView().findViewById(R.id.buttonRewardZero);
         cues_Reward[1]  = getView().findViewById(R.id.buttonRewardOne);
         cues_Reward[2]  = getView().findViewById(R.id.buttonRewardTwo);
@@ -154,11 +163,13 @@ public class TaskExample extends Fragment
             buttons[i].setOnClickListener(this);
         }
     }
-
+    // setOnClickListener(OnClickListener)方法的参数是一个监听器；
+    // OnClickListener接口中唯一的方法：onClick(View)，可否以下的方法，单独写出来，有何关联；
+    // 这个this指的是？prefer android book page147, may it is right; this = onClick(View view){} below
      private void setOnClickListeners() {
          setOnClickListenerLoop(cues_Reward);
-         setOnClickListenerLoop(cues_O);
-         setOnClickListenerLoop(cues_V);
+         setOnClickListenerLoop(cues_O);// monkey V中有两个，对应Monkey V Cue 1， Monkey V Cue 2
+         setOnClickListenerLoop(cues_V);// monkey V中有两个，对应Monkey V Cue 1， Monkey V Cue 2
          cueGo_O.setOnClickListener(this);
          cueGo_V.setOnClickListener(this);
     }
@@ -168,14 +179,15 @@ public class TaskExample extends Fragment
     public void onClick(View view) {
 
         // Always disable all cues after a press as monkeys love to bash repeatedly
+        //因为猴子喜欢反复点击，所以在按下后总是禁用所有提示
         disableAllCues();
-
+        //重置任务计时器（用于空闲超时并根据需要计算反应时间）
         // Reset task timer (used for idle timeout and calculating reaction times if desired)
         time = 0;
-
+        // 点亮屏幕；
         // Make screen bright
         TaskManager.setBrightness(255);
-
+        // 现在根据按下的按钮决定做什么
         // Now decide what to do based on what button pressed
         switch (view.getId()) {
             case R.id.buttonGoMonkO:
@@ -229,6 +241,7 @@ public class TaskExample extends Fragment
 
     // Each monkey has it's own start cue. At start of each trial make sure the monkey pressed it's own cue using
     // the facial recognition
+    //每只猴子都有它自己的开始提示。 在每次试验开始时，确保猴子使用面部识别按下它自己的提示
     private static void checkMonkeyPressedTheirCue(int monkId) {
         boolean correctCuePressed = TaskManager.checkMonkey(monkId);
         if (correctCuePressed) {  // If they clicked their specific cue
@@ -286,11 +299,13 @@ public class TaskExample extends Fragment
 
     // This is just needed to show user on screen what is happening during the task
     // Normally just use TaskManager.logEvent()
+    // 只需要在屏幕上向用户显示任务期间发生的事情
+    // 通常只使用TaskManager.logEvent（）
     private static void logEvent(String log) {
         TaskManager.logEvent(log);
         textView.setText(log);
     }
-
+    //禁用所有的提示，or 线索
     private static void disableAllCues() {
         toggleGoCues(false);
         toggleTaskCues(-1, false);  // monkId not needed when switching off
@@ -365,13 +380,13 @@ public class TaskExample extends Fragment
         randomiseNoReplacement(cues_O);
         randomiseNoReplacement(cues_V);
     }
-
+    // 用于跟踪任务时间的递归函数
     // Recursive function to track task time
     private static void timer() {
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
-                time += 1000;
+                time += 1000;//单位为mm，
                 if (time > maxTrialDuration) {
                     disableAllCues();
                     endOfTrial(7, 0);

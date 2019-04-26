@@ -286,7 +286,10 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
             } else if (brightness < 0) {
                 brightness = 0;
             }
+            // ContentResolver 此类为应用程序提供对内容模型的访问权限
+            // 返回应用程序包的ContentResolver实例
             ContentResolver cResolver = mContext.getContentResolver();
+            // SCREEN_BRIGHTNESS屏幕背光亮度介于0和255之间
             Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
         }
     }
@@ -302,13 +305,16 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     }
 
     // Takes selfie and checks to see if it matches with which monkey it should be
+    //采取自拍和检查，看它是否与应该是哪只猴子相匹配
     public static boolean checkMonkey(int monkId) {
         if (!MainMenu.useFaceRecog) {
             // If face recog disabled just take a photo and return
+            //如果面部识别被禁用，仅拍照并返回；
             takePhoto();
             return true;
         } else {
             // Lock main thread and wait until background thread takes photo and finishes face recog
+            // 锁定主线程并等待后台线程拍照并完成面部识别
             int currentnumphotos = numPhotos;
             Log.d("MonkeyId", "Starting face recognition ");
             takePhoto();

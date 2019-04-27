@@ -2,7 +2,7 @@ package c442;
 
 class Tag{
 	Tag(int marker){
-		System.out.println("Tag("+marker+"");
+		System.out.println("Tag("+marker+")");
 	}
 }
 //变量会在调用任何方法之前得到初始化，甚至在构建器调用之前；
@@ -26,5 +26,4 @@ public class OrderOfInitialization {
 		System.out.println("I will see again");
 		t.f();//shows that construction is done
 	}
-
 }

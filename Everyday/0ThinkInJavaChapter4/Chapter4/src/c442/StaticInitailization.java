@@ -1,5 +1,5 @@
 package c442;
-
+//初始化的顺序，首先是static(如果他们尚未由前一次对象创建过程初始化；
 class Bowl{
 	Bowl(int marker){
 		System.out.println("Bowl("+marker+")");
@@ -47,5 +47,4 @@ public class StaticInitailization {
 	}
 	static Table t2 = new Table();
 	static Cupboard t3 = new Cupboard();
-
 }

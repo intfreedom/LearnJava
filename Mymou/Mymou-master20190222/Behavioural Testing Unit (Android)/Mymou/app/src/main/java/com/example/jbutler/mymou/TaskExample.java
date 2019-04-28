@@ -58,10 +58,11 @@ public class TaskExample extends Fragment
     private static int[] xLocs = new int[maxCueLocations];
     private static int[] yLocs = new int[maxCueLocations];
 
-    // Random number generator
+    // Random number generator随机数发生器
     private static Random r = new Random();
 
     // Boolean to signal if task should be active or not (e.g. overnight it is set to true)
+    //布尔值，表示任务是否应该处于活动状态
     public static boolean shutdown = false;
 
     // Aync handlers used to posting delayed task events
@@ -82,7 +83,7 @@ public class TaskExample extends Fragment
         assignObjects();
         //设置监听器，点击行为
         setOnClickListeners();
-
+        // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
 
         TaskManager.setBrightness(255);
@@ -105,9 +106,9 @@ public class TaskExample extends Fragment
         cueGo_O = getView().findViewById(R.id.buttonGoMonkO);//对应Monkey O Start
         cueGo_V = getView().findViewById(R.id.buttonGoMonkV);//对应Monkey V Start
         cues_O[0] = getView().findViewById(R.id.buttonCue1MonkO);//对应Monkey O Cue 1
-        cues_O[1] = getView().findViewById(R.id.buttonCue2MonkO);//对应Monkey O Cue2
-        cues_V[0] = getView().findViewById(R.id.buttonCue1MonkV);
-        cues_V[1] = getView().findViewById(R.id.buttonCue2MonkV);
+        cues_O[1] = getView().findViewById(R.id.buttonCue2MonkO);//对应Monkey O Cue 2
+        cues_V[0] = getView().findViewById(R.id.buttonCue1MonkV);//对应Monkey V Cue 1
+        cues_V[1] = getView().findViewById(R.id.buttonCue2MonkV);//对应Monkey V Cue 2
         //以下为奖励的四个通道，与外部接连无关，只要它返回的信号是 1，2，3， 4， 5， 6?
         cues_Reward[0]  = getView().findViewById(R.id.buttonRewardZero);
         cues_Reward[1]  = getView().findViewById(R.id.buttonRewardOne);
@@ -287,7 +288,7 @@ public class TaskExample extends Fragment
         toggleBackground(backgroundPink, true);
         toggleButtonList(cues_Reward, true);
     }
-
+    //传递奖励；
     private void deliverReward(int juiceChoice) {
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
@@ -360,7 +361,7 @@ public class TaskExample extends Fragment
         view.setEnabled(status);
     }
 
-    // Utility functions
+    // Utility functions实用功能
     private static void randomiseNoReplacement(Button[] buttons) {
         int[] chosen = new int[maxCueLocations];
         for (int i = 0; i < maxCueLocations; i++) {
@@ -378,7 +379,7 @@ public class TaskExample extends Fragment
     }
 
     private static void randomiseCueLocations() {
-        // Place all trial objects in random locations
+        // Place all trial objects in random locations将所有试用对象放在随机位置
         randomiseNoReplacement(cues_Reward);
         randomiseNoReplacement(cues_O);
         randomiseNoReplacement(cues_V);
@@ -418,7 +419,5 @@ public class TaskExample extends Fragment
         super.onDestroy();
         cancelHandlers();
     }
-
-
 
 }

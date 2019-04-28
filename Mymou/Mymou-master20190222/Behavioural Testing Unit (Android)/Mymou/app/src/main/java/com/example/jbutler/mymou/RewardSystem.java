@@ -32,6 +32,8 @@ public class RewardSystem {
     private static final int REQUEST_ENABLE_BT = 1;
     private static BluetoothAdapter btAdapter = null;
     private static BluetoothSocket btSocket = null;
+    //OutputStream 此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
+    //需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
     private static OutputStream outStream = null;
     //这里用https://wenku.baidu.com/view/5f1c944155270722192ef775.html 3.0蓝牙Android编程原理；
     // Replace with your devices UUID and address
@@ -99,6 +101,7 @@ public class RewardSystem {
         //用它的地址设立一个指向远程节点的指针；
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         try {
+            //createRfcommSocketToServiceRecord(),要是使用蓝牙串行板，使用SSP UUID，要是Android peer则生成自己的UUID;
             btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
             Log.d("RewardSystem","Error: Could not create socket");
@@ -122,8 +125,9 @@ public class RewardSystem {
             }
         }
 
-        // Create data stream to talk to server.
+        // Create data stream to talk to server.创建数据流以与服务器通信。
         try {
+            //获取与此套接字关联的输出流。 即使套接字尚未连接，也将返回输出流，但该流上的操作将抛出IOException，直到关联的套接字连接为止。
             outStream = btSocket.getOutputStream();
         } catch (IOException e) {
             Log.d("RewardSystem","Error: Failed to create output stream");
@@ -202,17 +206,21 @@ public class RewardSystem {
     public static void activateChannel(final int Ch, int amount) {
         Log.d("RewardSystem","Giving reward "+amount+" ms on channel "+Ch);
         startChannel(Ch);
-
+        // 安排倒计时，直到将来的某个时间，并在整个过程中定期通知。
         new CountDownTimer(amount, 100) {
             public void onTick(long ms) {}
             public void onFinish() { stopChannel(Ch); }
-        }.start();
+        }.start();//开始倒计时
     }
-
+    //发送数据，
     public static void sendData(String message) {
         if(bluetoothConnection) {
+            //使用平台的默认字符集将此{@code String}编码为字节序列，将结果存储到新的字节数组中。
             byte[] msgBuffer = message.getBytes();
             try {
+                //OutputStream outStream = null,此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
+                // 需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
+                //write(byte[])将<code> b.length </ code>字节从指定的字节数组写入此输出流。
                 outStream.write(msgBuffer);
             } catch (IOException e) {
                 Log.d("RewardSystem", "Error: No socket");

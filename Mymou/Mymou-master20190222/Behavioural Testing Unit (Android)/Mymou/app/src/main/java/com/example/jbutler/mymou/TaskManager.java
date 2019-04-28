@@ -299,7 +299,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         String msg = TaskManager.photoTimestamp + "," + timestamp + "," + data;
         trialData.add(msg);
     }
-
+    //
     public static void resetTrialData() {
         trialData = new ArrayList<String>();
     }

@@ -187,7 +187,9 @@ public class MainMenu extends Activity  {
     private void initialiseToggleButtons() {
         //CompoundButton具有两种状态的按钮，已选中和未选中。按下或单击按钮时，状态会自动更改。
         //OnCheckedChangeListener已检查状态的复合按钮，变更时要调用的回调的接口定义。
+        //CompoundButton.OnCheckedChangeListener 当复合按钮的检查状态发生变化时调用。实现方法：onCheckedChanged
         CompoundButton.OnCheckedChangeListener multiListener = new CompoundButton.OnCheckedChangeListener() {
+            //CompoundButton: 状态已更改的复合按钮视图，isChecked: buttonView的新检查状态。
             public void onCheckedChanged(CompoundButton v, boolean isChecked) {
                 if (!rewardSystem.bluetoothConnection) {
                     Log.d("MainMenu", "Error: Bluetooth not connected");

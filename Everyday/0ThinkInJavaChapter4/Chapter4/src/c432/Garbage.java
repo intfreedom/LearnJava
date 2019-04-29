@@ -27,6 +27,7 @@ class Chair{
 	}
 	
 }
+
 public class Garbage {
 	public static void main(String[] args) {
 		if(args.length == 0) {
@@ -51,5 +52,4 @@ public class Garbage {
 		if(args[0].equals("after"))
 			System.runFinalizersOnExit(true);
 	}
-
 }

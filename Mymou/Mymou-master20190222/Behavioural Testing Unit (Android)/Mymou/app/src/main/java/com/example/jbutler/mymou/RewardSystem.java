@@ -38,7 +38,7 @@ public class RewardSystem {
     //这里用https://wenku.baidu.com/view/5f1c944155270722192ef775.html 3.0蓝牙Android编程原理；
     // Replace with your devices UUID and address
     //这个UUID和address是平板设备的还是将要连接的Arduino Uno board的？地址是指蓝牙地址吗？
-    //UUID 是 通用唯一识别码（Universally Unique Identifier）
+    //UUID是通用唯一识别码（Universally Unique Identifier）
     //标准的UUID格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12),其中x为十六进制数字；
     //这个UUID是对应每个服务类别的不同，而不是每个设备拥有一个UUID
     //网址中描述了不同服务对应的UUID,https://blog.csdn.net/zf_c_cqupt/article/details/52177723
@@ -101,7 +101,7 @@ public class RewardSystem {
         //用它的地址设立一个指向远程节点的指针；
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         try {
-            //createRfcommSocketToServiceRecord(),要是使用蓝牙串行板，使用SSP UUID，要是Android peer则生成自己的UUID;
+            //createRfcommSocketToServiceRecord(),要是使用蓝牙串行板，使用以上SSP UUID，要是Android peer则生成自己的UUID;
             btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
             Log.d("RewardSystem","Error: Could not create socket");
@@ -219,8 +219,9 @@ public class RewardSystem {
             byte[] msgBuffer = message.getBytes();
             try {
                 //OutputStream outStream = null,此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
-                // 需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
+                //需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
                 //write(byte[])将<code> b.length </ code>字节从指定的字节数组写入此输出流。
+                //<code> write（b）</ code>的一般契约是它应该与调用<code> write（b，0，b.length）</ code>具有完全相同的效果。
                 outStream.write(msgBuffer);
             } catch (IOException e) {
                 Log.d("RewardSystem", "Error: No socket");

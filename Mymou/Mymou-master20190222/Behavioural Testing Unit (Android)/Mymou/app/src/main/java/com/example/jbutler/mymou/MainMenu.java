@@ -53,7 +53,7 @@ public class MainMenu extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        //初始化布局参数
         initialiseLayoutParameters();
 
         checkPermissions();
@@ -167,7 +167,7 @@ public class MainMenu extends Activity  {
     }
 
     private void initialiseLayoutParameters() {
-        //Permission buttons
+        //Permission buttons权限按钮
         permissionButtons[0] = findViewById(R.id.permbuttonCamera);
         permissionButtons[1] = findViewById(R.id.permbuttonWrite);
         permissionButtons[2] = findViewById(R.id.permbuttonBt0);

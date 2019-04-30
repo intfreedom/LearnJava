@@ -36,7 +36,7 @@ public class MainMenu extends Activity  {
 
     public static RewardSystem rewardSystem;
 
-    //Permission variables
+    //Permission variables权限变量
     private boolean permissions = false;
     String[] permissionCodes = {
         Manifest.permission.CAMERA,
@@ -82,7 +82,7 @@ public class MainMenu extends Activity  {
 
     private void initaliseRewardSystem() {
         rewardSystem = new RewardSystem(this);
-        TextView tv1 = findViewById(R.id.tvBluetooth);
+        TextView tv1 = findViewById(R.id.tvBluetooth);//textColor="#FFFFFF"白色；十六进制
         if (rewardSystem.bluetoothConnection) {
             tv1.setText("Bluetooth status: Connected");
         } else if (!useBluetooth) {

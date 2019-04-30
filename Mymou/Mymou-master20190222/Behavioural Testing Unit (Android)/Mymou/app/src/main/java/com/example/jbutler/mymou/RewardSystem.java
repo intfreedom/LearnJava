@@ -58,7 +58,7 @@ public class RewardSystem {
     private static String address = "98:D3:81:FD:44:85";//Arduino Uno 设备连接的蓝牙接收发射的地址；
 //    private static String address = "20:16:06:08:64:22";//原文蓝牙地址
 //    private static String address = "48:2c:a0:be:7c:7c";//试一试小米note7
-//    对于HC-05蓝牙模块，安卓中用00001101-0000-1000-8000-00805F9B34FB这个uuid来进行串口蓝牙通讯SerialPortService
+//    对于HC-05蓝牙模块，安卓中用0000  1101-0000-1000-8000-00805F9B34FB这个uuid来进行串口蓝牙通讯SerialPortService
 
 
     //蓝牙模块能正确连通，看看通道模块，现在的奖励交付系统连接是二通道，修改下代码，

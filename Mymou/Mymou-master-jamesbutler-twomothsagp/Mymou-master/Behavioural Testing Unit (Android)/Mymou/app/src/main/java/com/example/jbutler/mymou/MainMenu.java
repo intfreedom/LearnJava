@@ -29,6 +29,7 @@ public class MainMenu extends Activity  {
     // Can disable bluetooth and RewardSystem connectivity here
     public static final boolean useBluetooth = true;//改了蓝牙地址和这里；
     //把以上这个值设为true后，Monkey 0 Start-->Monkey O Cue 1-->Reward Choice #0万用表就会改变为5
+    //Monkey V Start-->Monkey V Cue 2-->Reward Choice #0万用表就会改变为5
     //当时Arduino连接的是通道2；
 
     // Can disable facial recognition here

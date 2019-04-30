@@ -27,7 +27,9 @@ public class MainMenu extends Activity  {
     public static final boolean useCamera = false;
 
     // Can disable bluetooth and RewardSystem connectivity here
-    public static final boolean useBluetooth = false;
+    public static final boolean useBluetooth = true;//改了蓝牙地址和这里；
+    //把以上这个值设为true后，Monkey 0 Start-->Monkey O Cue 1-->Reward Choice #0万用表就会改变为5
+    //当时Arduino连接的是通道2；
 
     // Can disable facial recognition here
     // To use faceRecog must have the weights for the ANN (wo.txt, wi.txt, meanAndVar.txt) present in the Mymou folder

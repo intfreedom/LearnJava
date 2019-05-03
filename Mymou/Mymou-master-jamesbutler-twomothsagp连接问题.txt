@@ -1,0 +1,14 @@
+Mymou-master-jamesbutler-twomothsagp这个项目；
+//改了蓝牙地址和这里；
+    //把mainmenu.java的值改变了，以上这个值设为true后，Monkey 0 Start-->Monkey O Cue 1-->Reward Choice #0万用表就会改变为5
+    //Monkey V Start-->Monkey V Cue 2-->Reward Choice #0万用表就会改变为5
+    //当时Arduino连接的是通道2；
+这个文件的连接状态；
+
+1.把蓝牙在平板里设置，连接，HC-05，密码：1234；
+2.Arduino断电重启；
+3.加载项目；平板连接电脑状态；跟电脑USB连接有关；？？？
+3.1拔去USB连接还是可以；
+
+
+每次似乎重启这个app就无法连接；

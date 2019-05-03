@@ -515,7 +515,7 @@ public class TaskFromPaper extends Fragment
 
     private void PrepareForNewTrial(int delay) {
 
-        //New trial data
+        //New trial data新实验数据
         TaskManager.resetTrialData();
 
         h5.postDelayed(new Runnable() {
@@ -542,7 +542,7 @@ public class TaskFromPaper extends Fragment
                 ibGo.setEnabled(true);
                 ibGo.setVisibility(View.VISIBLE);
 
-                //Task visible
+                //Task visible任务可见；
                 ibCurrLoc.setEnabled(false);
                 ibCurrLoc.setVisibility(View.INVISIBLE);
                 ibTarget.setEnabled(false);

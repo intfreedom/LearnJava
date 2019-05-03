@@ -36,7 +36,7 @@ public class MainMenu extends Activity  {
 
     public static RewardSystem rewardSystem;
 
-    //Permission variables
+    //Permission variables权限变量
     private boolean permissions = false;
     String[] permissionCodes = {
         Manifest.permission.CAMERA,
@@ -53,7 +53,7 @@ public class MainMenu extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        //初始化布局参数
         initialiseLayoutParameters();
 
         checkPermissions();
@@ -82,7 +82,7 @@ public class MainMenu extends Activity  {
 
     private void initaliseRewardSystem() {
         rewardSystem = new RewardSystem(this);
-        TextView tv1 = findViewById(R.id.tvBluetooth);
+        TextView tv1 = findViewById(R.id.tvBluetooth);//textColor="#FFFFFF"白色；十六进制
         if (rewardSystem.bluetoothConnection) {
             tv1.setText("Bluetooth status: Connected");
         } else if (!useBluetooth) {
@@ -116,7 +116,7 @@ public class MainMenu extends Activity  {
             permissions = true;
         }
     }
-
+    //检查权限嵌套；
     private boolean checkPermissionNested(int i_perm) {
         final String permissionItem = permissionCodes[i_perm];
         int hasPermission=-1;
@@ -167,7 +167,7 @@ public class MainMenu extends Activity  {
     }
 
     private void initialiseLayoutParameters() {
-        //Permission buttons
+        //Permission buttons权限按钮
         permissionButtons[0] = findViewById(R.id.permbuttonCamera);
         permissionButtons[1] = findViewById(R.id.permbuttonWrite);
         permissionButtons[2] = findViewById(R.id.permbuttonBt0);
@@ -185,11 +185,15 @@ public class MainMenu extends Activity  {
     }
 
     private void initialiseToggleButtons() {
+        //CompoundButton具有两种状态的按钮，已选中和未选中。按下或单击按钮时，状态会自动更改。
+        //OnCheckedChangeListener已检查状态的复合按钮，变更时要调用的回调的接口定义。
+        //CompoundButton.OnCheckedChangeListener 当复合按钮的检查状态发生变化时调用。实现方法：onCheckedChanged
         CompoundButton.OnCheckedChangeListener multiListener = new CompoundButton.OnCheckedChangeListener() {
+            //CompoundButton: 状态已更改的复合按钮视图，isChecked: buttonView的新检查状态。
             public void onCheckedChanged(CompoundButton v, boolean isChecked) {
                 if (!rewardSystem.bluetoothConnection) {
                     Log.d("MainMenu", "Error: Bluetooth not connected");
-                    return;
+                    return;//这个return 返回到哪一步？
                 }
                 int chan = -1;
                 switch (v.getId()){
@@ -213,7 +217,9 @@ public class MainMenu extends Activity  {
                 }
             }
         };
-
+        //ToggleButton, 将已选中/未选中状态显示为带有“亮”指示的按钮，默认情况下伴随文本“开”或“关”。
+        //setOnCheckedChangeListener注册当此按钮的选中状态更改时要调用的回调。
+        //findViewById方法：引用已生成的组件，以组件的资源ID作为参数，返回一个视图对象；
         ((ToggleButton)  findViewById(R.id.chanZeroButt)).setOnCheckedChangeListener(multiListener);
         ((ToggleButton)  findViewById(R.id.chanOneButt)).setOnCheckedChangeListener(multiListener);
         ((ToggleButton)  findViewById(R.id.chanTwoButt)).setOnCheckedChangeListener(multiListener);

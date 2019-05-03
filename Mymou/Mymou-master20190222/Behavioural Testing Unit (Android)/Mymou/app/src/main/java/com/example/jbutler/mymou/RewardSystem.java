@@ -32,11 +32,13 @@ public class RewardSystem {
     private static final int REQUEST_ENABLE_BT = 1;
     private static BluetoothAdapter btAdapter = null;
     private static BluetoothSocket btSocket = null;
+    //OutputStream 此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
+    //需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
     private static OutputStream outStream = null;
     //这里用https://wenku.baidu.com/view/5f1c944155270722192ef775.html 3.0蓝牙Android编程原理；
     // Replace with your devices UUID and address
     //这个UUID和address是平板设备的还是将要连接的Arduino Uno board的？地址是指蓝牙地址吗？
-    //UUID 是 通用唯一识别码（Universally Unique Identifier）
+    //UUID是通用唯一识别码（Universally Unique Identifier）
     //标准的UUID格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12),其中x为十六进制数字；
     //这个UUID是对应每个服务类别的不同，而不是每个设备拥有一个UUID
     //网址中描述了不同服务对应的UUID,https://blog.csdn.net/zf_c_cqupt/article/details/52177723
@@ -56,7 +58,7 @@ public class RewardSystem {
     private static String address = "98:D3:81:FD:44:85";//Arduino Uno 设备连接的蓝牙接收发射的地址；
 //    private static String address = "20:16:06:08:64:22";//原文蓝牙地址
 //    private static String address = "48:2c:a0:be:7c:7c";//试一试小米note7
-//    对于HC-05蓝牙模块，安卓中用00001101-0000-1000-8000-00805F9B34FB这个uuid来进行串口蓝牙通讯SerialPortService
+//    对于HC-05蓝牙模块，安卓中用0000  1101-0000-1000-8000-00805F9B34FB这个uuid来进行串口蓝牙通讯SerialPortService
 
 
     //蓝牙模块能正确连通，看看通道模块，现在的奖励交付系统连接是二通道，修改下代码，
@@ -99,6 +101,7 @@ public class RewardSystem {
         //用它的地址设立一个指向远程节点的指针；
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         try {
+            //createRfcommSocketToServiceRecord(),要是使用蓝牙串行板，使用以上SSP UUID，要是Android peer则生成自己的UUID;
             btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
             Log.d("RewardSystem","Error: Could not create socket");
@@ -122,8 +125,9 @@ public class RewardSystem {
             }
         }
 
-        // Create data stream to talk to server.
+        // Create data stream to talk to server.创建数据流以与服务器通信。
         try {
+            //获取与此套接字关联的输出流。 即使套接字尚未连接，也将返回输出流，但该流上的操作将抛出IOException，直到关联的套接字连接为止。
             outStream = btSocket.getOutputStream();
         } catch (IOException e) {
             Log.d("RewardSystem","Error: Failed to create output stream");
@@ -202,17 +206,22 @@ public class RewardSystem {
     public static void activateChannel(final int Ch, int amount) {
         Log.d("RewardSystem","Giving reward "+amount+" ms on channel "+Ch);
         startChannel(Ch);
-
+        // 安排倒计时，直到将来的某个时间，并在整个过程中定期通知。
         new CountDownTimer(amount, 100) {
             public void onTick(long ms) {}
             public void onFinish() { stopChannel(Ch); }
-        }.start();
+        }.start();//开始倒计时
     }
-
+    //发送数据，
     public static void sendData(String message) {
         if(bluetoothConnection) {
+            //使用平台的默认字符集将此{@code String}编码为字节序列，将结果存储到新的字节数组中。
             byte[] msgBuffer = message.getBytes();
             try {
+                //OutputStream outStream = null,此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
+                //需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
+                //write(byte[])将<code> b.length </ code>字节从指定的字节数组写入此输出流。
+                //<code> write（b）</ code>的一般契约是它应该与调用<code> write（b，0，b.length）</ code>具有完全相同的效果。
                 outStream.write(msgBuffer);
             } catch (IOException e) {
                 Log.d("RewardSystem", "Error: No socket");

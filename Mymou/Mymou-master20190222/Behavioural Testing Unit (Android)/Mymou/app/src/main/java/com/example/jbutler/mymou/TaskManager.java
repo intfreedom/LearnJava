@@ -177,7 +177,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if(action.equals(Intent.ACTION_POWER_DISCONNECTED)) {
-                // Do something when power disconnected
+                // Do something when power disconnected电源断开时做一些事情???
                 //task.hideApplication();
             }
         }
@@ -299,7 +299,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         String msg = TaskManager.photoTimestamp + "," + timestamp + "," + data;
         trialData.add(msg);
     }
-
+    //
     public static void resetTrialData() {
         trialData = new ArrayList<String>();
     }

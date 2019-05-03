@@ -35,7 +35,8 @@ public class RewardSystem {
     private static OutputStream outStream = null;
     // Replace with your devices UUID and address
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    private static String address = "20:16:06:08:64:22";
+//    private static String address = "20:16:06:08:64:22";
+    private static String address = "98:D3:81:FD:44:85";//HC-05
 
     public RewardSystem(Context context_in) {
 

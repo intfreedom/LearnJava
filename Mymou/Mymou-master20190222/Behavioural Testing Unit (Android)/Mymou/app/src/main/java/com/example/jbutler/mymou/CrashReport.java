@@ -32,7 +32,7 @@ class CrashReport implements Runnable {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         message.printStackTrace(pw);
-        String exceptionAsString = sw.toString(); // stack trace as a string
+        String exceptionAsString = sw.toString(); // stack trace as a string    将跟踪堆栈作为字符串
         File backupFile;
         File appFolder;
         String folderName = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());

@@ -73,7 +73,8 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        updateQuestion();
+        updateQuestion();//because private int mCurrentIndex = 0;所以这一个永远指向第一个问题；
+        //会不会与后面旋转就变到第一个问题有关；
     }
 
     private void updateQuestion() {
@@ -101,4 +102,6 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
     }
+    //注意这里this的变化，在匿名内部类中this，必须写成QuizActivity.this，因为匿名内部类中，this指的是监听器
+    //View.OnClickListener;而private void checkAnswer(...) 中this，指的是传入QuizActivity实例
 }

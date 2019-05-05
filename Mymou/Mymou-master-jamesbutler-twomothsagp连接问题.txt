@@ -12,3 +12,10 @@ Mymou-master-jamesbutler-twomothsagp这个项目；
 
 
 每次似乎重启这个app就无法连接；
+重启之后最新打开可以；
+
+新的问题：
+1.1.1
+如何让它固定在界面，
+1.1.2
+如何让python代码显示移植到android上；

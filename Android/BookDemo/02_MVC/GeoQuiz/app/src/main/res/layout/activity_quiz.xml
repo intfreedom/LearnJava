@@ -13,12 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"/>
+    <!--这里没有android:text属性值，在QuizActivity.java文件中通过引用TextView，
+    并将其文本内容设置为当前数组索引指向的地理知识问题；-->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <!--android:text属性值，不是字符串值，而是对字符串资源（string resource)的引用，  -->
         <Button
             android:id="@+id/true_button"
             android:layout_width="wrap_content"

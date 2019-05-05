@@ -317,18 +317,18 @@ public class CameraMain extends Fragment
         try {
             SurfaceTexture texture = mTextureView.getSurfaceTexture();
             assert texture != null;
-
+            //我们将默认缓冲区的大小配置为我们想要的相机预览的大小。
             // We configure the size of default buffer to be the size of camera preview we want.
             texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-
+            //这是我们需要开始预览的输出Surface。
             // This is the output Surface we need to start preview.
             Surface surface = new Surface(texture);
-
+            //我们使用输出Surface设置了CaptureRequest.Builder。
             // We set up a CaptureRequest.Builder with the output Surface.
             mPreviewRequestBuilder
                     = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             mPreviewRequestBuilder.addTarget(surface);
-
+            //在这里，我们为相机预览创建一个CameraCaptureSession。
             // Here, we create a CameraCaptureSession for camera preview.
             mCameraDevice.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()),
                     new CameraCaptureSession.StateCallback() {
@@ -339,7 +339,7 @@ public class CameraMain extends Fragment
                             if (null == mCameraDevice) {
                                 return;
                             }
-
+                            //会话准备就绪后，我们开始显示预览。
                             // When the session is ready, we start displaying the preview.
                             mCaptureSession = cameraCaptureSession;
                             try {
@@ -370,15 +370,16 @@ public class CameraMain extends Fragment
     // Say cheese笑一笑，拍照了；
     public static void captureStillPicture() {
         try {
+            //这是我们用来拍照的CaptureRequest.Builder。
             // This is the CaptureRequest.Builder that we use to take a picture.
             final CaptureRequest.Builder captureBuilder =
                     mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             captureBuilder.addTarget(mImageReader.getSurface());
-
+            //使用与预览相同的AE和AF模式。
             // Use the same AE and AF modes as the preview.
             captureBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                     CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
-
+            //要在此处旋转照片设定角度
             //To rotate photo set angle here
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, 270);
 
@@ -401,12 +402,13 @@ public class CameraMain extends Fragment
             e.printStackTrace();
         }
     }
-
+    //比较两个区域，如果A更大则返回1，如果相同大小则返回0，如果B更大则返回-1
     // Compares two areas and returns 1 if A is bigger, 0 if same size, or -1 if B is bigger
     private class cameraCompareAreas implements Comparator<Size> {
         @Override
         public int compare(Size lhs, Size rhs) {
             // We cast here to ensure the multiplications won't overflow
+            //我们在这里投射以确保乘法不会溢出
             return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
                     (long) rhs.getWidth() * rhs.getHeight());
         }

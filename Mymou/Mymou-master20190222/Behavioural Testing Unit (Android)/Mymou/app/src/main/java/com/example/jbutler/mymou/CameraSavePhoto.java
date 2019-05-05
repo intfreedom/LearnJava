@@ -47,7 +47,7 @@ class CameraSavePhoto implements Runnable {
         buffer.get(bytes);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-        // Crop bitmap as you want:
+        // Crop bitmap as you want:根据需要裁剪位图
         boolean cropBitmap = false;
         Bitmap bitmapCropped;
         if (cropBitmap) {
@@ -65,22 +65,22 @@ class CameraSavePhoto implements Runnable {
             bitmapCropped = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight());
         }
 
-        // Create integer array for facerecog
+        // Create integer array for facerecog        为facerecog创建整数数组
         int x = bitmapCropped.getWidth();
         int y = bitmapCropped.getHeight();
         int[] intArray = new int[x * y];
         bitmapCropped.getPixels(intArray, 0, x, 0, 0, x, y);
         for (int i = 0; i < intArray.length; i++) {
-            intArray[i] = Color.red(intArray[i]); //Any colour will do as greyscale
+            intArray[i] = Color.red(intArray[i]); //Any colour will do as greyscale   任何颜色都可以做灰度
         }
 
-        //Log text data with photoId
+        //Log text data with photoId使用photoId记录文本数据
         TaskManager.setMonkeyId(intArray);
 
-        //Save pixel values
+        //Save pixel values保存像素值
         saveIntArray(intArray);
 
-        //Save photo as jpeg
+        //Save photo as jpeg将照片另存为jpeg
         savePhoto(bitmapCropped);
     }
 

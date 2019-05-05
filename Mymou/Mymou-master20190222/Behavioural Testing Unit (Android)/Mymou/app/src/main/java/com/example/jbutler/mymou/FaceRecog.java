@@ -85,13 +85,13 @@ final class FaceRecog {
             dest[0][i] = source[i];
         }
 
-        //Add extra point at end to compensate for bias weight
+        //Add extra point at end to compensate for bias weight   在末尾添加额外的点以补偿偏置重量
         dest[0][length] = 0;
 
         return dest;
     }
 
-
+    // 通过将均值和设置方差减去1来标准化数组
     // Standardise array by subtracting mean and setting variance to 1
     private double[][] standardiseArray(double[][] input) {
         double[][] output = new double[input.length][input[0].length];
@@ -106,10 +106,10 @@ final class FaceRecog {
     }
 
     public int idImage(int[] input) {
-        //Convert photo int array to double array
+        //Convert photo int array to double array   将photo int数组转换为double数组
         double[][] doubleArray = convertIntToDoubleArray(input);
 
-        //Subtract training mean and variance
+        //Subtract training mean and variance      减去训练均值和方差
         double[][] standardisedArray = standardiseArray(doubleArray);
 
         // Hidden activations

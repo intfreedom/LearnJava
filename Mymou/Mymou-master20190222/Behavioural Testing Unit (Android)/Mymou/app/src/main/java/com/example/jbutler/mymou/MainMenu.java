@@ -168,13 +168,18 @@ public class MainMenu extends Activity  {
 
     private void initialiseLayoutParameters() {
         //Permission buttons权限按钮
+        //public View findViewById(int id)以组件的资源ID作为参数，返回一个视图对象；
+        //使用按钮的资源ID获取视图对象，赋值给对应的成员变量，赋值前，应将返回的View类型转换为Button
+        //这里为何不加，(Button) findViewById(R.id.permbuttonCamera)强制转换；
         permissionButtons[0] = findViewById(R.id.permbuttonCamera);
         permissionButtons[1] = findViewById(R.id.permbuttonWrite);
         permissionButtons[2] = findViewById(R.id.permbuttonBt0);
         permissionButtons[3] = findViewById(R.id.permbuttonBt1);
         permissionButtons[4] = findViewById(R.id.permbuttonBt2);
         permissionButtons[5] = findViewById(R.id.permbuttonSettings);
-
+        //这里利用监听器实现buttonClickListener = new View.OnClickListener() 接口
+        //按钮Button[] permissionButtons被点击后，监听器会立刻通知我们。传入setOnClickListener(OnClickListener)方法的参数
+        // 是一个监听器；是一个实现了OnClickListener接口的对象；
         findViewById(R.id.mainPermButton).setOnClickListener(buttonClickListener);
         for (int i = 0; i < permissionButtons.length; i++) {
             permissionButtons[i].setOnClickListener(buttonClickListener);

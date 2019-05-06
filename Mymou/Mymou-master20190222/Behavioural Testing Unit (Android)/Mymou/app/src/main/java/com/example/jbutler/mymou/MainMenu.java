@@ -70,6 +70,7 @@ public class MainMenu extends Activity  {
 //通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来响应。
 //activity、service和broadcast receiver之间是通过Intent进行通信的，而另外一个组件Content Provider本身就是一种通信机制，不需要通过Intent。
     private void startTask() {
+        //为何没有将findViewById(...)方法返回的View类型转换为Button;
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setText("Loading..");
         rewardSystem.quitBt();  // Reconnect from next activity
@@ -121,9 +122,21 @@ public class MainMenu extends Activity  {
         final String permissionItem = permissionCodes[i_perm];
         int hasPermission=-1;
         if (i_perm<5) {
+            //ContextWrapper代理Context的实现，简单地将其所有调用委托给另一个Context。 可以子类化以修改行为而无需更改原始上下文。
+            //设置此ContextWrapper的基本上下文。 然后将所有调用委托给基本上下文。 如果已设置基本上下文，则抛出IllegalStateException。
+            //mBase = base此包装器的新基本上下文。
+            //public int checkSelfPermission(String permission) {
+            //       return mBase.checkSelfPermission(permission);
+            //    }
             hasPermission = checkSelfPermission(permissionItem);
         } else {
+            //Settings“设置”提供程序包含全局系统级设备首选项。
+            //System系统设置，包含其他系统首选项。 该表包含简单的名称/值对。 存在用于访问各个设置条目的便利功能。
+            //canWrite(...)
             if (Settings.System.canWrite(this)) {
+                //PackageManager用于检索与当前安装在设备上的应用程序包相关的各种信息的类。
+                //您可以通过{@link Context＃getPackageManager}找到此类。
+                //PERMISSION_GRANTED权限检查结果：如果已授予给定包的权限，则由{@link #checkPermission}返回。
                 hasPermission = PackageManager.PERMISSION_GRANTED;
             }
         }

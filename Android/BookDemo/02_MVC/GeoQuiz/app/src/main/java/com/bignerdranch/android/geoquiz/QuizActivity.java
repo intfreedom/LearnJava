@@ -72,7 +72,7 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
-
+//        mCurrentIndex = 1;是的，这里加上这个，启动就是第二个问题，旋转后也是重回第二个问题；
         updateQuestion();//because private int mCurrentIndex = 0;所以这一个永远指向第一个问题；
         //会不会与后面旋转就变到第一个问题有关；
     }

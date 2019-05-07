@@ -50,14 +50,14 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle) called");
-        //setContentView(int layoutResID)获取activity的用户界面；
+        //setContentView(int layoutResID)获取activity的用户界面；实例化组件，并将他们放置在屏幕上；
         //根据传入的布局资源ID参数R.layout.activity_quiz
         //activity_quiz.xml布局的资源ID为R.layout.activity_quiz
         //根据activity_quiz.xml制定的布局的视图，体现在屏幕上；
         setContentView(R.layout.activity_quiz);
         //每次旋转Android重新创建了QuizActivity新实例，mCurrentIndex在onCreate(Bundle)方法中被初始化为0；
 
-
+        //确认：新增的常量作为键，将mCurrentIndex变量值保存到bundle中，是否成功获取，若成功，就将它赋给mCurrentIndex;
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
@@ -156,7 +156,9 @@ public class QuizActivity extends AppCompatActivity {
         super.onPause();
         Log.d(TAG, "onPause() called");
     }
-//onSaveInstanceState(Bundle)方法用来保存mCurrentIndex值的键值结构；
+    //onSaveInstanceState(Bundle)方法用来保存mCurrentIndex值的键值结构；
+    //Android只有在调用onStop()并执行完后，activity才会被标为可销毁；
+    //而该方法会在onStop()方法被调用前，保存数据
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);

@@ -193,6 +193,9 @@ public class MainMenu extends Activity  {
         //这里利用监听器实现buttonClickListener = new View.OnClickListener() 接口
         //按钮Button[] permissionButtons被点击后，监听器会立刻通知我们。传入setOnClickListener(OnClickListener)方法的参数
         // 是一个监听器；是一个实现了OnClickListener接口的对象；
+
+
+
         findViewById(R.id.mainPermButton).setOnClickListener(buttonClickListener);
         for (int i = 0; i < permissionButtons.length; i++) {
             permissionButtons[i].setOnClickListener(buttonClickListener);

@@ -33,6 +33,7 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle) called");
+        //setContentView(int)方法，实例化组件并将它们放在屏幕上；
         setContentView(R.layout.activity_quiz);
 
         if (savedInstanceState != null) {

@@ -4,7 +4,7 @@ Mymou-master-jamesbutler-twomothsagp这个项目；
     //Monkey V Start-->Monkey V Cue 2-->Reward Choice #0万用表就会改变为5
     //当时Arduino连接的是通道2；
 这个文件的连接状态；
-
+***********连接前用蓝牙连接装置确认蓝牙是否处于连接状态**************
 1.把蓝牙在平板里设置，连接，HC-05，密码：1234；
 2.Arduino断电重启；
 3.加载项目；平板连接电脑状态；跟电脑USB连接有关；？？？

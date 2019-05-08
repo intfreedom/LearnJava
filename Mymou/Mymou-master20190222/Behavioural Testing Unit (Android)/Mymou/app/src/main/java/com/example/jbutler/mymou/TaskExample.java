@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
+//**********这里要弄懂为何只有发送Reward\nChoice #0电表才会有变化；应该发送代码 1才会出现高电位变化；
+//**********现参考Android Book看懂P147案例；同时弄懂Think In Java中this的含义；
 import java.util.Random;
 //一个基本的对象识别任务，展示了Mymou系统的主要特征
 // A basic object discrimination task showcasing the main features of the Mymou system:
@@ -23,7 +24,7 @@ public class TaskExample extends Fragment
 
     // Debug//调试
     private static TextView textView;
-    //用于在需要时覆盖/禁用任务
+    //用于在需要时覆盖/禁用任务（例如，没有蓝牙连接）
     // Used to cover/disable task when required (e.g. no bluetooth connection)
     public View hideApplication;
     //背景颜色
@@ -36,6 +37,7 @@ public class TaskExample extends Fragment
     //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
     private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
+    //上次按下的时间 - 如果达到maxTrialDuration，则用于空闲超时
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
     private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号
     // 分配给每个主题的唯一编号，用于面部识别
@@ -62,7 +64,7 @@ public class TaskExample extends Fragment
     private static Random r = new Random();
 
     // Boolean to signal if task should be active or not (e.g. overnight it is set to true)
-    //布尔值，表示任务是否应该处于活动状态
+    //布尔值，表示任务是否应该处于活动状态（例如，夜间它被设置为真）
     public static boolean shutdown = false;
 
     // Aync handlers used to posting delayed task events
@@ -167,9 +169,12 @@ public class TaskExample extends Fragment
             buttons[i].setOnClickListener(this);
         }
     }
-    // setOnClickListener(OnClickListener)方法的参数是一个监听器；
+    // 传入setOnClickListener(OnClickListener)方法的参数是一个监听器，它是实现了OnClickListener接口的对象；
     // OnClickListener接口中唯一的方法：onClick(View)，可否以下的方法，单独写出来，有何关联；
     // 这个this指的是？prefer android book page147, may it is right; this = onClick(View view){} below
+
+    //下一个方法就是onClick(View view)
+
      private void setOnClickListeners() {
          setOnClickListenerLoop(cues_Reward);
          setOnClickListenerLoop(cues_O);// monkey V中有两个，对应Monkey V Cue 1， Monkey V Cue 2

@@ -71,6 +71,8 @@ public class RewardSystem {
         context = context_in;
         //初始化奖励通道，1代表chanZeroOn
         initialiseRewardChannelStrings();
+        //这里显示之前连接蓝牙的修改的初始值就应该为false，否则会一直连接，直到成功；
+        //MainMenu.java中的useBluetooth = false;//原本值；应该保持原本值；
         if (MainMenu.useBluetooth) {
             loopUntilConnected();
         }

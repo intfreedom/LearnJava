@@ -20,10 +20,13 @@ class Instrument{
 }
 
 class Wind extends Instrument{
-	
 	public void play(Note n) {
 		System.out.println("Wind.play()");
 	}
+	//如下就会产生过载；
+//	public void play(int Note) {
+//		System.out.println("Wind.play()");
+//	}//结果：Instrument.play()
 }
 
 

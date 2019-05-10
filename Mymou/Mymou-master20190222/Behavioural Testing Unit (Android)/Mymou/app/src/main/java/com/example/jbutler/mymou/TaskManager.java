@@ -289,7 +289,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
             // ContentResolver 此类为应用程序提供对内容模型的访问权限
             // 返回应用程序包的ContentResolver实例
             ContentResolver cResolver = mContext.getContentResolver();
-            // SCREEN_BRIGHTNESS屏幕背光亮度介于0和255之间
+            // SCREEN_BRIGHTNESS屏幕背光亮度介于0和255之间屏幕最大亮度为255，屏幕最低亮度为0。
             Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
         }
     }

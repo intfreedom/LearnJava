@@ -1,5 +1,6 @@
 Mymou-master-jamesbutler-twomothsagp这个项目；
 //改了蓝牙地址和这里；
+public static final boolean useBluetooth = true;
     //把mainmenu.java的值改变了，以上这个值设为true后，Monkey 0 Start-->Monkey O Cue 1-->Reward Choice #0万用表就会改变为5
     //Monkey V Start-->Monkey V Cue 2-->Reward Choice #0万用表就会改变为5
     //当时Arduino连接的是通道2；

@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-//**********这里要弄懂为何只有发送Reward\nChoice #0电表才会有变化；应该发送代码 1才会出现高电位变化；
+//因为RewardSystem.java中的initialiseRewardChannelString()方法，点击Reward\nChoice #0，输出的是“1”
+//因为Arduino中定义的，对应“1”为channelTwo，HIGH
 //**********现参考Android Book看懂P147案例；同时弄懂Think In Java中this的含义；
+
+//现在的问题是：可以识别信号，如何直接到做题那一步，不再选择那一只动物，同时把python界面表示在平板上；
+
 import java.util.Random;
 //一个基本的对象识别任务，展示了Mymou系统的主要特征
 // A basic object discrimination task showcasing the main features of the Mymou system:
@@ -46,14 +50,14 @@ public class TaskExample extends Fragment
 
     // Task objects
     // 任务主题
-    private static Button cueGo_O, cueGo_V; // Go cues to start a trial去提示开始实验
+    private static Button cueGo_O, cueGo_V; //对应Monkey O/V Start，Go cues to start a trial去提示开始实验
     private static Button[] cues_Reward = new Button[4];  // Reward cues for the different reward options
     // 为Subject O， V列出所有的实验对象；
     private static Button[] cues_O = new Button[2];  // List of all trial objects for Subject O
     private static Button[] cues_V = new Button[2];  // List of all trial objects for Subject V
 
-    // Reward
-    static int rewardAmount = 1000;  // Duration (ms) that rewardSystem activated for
+    // Reward奖励；
+    static int rewardAmount = 1000;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）
     // 可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in
@@ -69,9 +73,9 @@ public class TaskExample extends Fragment
 
     // Aync handlers used to posting delayed task events
     // 异步处理程序用于发布延迟的任务事件
-    private static Handler h0 = new Handler();  // Task timer
-    private static Handler h1 = new Handler();  // Prepare for new trial
-    private static Handler h2 = new Handler();  // Timeout go cues
+    private static Handler h0 = new Handler();  // Task timer任务计时器
+    private static Handler h1 = new Handler();  // Prepare for new trial准备新的试验
+    private static Handler h2 = new Handler();  // Timeout go cues超时去提示
     //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -260,7 +264,7 @@ public class TaskExample extends Fragment
         }
     }
 
-    // Wrong Go cue selected so give short timeout
+    // Wrong Go cue selected so give short timeout选择了错误的提示，以便短暂超时
     private static void TimeoutGoCues() {
         toggleBackground(backgroundRed, true);
         h2.postDelayed(new Runnable() {
@@ -317,7 +321,7 @@ public class TaskExample extends Fragment
     //禁用所有的提示，or 线索
     private static void disableAllCues() {
         toggleGoCues(false);
-        toggleTaskCues(-1, false);  // monkId not needed when switching off
+        toggleTaskCues(-1, false);  // monkId not needed when switching off关闭时不需要monkId
         toggleButtonList(cues_Reward, false);
     }
 
@@ -346,7 +350,7 @@ public class TaskExample extends Fragment
             toggleButtonList(cues_V, status);
         }
     }
-
+    //toggle Button切换按钮，setVisibility()设置此视图的可见性状态；
     private static void toggleButton(Button button, boolean status) {
         if (status) {
             button.setVisibility(View.VISIBLE);
@@ -356,7 +360,7 @@ public class TaskExample extends Fragment
         button.setEnabled(status);
         button.setClickable(status);
     }
-
+    //toggle Background切换背景；
     private static void toggleBackground(View view, boolean status) {
         if (status) {
             view.setVisibility(View.VISIBLE);

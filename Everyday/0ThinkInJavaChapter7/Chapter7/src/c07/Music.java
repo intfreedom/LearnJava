@@ -28,7 +28,7 @@ class Wind extends Instrument{
 //		System.out.println("Wind.play()");
 //	}//½á¹û£ºInstrument.play()
 }
-
+ 
 
 public class Music {
 
@@ -42,6 +42,8 @@ public class Music {
 		Wind flute = new Wind();
 		System.out.println("222222222222");
 		tune(flute);
+		System.out.println("Just this can too");
+		flute.play(Note.middleC);
 		System.out.println("3333333333333");
 	}
 }

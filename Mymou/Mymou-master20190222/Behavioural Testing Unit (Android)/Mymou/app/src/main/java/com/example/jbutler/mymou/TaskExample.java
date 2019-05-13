@@ -91,7 +91,7 @@ public class TaskExample extends Fragment
         setOnClickListeners();
         // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
-
+        //设置屏幕亮度；
         TaskManager.setBrightness(255);
 
         disableAllCues();

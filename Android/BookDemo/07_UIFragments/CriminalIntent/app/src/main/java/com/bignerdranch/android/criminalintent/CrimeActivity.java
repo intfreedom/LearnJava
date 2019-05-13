@@ -16,17 +16,23 @@ public class CrimeActivity extends AppCompatActivity {
         //Activity类中相应添加了FragmentManager类，负责管理fragment并将它们的视图添加到activity的视图层级结构中，
         //要以代码的方式将fragment添加给activity,需要直接调用activity的FragmentManager
         //首先是获取FragmentManager本身；
+
+        /*这里创建对象的方法，是否在ThinkInJava里掌握了，以下Fragment fragment是否继承自fm对象；？？？？？？？？*/
+
+
         FragmentManager fm = getSupportFragmentManager();
         //获取FragmentManager之后，再获取一个fragment交给它管理；
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
+        //以上这两句代码与下面if{}里的代码等价吗？是否可以用其替换，都是创建fragment与R.id.fragment_container关联；
+
         //FragmentManager.beginTransaction()方法创建并返回FragmentTransaction实例
         //FragmentTransaction类支持流接口(fluent interface)的链式方法调用，以此配置FragmentTransaction再返回它；
         //流式接口（fluent interface）是软件工程中面向对象API的一种实现方式，以提供更为可读的源代码
         if (fragment == null) {
-            fragment = new CrimeFragment();
+            fragment = new CrimeFragment();//如果指定容器视图资源ID的fragment不存在，这里要新建一个fragment
             //以下可解读为：创建一个新的fragment事务，执行一个fragment添加操作，然后提交该事务；
             fm.beginTransaction()
-                .add(R.id.fragment_container, fragment)
+                .add(R.id.fragment_container, fragment)//
                 .commit();
         }
         //以上代码总结：

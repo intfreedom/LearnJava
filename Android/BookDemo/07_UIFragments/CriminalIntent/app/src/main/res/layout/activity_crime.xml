@@ -3,4 +3,11 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent" />
 
-<!--FrameLayout是服务于CrimeFragment的容器视图，-->
+<!--FrameLayout是服务于CrimeFragment的容器视图，
+
+在activy视图层级中为fragment视图安排位置，在CrimeActivity布局中，该位置就是FrameLayout
+
+FrameLayout是服务于CrimeFragment的容器视图，注意该容器视图是个通用性视图，还可以托管其他的FrameLayout;
+
+CrimeActivity视图由FrameLayout组件组成，FrameLayout组件为CrimeFragment视图安排了显示位置；
+-->

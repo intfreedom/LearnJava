@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+//通用代码的作用，我们设置，从activity_fragment.xml布局里实例化activity视图，
+//然后在容器中查找FragmentManager里的fragment;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
-    protected abstract Fragment createFragment();
+    protected abstract Fragment createFragment();//新增了名为createFragment()的抽象方法
+    //SingleFragmentActivity的子类会实现该方法，来返回由activity托管的fragment实例；
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

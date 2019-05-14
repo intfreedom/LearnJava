@@ -300,7 +300,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         String msg = TaskManager.photoTimestamp + "," + timestamp + "," + data;
         trialData.add(msg);
     }
-    //
+    //重置实验数据；
     public static void resetTrialData() {
         trialData = new ArrayList<String>();
     }

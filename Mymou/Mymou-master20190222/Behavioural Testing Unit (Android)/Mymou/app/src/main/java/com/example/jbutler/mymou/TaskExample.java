@@ -92,19 +92,20 @@ public class TaskExample extends Fragment
         // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
         //设置屏幕亮度；
-        TaskManager.setBrightness(255);
-
+        TaskManager.setBrightness(255);//255是最大亮度；
+        //禁用所有的提示or线索
         disableAllCues();
-
+        //准备新的实验；
         PrepareForNewTrial(0);
 
     }
     // 引用组件： findViewById以组件的资源ID为参数，返回一个视图对象，赋值给对应的成员变量；
-   /* getView
+   /* onViewCreated
     在创建片段的活动并且实例化此片段的视图层次结构时调用。 一旦这些部分就位，它可用于进行最终初始化，例如检索
     观点或恢复状态。 它对使用的片段也很有用{@link #setRetainInstance（boolean）}保留他们的实例，
     因为这个回调告诉片段何时完全关联 新活动实例。 这是在{@link #onCreateView}之后调用的 在{@link #onViewStateRestored（Bundle）}之前
     @param savedInstanceState如果正在重新创建片段先前保存的状态，这是状态。*/
+   /*getView为fragment布局获得 根View*/
     private void assignObjects() {
         backgroundRed = getView().findViewById(R.id.backgroundred);
         backgroundPink = getView().findViewById(R.id.backgroundpink);
@@ -236,16 +237,18 @@ public class TaskExample extends Fragment
         }
     }
 
-
+    //准备新的实验；
     private static void PrepareForNewTrial(int delay) {
+        //重置实验数据；
         TaskManager.resetTrialData();
-
+        //实际上也就实现了一个(delay)s的一个定时器,按照定时时间调用Runnable对象；
         h1.postDelayed(new Runnable() {
             @Override
             public void run() {
                 randomiseCueLocations();
                 toggleBackground(backgroundRed, false);
                 toggleBackground(backgroundPink, false);
+                //// Lots of toggles for task objects大量的任务对象切换
                 toggleGoCues(true);
                 textView.setText("Initiation Stage");
             }
@@ -291,7 +294,7 @@ public class TaskExample extends Fragment
         toggleBackground(backgroundRed, true);
         endOfTrial(0, timeoutWrongCueChosen);
     }
-
+    //正确的选项选择；
     private void correctOptionChosen() {
         logEvent("Reward stage: Correct cue chosen");
         toggleBackground(backgroundPink, true);
@@ -370,7 +373,7 @@ public class TaskExample extends Fragment
         view.setEnabled(status);
     }
 
-    // Utility functions实用功能
+    // Utility functions实用功能，randomise No Replacement随机无替换
     private static void randomiseNoReplacement(Button[] buttons) {
         int[] chosen = new int[maxCueLocations];
         for (int i = 0; i < maxCueLocations; i++) {
@@ -386,9 +389,10 @@ public class TaskExample extends Fragment
             chosen[choice] = 1;
         }
     }
-
+    //随机提示位置
     private static void randomiseCueLocations() {
         // Place all trial objects in random locations将所有试用对象放在随机位置
+        //randomise No Replacement随机无替换
         randomiseNoReplacement(cues_Reward);
         randomiseNoReplacement(cues_O);
         randomiseNoReplacement(cues_V);

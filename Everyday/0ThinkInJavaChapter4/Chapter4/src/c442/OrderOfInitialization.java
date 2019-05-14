@@ -21,7 +21,7 @@ class Card{
 
 public class OrderOfInitialization {
 	public static void main(String[] args) {
-		System.out.println("I will see");
+		System.out.println("I will see");                  
 		Card t = new Card();
 		System.out.println("I will see again");
 		t.f();//shows that construction is done

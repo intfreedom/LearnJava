@@ -18,19 +18,27 @@ import java.io.OutputStream;
 import java.util.UUID;
 
 /**
- * Created by jbutler on 06/12/2018.
+ *Created by jbutler on 06/12/2018.
  */
 
 public class RewardSystem {
 
     public static boolean bluetoothConnection = false;
-    private static Handler connectionLoopHandler;
+    private static Handler connectionLoopHandler;//连接循环处理程序
+    //Handler定义的初始值是什么？null
     private static boolean bluetoothEnabled = false;
     private static String allChanOff, chanZeroOn, chanZeroOff, chanOneOn, chanOneOff, chanTwoOn,
             chanTwoOff, chanThreeOn, chanThreeOff;
+
     private static Context context;
     private static final int REQUEST_ENABLE_BT = 1;
+    //表示本地设备蓝牙适配器。 {@link BluetoothAdapter}允许您执行基本的蓝牙任务，例如启动设备发现，查询绑定（配对）设备列表，
+    //使用已知MAC地址实例化{@link BluetoothDevice}，以及创建{@link BluetoothServerSocket} 监听来自其他设备的连接请求，并开始扫描蓝牙LE设备。
     private static BluetoothAdapter btAdapter = null;
+    /*连接的或准备连接的蓝牙套接字。蓝牙套接字的接口类似于TCP套接字的接口：{@ link java.net.Socket}和
+    {@link java.net.ServerSocket}。 在服务器端，使用{@link BluetoothServerSocket}创建侦听服务器套接字。
+    当{@link BluetoothServerSocket}接受连接时，它将返回一个新的{@link BluetoothSocket}来管理连接。
+    在客户端，使用单个{@link BluetoothSocket}来启动传出连接和管理连接。*/
     private static BluetoothSocket btSocket = null;
     //OutputStream 此抽象类是表示输出字节流的所有类的超类。 输出流接受输出字节并将它们发送到某个接收器。
     //需要定义<code> OutputStream </ code>子类的应用程序必须始终至少提供一个写入一个输出字节的方法。
@@ -88,7 +96,7 @@ public class RewardSystem {
             bluetoothIntent.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
             context.registerReceiver(bluetoothReceiver, bluetoothIntent);
     }
-
+    //连接蓝牙
     private static void connectToBluetooth() {
         checkBluetoothEnabled();//该方法返回bluetoothEnabled=true;
         if (bluetoothEnabled) {
@@ -232,13 +240,16 @@ public class RewardSystem {
             Log.d("RewardSystem", "Error: No connection");
         }
     }
-
+    //退出蓝牙；
     public static void quitBt() {
         Log.d("RewardSystem", "Quitting bluetooth");
         if (connectionLoopHandler != null) {
+            //removeCallbacksAndMessages(Object token),if token is null,将删除所有回调和消息
             connectionLoopHandler.removeCallbacksAndMessages(null);
         }
         try {
+            //unregisterReceiver()取消注册以前注册的BroadcastReceiver。
+            //将删除已为此BroadcastReceiver注册的所有过滤器。
             context.unregisterReceiver(bluetoothReceiver);
         } catch (IllegalArgumentException e) {
             // No receiver registered

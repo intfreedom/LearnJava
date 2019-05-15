@@ -67,8 +67,8 @@ public class CameraMain extends Fragment
     public static CameraMain newInstance() {
         return new CameraMain();
     }
-//1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
-//2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
+    //1. Fragment中onCreate类似于Activity.onCreate，在其中可初始化除了view之外的一切；
+    //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
 
     //onCreateView方法实例化fragment视图的布局，然后将实例化的View返回给托管activity;
     //LayoutInflater及ViewGroup是实例化的必要参数，Bundle用来存储恢复数据，可供该方法从保存状态下重建视图；

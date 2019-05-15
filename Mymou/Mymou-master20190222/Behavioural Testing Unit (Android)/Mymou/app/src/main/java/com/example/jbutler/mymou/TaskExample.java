@@ -77,12 +77,23 @@ public class TaskExample extends Fragment
     private static Handler h1 = new Handler();  // Prepare for new trial准备新的试验
     private static Handler h2 = new Handler();  // Timeout go cues超时去提示
     //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
+
+    /*onCreateView实例化fragment视图的布局，然后将实例化的View返回给托管activity，LayoutInflater及ViewGroup是实例化布局的必要参数
+    * Bundle用来存储恢复数据，可供该方法从保存状态下重建视图；*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        /*fragment的视图是直接通过调用LayoutInflater.inflate(...)方法传入布局的资源ID生成的(R.layout.activity_task_example)；
+        * container是视图的父视图，通常需要父视图来正确配置组件，第三个参数，false表示将以代码的方式添加视图*/
         return inflater.inflate(R.layout.activity_task_example, container, false);
     }
     // activity_task_example.java文件中有Monkey O Start, Monkey V Start, Monkey O Cue1, Monkey O Cue2等按钮；
+
+    /* onViewCreated
+    在创建片段的活动并且实例化此片段的视图层次结构时调用。一旦这些部分就位，它可用于进行最终初始化，例如检索观点或恢复状态。
+    它对使用的片段也很有用{@link #setRetainInstance（boolean）}保留他们的实例，
+    因为这个回调告诉片段何时完全关联 新活动实例。 这是在{@link #onCreateView}之后调用的 在{@link #onViewStateRestored（Bundle）}之前
+    @param savedInstanceState如果正在重新创建片段先前保存的状态，这是状态。*/
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         //引用组件；
@@ -99,12 +110,8 @@ public class TaskExample extends Fragment
         PrepareForNewTrial(0);
 
     }
+
     // 引用组件： findViewById以组件的资源ID为参数，返回一个视图对象，赋值给对应的成员变量；
-   /* onViewCreated
-    在创建片段的活动并且实例化此片段的视图层次结构时调用。 一旦这些部分就位，它可用于进行最终初始化，例如检索
-    观点或恢复状态。 它对使用的片段也很有用{@link #setRetainInstance（boolean）}保留他们的实例，
-    因为这个回调告诉片段何时完全关联 新活动实例。 这是在{@link #onCreateView}之后调用的 在{@link #onViewStateRestored（Bundle）}之前
-    @param savedInstanceState如果正在重新创建片段先前保存的状态，这是状态。*/
    /*getView为fragment布局获得 根View*/
     private void assignObjects() {
         backgroundRed = getView().findViewById(R.id.backgroundred);

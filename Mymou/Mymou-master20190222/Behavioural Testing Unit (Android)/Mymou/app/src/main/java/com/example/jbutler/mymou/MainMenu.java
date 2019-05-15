@@ -55,11 +55,11 @@ public class MainMenu extends Activity  {
         setContentView(R.layout.activity_main_menu);
         //初始化布局参数
         initialiseLayoutParameters();
-
+        //确保所有权限被授予
         checkPermissions();
-
+        //如果崩溃然后重启任务
         checkIfCrashed();
-
+        //初始化奖励系统
         initaliseRewardSystem();
 
         if(testingMode && permissions) {
@@ -73,14 +73,14 @@ public class MainMenu extends Activity  {
         //为何没有将findViewById(...)方法返回的View类型转换为Button;
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setText("Loading..");
-        rewardSystem.quitBt();  // Reconnect from next activity
+        rewardSystem.quitBt();  // Reconnect from next activity从下一个活动重新连接
         //public Intent(Context packageContext, Class<?> cls),第一个参数告诉ActivityManager该启动哪个activity,第一个参数告诉在哪里可以找到它；
         Intent intent = new Intent(this, TaskManager.class);
         //一个activity启动另一个activity最简单的方式就是使用startActivity方法；
         //public void startActivity(Intent intent),activity调用该方法，调用请求实际发送给了操作系统的ActivityManager；
         startActivity(intent);
     }
-
+    //初始化奖励系统
     private void initaliseRewardSystem() {
         rewardSystem = new RewardSystem(this);
         TextView tv1 = findViewById(R.id.tvBluetooth);//textColor="#FFFFFF"白色；十六进制
@@ -95,7 +95,7 @@ public class MainMenu extends Activity  {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             if (extras.getBoolean("restart")) {
-                //If crashed then restart task
+                //If crashed then restart task如果崩溃然后重启任务
                 startTask();
             }
         }
@@ -246,11 +246,13 @@ public class MainMenu extends Activity  {
         ((ToggleButton)  findViewById(R.id.chanTwoButt)).setOnCheckedChangeListener(multiListener);
         ((ToggleButton)  findViewById(R.id.chanThreeButt)).setOnCheckedChangeListener(multiListener);
     }
+
     //Android应用属于典型的事件驱动类型；为响应某个事件而创建的对象叫做事件监听器；（listener）
     //监听器会实现特定事件的监听器接口（listener interface）
     //监听用户的按钮点击事件-----实现View.OnClickListener接口；
     //传入setOnClickListener(OnClickListener)方法的参数是一个监听器；
     //需要实现该接口的唯一方法onClick(View);
+
     private View.OnClickListener buttonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

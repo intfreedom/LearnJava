@@ -33,9 +33,9 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     //Task you want to run goes here你想要运行的任务就在这里
     private static TaskExample task = new TaskExample();
     //private static TaskFromPaper task = new TaskFromPaper();
-    private static String taskId = "001";  // Unique string prefixed to all log entries
+    private static String taskId = "001";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
 
-    //Bluetooth variables
+    //Bluetooth variables蓝牙变量；
     public static int monkeyId = -1;
     public static int numPhotos = 0;
     private static int trialCounter = 0;
@@ -46,6 +46,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     public static String photoTimestamp;
     public static String message;
     private static Handler logHandler;
+    //HandlerThread用于启动具有looper的新线程的方便类。然后可以使用looper来创建处理程序类。 请注意，仍然必须调用start()。
     private static HandlerThread logThread;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -71,9 +72,9 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
             });
             t.start();
         }
-
+        //注册电源接收器；
         registerPowerReceivers();
-
+        //初始化Log Handler
         initialiseLogHandler();
 
         this.startLockTask();
@@ -91,13 +92,18 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         startTask();
         //这是最后一次，因为它与任务中的对象进行交互
         // This is last as it interacts with objects in the task
+        //初始化奖励系统；
         initaliseRewardSystem();
 
     }
-
+    //初始化Log Handler
     private void initialiseLogHandler() {
         logThread = new HandlerThread("LogBackground");
         logThread.start();
+        /*Handler(Looper looper)使用提供的{@link Looper}而不是默认值。The looper, must not be null.
+        getLooper此方法返回与此线程关联的Looper。 如果此线程未启动或由于任何原因isAlive（）返回false，则此方法将返回null。
+        如果此线程已启动，则此方法将阻塞，直到已经初始化了循环器。
+        @return looper。*/
         logHandler = new Handler(logThread.getLooper());
     }
 
@@ -121,24 +127,31 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
             }, 5000);
         }
     }
-
+    //启动任务
     private void startTask() {
+        //返回FragmentManager以与与此活动关联的片段进行交互。
         fragmentManager = getFragmentManager();
+        /*.beginTransaction()在与此FragmentManager关联的Fragments上启动一系列编辑操作。注意：只能在活动保存其状态之前创建/提交片段事务。
+        如果您尝试提交事务在{@link Activity＃onSaveInstanceState Activity.onSaveInstanceState（）}之后（以及之后的
+        {@link Activity＃onStart Activity.onStart}或{@link Activity＃onResume Activity.onResume（）}之后，您将收到错误。
+        是因为框架负责在状态中保存当前片段，如果在状态保存后进行了更改，那么它们将丢失。*/
         fragmentTransaction = fragmentManager.beginTransaction();
+
+        /*从布局资源设置活动内容。 资源将膨胀，将所有顶级视图添加到活动中。*/
         setContentView(R.layout.activity_all_tasks);
         CameraMain cM = new CameraMain();
         fragmentTransaction.add(R.id.container, cM);
         fragmentTransaction.add(R.id.container, task);
         fragmentTransaction.commit();
     }
-
+    //
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         logHandler.post(new CrashReport(throwable));
         rewardSystem.quitBt();
         restartApp();
     }
-
+    //重新启动app
     private void restartApp() {
         Intent intent=new Intent(getApplicationContext(), TaskManager.class);
         intent.putExtra("restart",true);
@@ -154,8 +167,9 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     public static void deliverReward(int juiceChoice, int rewardAmount) {
         rewardSystem.activateChannel(juiceChoice, rewardAmount);
     }
-
+    //注册电源接收器；
     private void registerPowerReceivers() {
+        //IntentFilter新的IntentFilter匹配单个操作而没有数据。 如果随后未指定任何数据特征，则过滤器将仅匹配不包含数据的意图。
         IntentFilter unplugIntent = new IntentFilter(Intent.ACTION_POWER_DISCONNECTED);
         IntentFilter plugIntent = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
         registerReceiver(powerPlugReceiver, plugIntent);
@@ -360,10 +374,15 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         quitThreads();
         this.stopLockTask();
     }
-
+    //退出线程
     private void quitThreads() {
         try {
+            /*安全地退出处理程序线程的looper,一旦处理了已经到期的消息队列中的所有剩余消息，
+            就会导致处理程序线程的循环器终止。将来不会发送到期时间到期的延迟消息。在要求退出looper之后，任何尝试将消息发布到队列都将失败。
+            例如，{@link Handler #sendMessage（Message）}方法将返回false。如果线程尚未启动或已完成（即{@link #getLooper}返
+            回null），则返回false。 否则，要求looper退出并返回true。如果已经要求looper looper退出，则为True，如果线程尚未开始运行则为false。*/
             logThread.quitSafely();
+            //这个线程死了。调用此方法的行为与调用完全相同
             logThread.join();
             logThread = null;
             logHandler = null;
@@ -373,7 +392,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
 
         }
     }
-
+    //取消注册接收者
     private void unregisterReceivers() {
         try {
             unregisterReceiver(powerPlugReceiver);

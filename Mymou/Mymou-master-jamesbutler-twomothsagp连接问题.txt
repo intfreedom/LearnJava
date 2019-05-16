@@ -1,3 +1,9 @@
+关注：看这两个值该怎么设置，在Mymou-master20190326中，RewardSystem中public static boolean bluetoothConnection = false;蓝牙连接有问题；
+RewardSystem中public static boolean bluetoothConnection = false;
+MainMenu中public static final boolean useBluetooth = false;
+
+
+
 Mymou-master-jamesbutler-twomothsagp这个项目；
 //改了蓝牙地址和这里；
 public static final boolean useBluetooth = true;

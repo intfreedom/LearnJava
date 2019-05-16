@@ -58,6 +58,9 @@ public class CameraMain extends Fragment
     private static ImageReader mImageReader;
     private static CaptureRequest.Builder mPreviewRequestBuilder;
     private static CaptureRequest mPreviewRequest;
+    /*Semaphore计数信号量。 从概念上讲，信号量维护着一组许可证。 如果需要，每个{@link #acquire}都会阻止许可可用，然后接受它。
+    每个{@link #release}都会添加许可证，可能释放阻止收购者。但是，没有使用实际的许可证对象; {@code Semaphore}
+    只是保留可用数量的计数并相应地采取行动。*/
     private static Semaphore mCameraOpenCloseLock = new Semaphore(1);
     //Background threads and variables for saving images用于保存图像的后台线程和变量
     private HandlerThread mBackgroundThread, mBackgroundThread2;
@@ -87,10 +90,12 @@ public class CameraMain extends Fragment
         mTextureView = (TextureView) view.findViewById(R.id.texture);
 
         startBackgroundThread();
-
+        //isAvailable:如果与此TextureView关联的{@link SurfaceTexture}可用于呈现，则返回true。
+        // 当此方法返回true时，{@ link #getSurfaceTexture（）}将返回有效的表面纹理。
         if (mTextureView.isAvailable()) {
             openCamera();
         } else {
+            //setSurfaceTextureListener()设置用于侦听Surface Texture事件的{@link SurfaceTextureListener}。
             mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
         }
 
@@ -111,7 +116,7 @@ public class CameraMain extends Fragment
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture texture, int width, int height) {
             //Wait for surface texture ready before opening camera
-            //在打开相机之前等待表面纹理准备就绪
+            //在打开相机之前等待surface texture准备就绪
             openCamera();
         }
 
@@ -135,10 +140,11 @@ public class CameraMain extends Fragment
 
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
-            // This method is called when the camera is opened.  We start camera preview here.
+            //This method is called when the camera is opened.  We start camera preview here.
             //打开相机时会调用此方法。 我们在这里开始相机预览。
             mCameraOpenCloseLock.release();
             mCameraDevice = cameraDevice;
+            //创建相机预览会话
             createCameraPreviewSession();
         }
 
@@ -197,16 +203,32 @@ public class CameraMain extends Fragment
         stopBackgroundThread();
         getActivity().finish();
     }
-
+    //设置相机输出
     private void setUpCameraOutputs() {
-        Activity activity = getActivity();
+        Activity activity = getActivity();//返回此片段当前与之关联的Activity。
+        /*CAMERA_SERVICE与{@link #getSystemService（String）}一起使用以
+        检索{@link android.hardware.camera2.CameraManager}以与相机设备进行交互。
+        @see #getSystemService(String)   @see android.hardware.camera2.CameraManager
+
+        Context: 有关应用程序环境的全局信息的接口。 这是一个抽象类，其实现由Android系统提供。 它允许访问特定于应用程序的资源和类，
+        以及对应用程序级操作的上调，例如启动活动，广播和接收意图等。
+
+        CameraManager: 用于检测，表征和连接{@link CameraDevice CameraDevices}的系统服务管理器。
+        */
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
         try {
+            /*按标识符返回当前连接的摄像机设备列表，包括其他摄像机API客户端可能正在使用的摄像机。
+            不可移动摄像机使用从0开始的整数作为其标识符，而可移动摄像机具有每个单独设备的唯一标识符，
+            即使它们是相同的型号。@return当前连接的摄像机设备列表。*/
             for (String cameraId : manager.getCameraIdList()) {
+                /*CameraCharacteristics: 描述{@link CameraDevice CameraDevice}的属性。这些属性对于给定的CameraDevice是固定的，
+                可以通过{@link CameraManager CameraManager}界面使用
+                {@link CameraManager＃getCameraCharacteristics}进行查询。{@link CameraCharacteristics}对象是不可变的。*/
                 CameraCharacteristics characteristics
                         = manager.getCameraCharacteristics(cameraId);
 
-                // Find selfie camera
+                // Find selfie camera找自拍相机;.LENS_FACING相机相对于屏幕设备的方向；
+                //.LENS_FACING_BACK相机设备面向与设备屏幕相反的方向；public static final int LENS_FACING_BACK = 1
                 Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
                     continue;
@@ -218,7 +240,7 @@ public class CameraMain extends Fragment
                     continue;
                 }
 
-                // Use the smallest available size.
+                // Use the smallest available size.使用最小有效尺寸；
                 Size smallest = Collections.min(
                         Arrays.asList(map.getOutputSizes(ImageFormat.JPEG)),
                         new cameraCompareAreas());
@@ -239,14 +261,24 @@ public class CameraMain extends Fragment
     }
     //打开相机
     private void openCamera() {
+        //设置相机输出
         setUpCameraOutputs();
+        //getActivity: 返回此片段当前与之关联的Activity。
         Activity activity = getActivity();
+        /*CameraManager用于检测，表征和连接{@link CameraDevice CameraDevices}的系统服务管理器。有关与相机设备通信的更多详细信息，
+        请阅读相机开发人员指南或{@link android.hardware.camera2 camera2}包文档。
+
+        CAMERA_SERVICE与{@link #getSystemService（String）}一起使用以
+        检索{@link android.hardware.camera2.CameraManager}以与相机设备进行交互。
+        @see #getSystemService(String)   @see android.hardware.camera2.CameraManager*/
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
         try {
-            if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
+            /*tryAcquire如果在给定的等待时间内可用，并且当前线程未被{@linkplain Thread＃interrupt interrupted}，则从此信号量获取许可。*/
+            if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {//时间单位代表千分之一秒。
                 throw new RuntimeException("Time out waiting to lock camera opening.");
             }
             try {
+                //openCamera打开与具有给定ID的摄像机的连接。
                 manager.openCamera(mCameraId, mStateCallback, mBackgroundHandler);
             } catch (SecurityException e) {
                 throw new SecurityException("Camera permissions not available.", e);
@@ -312,7 +344,7 @@ public class CameraMain extends Fragment
             e.printStackTrace();
         }
     }
-
+    //创建相机预览会话
     private void createCameraPreviewSession() {
         try {
             SurfaceTexture texture = mTextureView.getSurfaceTexture();
@@ -344,10 +376,11 @@ public class CameraMain extends Fragment
                             mCaptureSession = cameraCaptureSession;
                             try {
                                 // Auto focus should be continuous for camera preview.
+                                //对于相机预览，自动对焦应该是连续的。
                                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
 
-                                // Finally, we start displaying the camera preview.
+                                // Finally, we start displaying the camera preview.最后，我们开始显示相机预览。
                                 mPreviewRequest = mPreviewRequestBuilder.build();
                                 mCaptureSession.setRepeatingRequest(mPreviewRequest,
                                         mCaptureCallback, mBackgroundHandler);
@@ -372,6 +405,13 @@ public class CameraMain extends Fragment
         try {
             //这是我们用来拍照的CaptureRequest.Builder。
             // This is the CaptureRequest.Builder that we use to take a picture.
+
+            /*
+            * CaptureRequest: 从相机设备捕获单个图像所需的不可变的设置和输出包。
+            *
+            *Builder: 捕获请求的构建器。要获取构建器实例，请使用{@link CameraDevice＃createCaptureRequest}方法，
+            * 该方法将请求字段初始化为{@link CameraDevice}中定义的模板之一。
+            * */
             final CaptureRequest.Builder captureBuilder =
                     mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             captureBuilder.addTarget(mImageReader.getSurface());
@@ -383,7 +423,7 @@ public class CameraMain extends Fragment
             //To rotate photo set angle here
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, 270);
 
-            //Set black and white
+            //Set black and white设黑色和白色；
             captureBuilder.set(CaptureRequest.CONTROL_EFFECT_MODE,
                     CaptureRequest.CONTROL_EFFECT_MODE_MONO);
 

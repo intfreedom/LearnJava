@@ -56,7 +56,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //
         mContext = getApplicationContext();
         activity = (Activity) this;
         //初始化屏幕设置
@@ -137,7 +137,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         是因为框架负责在状态中保存当前片段，如果在状态保存后进行了更改，那么它们将丢失。*/
         fragmentTransaction = fragmentManager.beginTransaction();
 
-        /*从布局资源设置活动内容。 资源将膨胀，将所有顶级视图添加到活动中。*/
+        /*setContentView从布局资源设置活动内容。 资源将膨胀，将所有顶级视图添加到活动中。*/
         setContentView(R.layout.activity_all_tasks);
         CameraMain cM = new CameraMain();
         fragmentTransaction.add(R.id.container, cM);
@@ -175,7 +175,10 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         registerReceiver(powerPlugReceiver, plugIntent);
         registerReceiver(powerUnplugReceiver, unplugIntent);
     }
-
+    /*BroadcastReceiver接收和处理{@link android.content.Context #sendBroadcast（Intent）}发送的广播意图的代码的基类。
+    您可以使用{@link Context #registerReceiver Context.registerReceiver（）}动态注册此类的实例。
+    或者在<code> AndroidManifest.xml </ code>中使用{@link android.R.styleable #AndroidManifestReceiver＆lt; receiver＆gt;}
+    标记静态声明实现。*/
     private final BroadcastReceiver powerPlugReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -276,11 +279,13 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
             }, 60000);
         }
     }
-
+    //启用app
     public static boolean enableApp(boolean bool) {
         if (task.hideApplication != null) {
             if (bool) {
+                //setEnabled(boolean enabled)设置此视图的启用状态。启用状态的解释因子类而异。
                 task.hideApplication.setEnabled(false);
+                //setVisibility设置此视图的可见性状态。
                 task.hideApplication.setVisibility(View.INVISIBLE);
             } else {
                 task.hideApplication.setEnabled(true);
@@ -345,6 +350,9 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
 
 
     public static void takePhoto() {
+        /*使用给定模式构造<code> SimpleDateFormat </ code>，并使用默认的{@link java.util.Locale.Category #FORMAT FORMAT}
+        语言环境的默认日期格式符号。 <b>注意：</ b>此构造函数可能不支持所有语言环境。
+        要获得完整的覆盖率，请使用{@link DateFormat}类中的工厂方法。*/
         photoTimestamp = new SimpleDateFormat("HHmmss_SSS").format(Calendar.getInstance().getTime());
         CameraMain.timestamp = photoTimestamp;
         CameraMain.captureStillPicture();

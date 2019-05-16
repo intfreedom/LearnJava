@@ -43,7 +43,7 @@ public class TaskExample extends Fragment
     private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
     //上次按下的时间 - 如果达到maxTrialDuration，则用于空闲超时
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
-    private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号
+    private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号，静态变量默认值为false;
     // 分配给每个主题的唯一编号，用于面部识别
     // Unique numbers assigned to each subject, used for facial recognition
     private static int monkO = 0, monkV = 1;
@@ -73,6 +73,8 @@ public class TaskExample extends Fragment
 
     // Aync handlers used to posting delayed task events
     // 异步处理程序用于发布延迟的任务事件
+    /*Handler: 默认构造函数为当前线程把此Handler与{@link Looper}相关联。如果此线程没有尺蠖，则此处理程序将无法接收消息，
+    因此会引发异常。*/
     private static Handler h0 = new Handler();  // Task timer任务计时器
     private static Handler h1 = new Handler();  // Prepare for new trial准备新的试验
     private static Handler h2 = new Handler();  // Timeout go cues超时去提示
@@ -244,11 +246,18 @@ public class TaskExample extends Fragment
         }
     }
 
-    //准备新的实验；
+    //准备新的实验；以下查看Java命名规则；
     private static void PrepareForNewTrial(int delay) {
         //重置实验数据；
         TaskManager.resetTrialData();
         //实际上也就实现了一个(delay)s的一个定时器,按照定时时间调用Runnable对象；
+
+        /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
+         * public final boolean postDelayed(Runnable r, long delayMillis){}：r 将执行的Runnable。
+         * delayMillis 执行Runnable之前的延迟（以毫秒为单位）时间。
+         *
+         * 如果Runnable已成功放入消息队列，则返回true。 失败时返回false，通常是因为处理消息队列的looper正在退出。
+         * 请注意，结果为true并不意味着将处理Runnable  - 如果在消息发送时间之前退出looper，则消息将被丢弃。*/
         h1.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -267,7 +276,7 @@ public class TaskExample extends Fragment
     //每只猴子都有它自己的开始提示。 在每次试验开始时，确保猴子使用面部识别按下它自己的提示
     private static void checkMonkeyPressedTheirCue(int monkId) {
         boolean correctCuePressed = TaskManager.checkMonkey(monkId);
-        if (correctCuePressed) {  // If they clicked their specific cue
+        if (correctCuePressed) {  // If they clicked their specific cue如果他们点击了他们的特定提示
             startTrial(monkId);
         } else {
             TimeoutGoCues();
@@ -277,20 +286,26 @@ public class TaskExample extends Fragment
     // Wrong Go cue selected so give short timeout选择了错误的提示，以便短暂超时
     private static void TimeoutGoCues() {
         toggleBackground(backgroundRed, true);
+        /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
+        * public final boolean postDelayed(Runnable r, long delayMillis){}：r 将执行的Runnable。
+        * delayMillis 执行Runnable之前的延迟（以毫秒为单位）时间。
+        *
+        * 如果Runnable已成功放入消息队列，则返回true。 失败时返回false，通常是因为处理消息队列的looper正在退出。
+        * 请注意，结果为true并不意味着将处理Runnable  - 如果在消息发送时间之前退出looper，则消息将被丢弃。*/
         h2.postDelayed(new Runnable() {
             @Override
             public void run() {
                 toggleGoCues(true);
                 toggleBackground(backgroundRed, false);
             }
-        }, timeoutWrongGoCuePressed);
+        }, timeoutWrongGoCuePressed);//300毫秒；
     }
 
     private static void startTrial(int monkId) {
         logEvent("Trial started for monkey "+monkId);
 
         if(!timerRunning) {
-            timer();
+            timer();//timer函数递归到最后为true；结束if语句；
         }
 
         toggleTaskCues(monkId, true);
@@ -355,7 +370,7 @@ public class TaskExample extends Fragment
                 toggleButtonList(cues_V, status);
             }
         } else {
-            // If switching off, just always switch off all cues
+            // If switching off, just always switch off all cues如果关闭，只需关闭所有提示
             toggleButtonList(cues_O, status);
             toggleButtonList(cues_V, status);
         }
@@ -363,11 +378,15 @@ public class TaskExample extends Fragment
     //toggle Button切换按钮，setVisibility()设置此视图的可见性状态；
     private static void toggleButton(Button button, boolean status) {
         if (status) {
+            //setVisibility()设置此视图的可见性状态
             button.setVisibility(View.VISIBLE);
         } else {
             button.setVisibility(View.INVISIBLE);
         }
         button.setEnabled(status);
+        /*setClickable: 启用或禁用此视图的单击事件。 当一个视图是可点击的，它会在每次点击时将其状态更改为“按下”。
+        子类应设置可点击的视图以直观地响应用户的点击。@param clickable为true以使视图可点击，否则为false
+        @see #isClickable（）  @attr ref android.R.styleable #View_clickable*/
         button.setClickable(status);
     }
     //toggle Background切换背景；
@@ -406,7 +425,14 @@ public class TaskExample extends Fragment
     }
     // 用于跟踪任务时间的递归函数
     // Recursive function to track task time
+    //当点入Monkey V Cue1或进入奖励界面，如果10s不点击屏幕就返回initiation stage Monkey O Start/Monkey V Start界面；
     private static void timer() {
+        /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
+         * public final boolean postDelayed(Runnable r, long delayMillis){}：r 将执行的Runnable。
+         * delayMillis 执行Runnable之前的延迟（以毫秒为单位）时间。
+         *
+         * 如果Runnable已成功放入消息队列，则返回true。 失败时返回false，通常是因为处理消息队列的looper正在退出。
+         * 请注意，结果为true并不意味着将处理Runnable  - 如果在消息发送时间之前退出looper，则消息将被丢弃。*/
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -415,7 +441,7 @@ public class TaskExample extends Fragment
                     disableAllCues();
                     endOfTrial(7, 0);
 
-                    //Decrease brightness while not in use
+                    //Decrease brightness while not in use不使用时降低亮度；
                     TaskManager.setBrightness(50);
 
                     time = 0;
@@ -429,6 +455,8 @@ public class TaskExample extends Fragment
     }
 
     private void cancelHandlers() {
+        //删除任何待处理的回调帖子并发送消息 <var> obj </ var>是<var> token </ var>。 如果<var> token </ var>为null，
+        //所有回调和消息都将被删除。
         h0.removeCallbacksAndMessages(null);
         h1.removeCallbacksAndMessages(null);
         h2.removeCallbacksAndMessages(null);

@@ -2,3 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape">
     <solid android:color="#000000" />
 </shape>
+
+<!--把上述#000000改为，#ffff00
+改这里颜色，ffff00是黄颜色；000000是黑色，改这里，没有变化，还是显示不出来；-->

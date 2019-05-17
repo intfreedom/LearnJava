@@ -30,7 +30,7 @@ public class TaskExample extends Fragment
     private static TextView textView;
     //用于在需要时覆盖/禁用任务（例如，没有蓝牙连接）
     // Used to cover/disable task when required (e.g. no bluetooth connection)
-    public View hideApplication;
+    public View hideApplication;//隐藏应用程序
     //背景颜色
     // Background colours
     private static View backgroundRed, backgroundPink;
@@ -40,7 +40,8 @@ public class TaskExample extends Fragment
     private int timeoutWrongCueChosen = 1500;  // Timeout for getting the task wrong
     //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
-    private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
+    //为了拍照，把这个时间设置短暂；原值为10000；现值为1000；
+    private static int maxTrialDuration = 1000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
     //上次按下的时间 - 如果达到maxTrialDuration，则用于空闲超时
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
     private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号，静态变量默认值为false;
@@ -118,7 +119,7 @@ public class TaskExample extends Fragment
     private void assignObjects() {
         backgroundRed = getView().findViewById(R.id.backgroundred);
         backgroundPink = getView().findViewById(R.id.backgroundpink);
-        hideApplication = getView().findViewById(R.id.foregroundblack);
+        hideApplication = getView().findViewById(R.id.foregroundblack);//foregroundblack前景黑色
         cueGo_O = getView().findViewById(R.id.buttonGoMonkO);//对应Monkey O Start
         cueGo_V = getView().findViewById(R.id.buttonGoMonkV);//对应Monkey V Start
         cues_O[0] = getView().findViewById(R.id.buttonCue1MonkO);//对应Monkey O Cue 1
@@ -210,7 +211,6 @@ public class TaskExample extends Fragment
         // 点亮屏幕；
         // Make screen bright
         TaskManager.setBrightness(255);
-        TaskManager.takePhoto();//just test;
         // 现在根据按下的按钮决定做什么
         // Now decide what to do based on what button pressed
         switch (view.getId()) {
@@ -221,35 +221,27 @@ public class TaskExample extends Fragment
                 checkMonkeyPressedTheirCue(monkV);
                 break;
             case R.id.buttonCue1MonkO:
-                TaskManager.takePhoto();//just test;
                 correctOptionChosen();
                 break;
             case R.id.buttonCue1MonkV:
-                TaskManager.takePhoto();//just test;
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkO:
-                TaskManager.takePhoto();//just test;
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkV:
-                TaskManager.takePhoto();//just test;
                 correctOptionChosen();
                 break;
             case R.id.buttonRewardZero:
-                TaskManager.takePhoto();//just test;
                 deliverReward(0);
                 break;
             case R.id.buttonRewardOne:
-                TaskManager.takePhoto();//just test;
                 deliverReward(1);
                 break;
             case R.id.buttonRewardTwo:
-                TaskManager.takePhoto();//just test;
                 deliverReward(2);
                 break;
             case R.id.buttonRewardThree:
-                TaskManager.takePhoto();//just test;
                 deliverReward(3);
                 break;
         }
@@ -272,7 +264,7 @@ public class TaskExample extends Fragment
             public void run() {
                 randomiseCueLocations();
                 toggleBackground(backgroundRed, false);
-                toggleBackground(backgroundPink, false);
+                toggleBackground(backgroundPink, true);//原值为false，设置为true
                 //// Lots of toggles for task objects大量的任务对象切换
                 toggleGoCues(true);
                 textView.setText("Initiation Stage");
@@ -336,6 +328,7 @@ public class TaskExample extends Fragment
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
         endOfTrial(1, rewardAmount + 500);
+
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {

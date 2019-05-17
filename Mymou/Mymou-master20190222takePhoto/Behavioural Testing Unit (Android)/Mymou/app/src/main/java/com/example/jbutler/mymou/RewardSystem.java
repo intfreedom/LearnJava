@@ -289,7 +289,7 @@ public class RewardSystem {
                     //Bluetooth disconnected
                     Log.d("RewardSystem","Lost bluetooth connection..");
                     bluetoothConnection = false;
-                    TaskManager.enableApp(false);
+                    TaskManager.enableApp(true);//这里为了测试改为true,原本值为false,即使蓝牙不连接也可以拍照；
                     loopUntilConnected();
                     break;
             }

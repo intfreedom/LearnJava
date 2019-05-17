@@ -1,3 +1,24 @@
+蓝牙拔去，显示连接，甚至出现画面；有时，这个问题？？
+Mymou-master20190222takePhoto目前是可以拍照的；
+
+在文件Mymou-master20190222takePhoto中一共修改了以下问题：
+1.在RewardSystem.java中：rivate static final BroadcastReceiver bluetoothReceiver
+TaskManager.enableApp(true);//这里为了测试改为true,原本值为false,即使蓝牙不连接也可以拍照
+
+在TaskManager.java中，public static void shutdownLoop() //enableApp(true);//这里为了测试改为true,原本值为false
+
+2.MainMenu.java中，public static final boolean useBluetooth = true;//在RewardSystem中if(main.useBluetooth)循环至连接，所以修改为true；
+
+3.TaskExample.java中， //为了拍照，把这个时间设置短暂；原值为10000；现值为1000；
+    private static int maxTrialDuration = 1000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
+private static void PrepareForNewTrial(int delay)   toggleBackground(backgroundPink, true);//原值为false，设置为true
+
+
+5.似乎蓝牙没有连接，就会出现黑屏的问题；改了很多方案不对，调整亮度值是不对的；
+TaskExample.java中，hideApplication = getView().findViewById(R.id.foregroundblack);//foregroundblack前景黑色
+改这里颜色，ffff00是黄颜色；000000是黑色，改这里，没有变化，还是显示不出来；-->
+
+
 关注：看这两个值该怎么设置，在Mymou-master20190326中，RewardSystem中public static boolean bluetoothConnection = false;蓝牙连接有问题；
 RewardSystem中public static boolean bluetoothConnection = false;
 MainMenu中public static final boolean useBluetooth = false;

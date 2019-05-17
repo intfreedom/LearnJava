@@ -245,7 +245,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         int hour = c.get(Calendar.HOUR);
         int AMPM = c.get(Calendar.AM_PM);
         if (hour >= 7 && AMPM == Calendar.PM) {
-            enableApp(false);
+            enableApp(true);//这里为了测试改为true,原本值为false
             boolean restartNextDay = true;
             if(restartNextDay) {
                 int day = c.get(Calendar.DAY_OF_WEEK);
@@ -283,10 +283,10 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     }
     //启用app
     public static boolean enableApp(boolean bool) {
-        if (task.hideApplication != null) {
+        if (task.hideApplication != null) {//隐藏应用程序
             if (bool) {
                 //setEnabled(boolean enabled)设置此视图的启用状态。启用状态的解释因子类而异。
-                task.hideApplication.setEnabled(false);
+                task.hideApplication.setEnabled(false);//表示不隐藏应用程序？？？？？
                 //setVisibility设置此视图的可见性状态。
                 task.hideApplication.setVisibility(View.INVISIBLE);
             } else {

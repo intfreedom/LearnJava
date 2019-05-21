@@ -10,7 +10,7 @@ TaskManager.enableApp(true);//ÕâÀïÎªÁË²âÊÔ¸ÄÎªtrue,Ô­±¾ÖµÎªfalse,¼´Ê¹À¶ÑÀ²»Á¬½ÓÒ
 2.MainMenu.javaÖĞ£¬public static final boolean useBluetooth = true;//ÔÚRewardSystemÖĞif(main.useBluetooth)Ñ­»·ÖÁÁ¬½Ó£¬ËùÒÔĞŞ¸ÄÎªtrue£»
 
 3.TaskExample.javaÖĞ£¬ //ÎªÁËÅÄÕÕ£¬°ÑÕâ¸öÊ±¼äÉèÖÃ¶ÌÔİ£»Ô­ÖµÎª10000£»ÏÖÖµÎª1000£»
-    private static int maxTrialDuration = 1000;  // Milliseconds until task timeouts and resetsºÁÃë£¬Ö±µ½ÈÎÎñ³¬Ê±ºÍÖØÖÃ
+private static int maxTrialDuration = 1000;  // Milliseconds until task timeouts and resetsºÁÃë£¬Ö±µ½ÈÎÎñ³¬Ê±ºÍÖØÖÃ
 private static void PrepareForNewTrial(int delay)   toggleBackground(backgroundPink, true);//Ô­ÖµÎªfalse£¬ÉèÖÃÎªtrue
 
 

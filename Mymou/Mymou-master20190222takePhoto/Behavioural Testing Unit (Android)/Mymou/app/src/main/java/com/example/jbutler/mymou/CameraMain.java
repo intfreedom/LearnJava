@@ -406,12 +406,8 @@ public class CameraMain extends Fragment
             //这是我们用来拍照的CaptureRequest.Builder。
             // This is the CaptureRequest.Builder that we use to take a picture.
 
-            /*
-            * CaptureRequest: 从相机设备捕获单个图像所需的不可变的设置和输出包。
-            *
-            *Builder: 捕获请求的构建器。要获取构建器实例，请使用{@link CameraDevice＃createCaptureRequest}方法，
-            * 该方法将请求字段初始化为{@link CameraDevice}中定义的模板之一。
-            * */
+            /*CaptureRequest: 从相机设备捕获单个图像所需的不可变的设置和输出包。Builder: 捕获请求的构建器。要获取构建器实例，
+            请使用{@link CameraDevice＃createCaptureRequest}方法，该方法将请求字段初始化为{@link CameraDevice}中定义的模板之一。*/
             final CaptureRequest.Builder captureBuilder =
                     mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             captureBuilder.addTarget(mImageReader.getSurface());

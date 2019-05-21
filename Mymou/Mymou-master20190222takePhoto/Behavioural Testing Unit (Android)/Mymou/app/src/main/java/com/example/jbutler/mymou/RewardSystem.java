@@ -252,7 +252,7 @@ public class RewardSystem {
             //将删除已为此BroadcastReceiver注册的所有过滤器。
             context.unregisterReceiver(bluetoothReceiver);
         } catch (IllegalArgumentException e) {
-            // No receiver registered
+            // No receiver registered没有接收者注册
         }
         if (bluetoothConnection) {
             stopAllChannels();

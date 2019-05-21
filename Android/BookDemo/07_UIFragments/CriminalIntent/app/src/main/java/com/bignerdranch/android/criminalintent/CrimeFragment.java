@@ -31,8 +31,6 @@ public class CrimeFragment extends Fragment {
 
 
     //在CrimeFragment.java中，添加onCreateView(...)方法的实现代码；从fragment_crime.xml布局中实例化并返回视图；
-
-
     //Fragment的视图并没有在Fragment.onCreate(Bundle)方法中生成，该方法配置了fragment实例；
     //Fragment.onCreateView创建和配置了fragment视图，该方法实例化fragment视图的布局，参数Bundle用来存储恢复数据，可供该方法从保存状态下重建视图；
     //然后将实例化的View返回给托管的activity;

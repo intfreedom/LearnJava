@@ -47,7 +47,7 @@ import java.util.concurrent.TimeUnit;
 public class CameraMain extends Fragment
         implements FragmentCompat.OnRequestPermissionsResultCallback {
 
-    //  Generic variables
+    //Generic variables
     //一般变量
     private static String mCameraId;
     private static TextureView mTextureView;

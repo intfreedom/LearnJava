@@ -37,7 +37,7 @@ final class FaceRecog {
     }
 
     public final double[][] loadWeights(String fileName) {
-        // Read all读取所有；
+        // Read all读取所有；Environment:Provides access to environment variables.
         String path= Environment.getExternalStorageDirectory().getAbsolutePath() + "/Mymou/" +
                 fileName;
         try {

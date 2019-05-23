@@ -93,12 +93,12 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             //指定要启动的activity为CrimeActivity, CrimeListFragment创建了一个显式intent;
-            //至于Intent构造方法需要的Context对象，CrimeListFragment是通过
+            //至于Intent构造方法需要的Context对象，CrimeListFragment是通过;
             //使用getActivity()方法传入它托管的activity来满足的；
 
             //CrimeActivity中更新了，这里CrimeHolder，使用newIntent方法；
             Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
-
+            //调用Fragment.startActivity(Intent)方法，从Fragment中启动activity
             startActivity(intent);
         }
     }

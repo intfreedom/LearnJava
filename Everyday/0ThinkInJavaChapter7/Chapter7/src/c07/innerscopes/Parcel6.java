@@ -30,7 +30,7 @@ public class Parcel6 {
 		Contents c = p.cont();
 		c.value();
 		Parcel6 p1 = new Parcel6();
-		Contents c1 = p1.cont1();
+		Contents c1 = p1.cont1();//notice c1 return new MyContents();
 		c1.value();
 		//System.out.println("cont->Contents->value: "+c.value());
 	}

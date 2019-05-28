@@ -92,7 +92,8 @@ public class MainMenu extends Activity  {
     }
 
     private void checkIfCrashed() {
-        Bundle extras = getIntent().getExtras();
+        /**getIntent:  Return the intent that started this activity. */
+        Bundle extras = getIntent().getExtras();//Retrieves a map of extended data from the intent.
         if(extras != null) {
             if (extras.getBoolean("restart")) {
                 //If crashed then restart task如果崩溃然后重启任务

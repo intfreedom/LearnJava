@@ -37,7 +37,7 @@ public class Sequence {
 	
 	public static void main(String[] args) {
 		Sequence s = new Sequence(10);
-		System.out.println(s.o.length+"**********");
+		System.out.println(s.o.length+" **********");
 		for(int i=0;i<10;i++)
 			s.add(Integer.toString(i));//这里为何要Integer.toString();
 		Selector s1 = s.getSelector();
@@ -48,7 +48,6 @@ public class Sequence {
 		}
 	}
 }
-
 
 //返回表示指定整数的{@code String}对象。 参数将转换为带符号的十进制表示形式并作为字符串返回，就像参数和基数10作为{@link #toString（int，int）}方法的参数一样。
 //@param我要转换的整数。

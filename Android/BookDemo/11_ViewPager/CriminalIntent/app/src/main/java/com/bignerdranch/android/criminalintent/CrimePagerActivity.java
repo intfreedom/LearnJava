@@ -46,7 +46,7 @@ public class CrimePagerActivity extends AppCompatActivity {//创建并管理View
                 Crime crime = mCrimes.get(position);
                 return CrimeFragment.newInstance(crime.getId());
             }
-
+            //getCount()返回数组列表中包含的列表项数目；
             @Override
             public int getCount() {
                 return mCrimes.size();

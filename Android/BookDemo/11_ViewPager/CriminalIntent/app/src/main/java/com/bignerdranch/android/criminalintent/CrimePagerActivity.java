@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 import java.util.UUID;
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity {//创建并管理ViewPager
 
     private static final String EXTRA_CRIME_ID =
             "com.bignerdranch.android.criminalintent.crime_id";
@@ -39,7 +39,8 @@ public class CrimePagerActivity extends AppCompatActivity {
         mCrimes = CrimeLab.get(this).getCrimes();
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
-
+            //调用getItem(int)方法，获取并显示crime数组中指定位置的Crime时，它会返回配置过的CrimeFragment来
+            //显示指定的Crime;
             @Override
             public Fragment getItem(int position) {
                 Crime crime = mCrimes.get(position);

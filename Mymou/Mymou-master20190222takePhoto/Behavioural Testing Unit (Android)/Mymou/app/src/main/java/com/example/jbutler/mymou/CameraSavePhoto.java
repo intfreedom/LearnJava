@@ -21,9 +21,9 @@ import java.util.Calendar;
  * Saves linked file into linked filename
  */
 //1.定义Runnable接口的实现类，并重写其中的run方法。run()方法的方法体是线程执行体。
-//2.创建Runnable接口实现类的实例。                        sonThread s1 = new SonThread();
-//3.用该实例作为Thread的target来创建Thread对象。   Thread t1 =new Thread(s1);
-//4.调用该对象的start()方法启动线程。                       t1.start();
+//2.创建Runnable接口实现类的实例。sonThread s1 = new SonThread();
+//3.用该实例作为Thread的target来创建Thread对象。Thread t1 =new Thread(s1);
+//4.调用该对象的start()方法启动线程。t1.start();
 class CameraSavePhoto implements Runnable {
 
     private final Image mImage;

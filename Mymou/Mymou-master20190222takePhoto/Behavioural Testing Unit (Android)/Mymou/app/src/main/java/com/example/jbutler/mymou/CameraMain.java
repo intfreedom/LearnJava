@@ -143,12 +143,6 @@ public class CameraMain extends Fragment
             //This method is called when the camera is opened.  We start camera preview here.
             //打开相机时会调用此方法。 我们在这里开始相机预览。
 
-
-
-
-
-
-
             mCameraDevice = cameraDevice;
             //创建相机预览会话
             createCameraPreviewSession();

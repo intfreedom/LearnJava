@@ -193,7 +193,7 @@ public class MainMenu extends Activity  {
         permissionButtons[5] = findViewById(R.id.permbuttonSettings);
         //这里利用监听器实现buttonClickListener = new View.OnClickListener() 接口
         //按钮Button[] permissionButtons被点击后，监听器会立刻通知我们。传入setOnClickListener(OnClickListener)方法的参数
-        // 是一个监听器；是一个实现了OnClickListener接口的对象；
+        //是一个监听器；是一个实现了OnClickListener接口的对象；
 
 
 
@@ -240,7 +240,7 @@ public class MainMenu extends Activity  {
             }
         };
         //ToggleButton, 将已选中/未选中状态显示为带有“亮”指示的按钮，默认情况下伴随文本“开”或“关”。
-        //setOnCheckedChangeListener注册当此按钮的选中状态更改时要调用的回调。
+        //setOnCheckedChangeListener记录当此按钮的选中状态更改时要调用的回调。
         //findViewById方法：引用已生成的组件，以组件的资源ID作为参数，返回一个视图对象；
         ((ToggleButton)  findViewById(R.id.chanZeroButt)).setOnCheckedChangeListener(multiListener);
         ((ToggleButton)  findViewById(R.id.chanOneButt)).setOnCheckedChangeListener(multiListener);

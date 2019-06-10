@@ -50,6 +50,7 @@ public class Garbage {
 		}
 		System.out.println("bye!");
 		if(args[0].equals("after"))
-			System.runFinalizersOnExit(true);
+			;
+			//System.runFinalizersOnExit(true);
 	}
 }

@@ -34,5 +34,4 @@ public class WorksAnyway {
 			MouseTrap.caughtYa(mice.elementAt(i));
 		}
 	}
-
 }

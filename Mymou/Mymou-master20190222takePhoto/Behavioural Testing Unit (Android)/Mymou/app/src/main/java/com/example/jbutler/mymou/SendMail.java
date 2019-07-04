@@ -70,7 +70,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Creating a new session
         session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
-                    //Authenticating the password
+                    //Authenticating the password验证密码
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(EmailConfig.emailFrom, EmailConfig.PASSWORD);
                     }

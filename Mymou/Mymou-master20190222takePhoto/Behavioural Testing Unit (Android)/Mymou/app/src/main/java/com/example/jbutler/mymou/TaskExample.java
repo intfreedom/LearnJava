@@ -120,7 +120,7 @@ public class TaskExample extends Fragment
         backgroundRed = getView().findViewById(R.id.backgroundred);
         backgroundPink = getView().findViewById(R.id.backgroundpink);
         hideApplication = getView().findViewById(R.id.foregroundblack);//foregroundblack前景黑色
-        cueGo_O = getView().findViewById(R.id.buttonGoMonkO);//对应Monkey O Start
+        cueGo_O = getView().findViewById(R.id.buttonGoMonkO);//对应Monkey O Start，只有点击Monkey O/V Start这两个可以拍照
         cueGo_V = getView().findViewById(R.id.buttonGoMonkV);//对应Monkey V Start
         cues_O[0] = getView().findViewById(R.id.buttonCue1MonkO);//对应Monkey O Cue 1
         cues_O[1] = getView().findViewById(R.id.buttonCue2MonkO);//对应Monkey O Cue 2
@@ -367,9 +367,9 @@ public class TaskExample extends Fragment
     private static void toggleTaskCues(int monkId, boolean status) {
         if (status) {
             if (monkId == monkO) {
-                toggleButtonList(cues_O, status);
+                toggleButtonList(cues_O, status);//cues_O包含两个按钮，Monkey O Cue 1和Monkey O Cue 2
             } else {
-                toggleButtonList(cues_V, status);
+                toggleButtonList(cues_V, status);//cues_包含两个按钮，Monkey V Cue 1和Monkey V Cue 2
             }
         } else {
             // If switching off, just always switch off all cues如果关闭，只需关闭所有提示

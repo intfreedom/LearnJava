@@ -40,7 +40,8 @@ public class TaskExample extends Fragment
     private int timeoutWrongCueChosen = 1500;  // Timeout for getting the task wrong
     //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
-    private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
+    //changetask the old values is 10000,now it change to 100000
+    private static int maxTrialDuration = 100000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
     //上次按下的时间 - 如果达到maxTrialDuration，则用于空闲超时
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
     private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号，静态变量默认值为false;
@@ -227,7 +228,8 @@ public class TaskExample extends Fragment
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkO:
-                incorrectOptionChosen();
+                deliverReward(0);
+                //incorrectOptionChosen();//changetask
                 break;
             case R.id.buttonCue2MonkV:
                 correctOptionChosen();
@@ -449,28 +451,12 @@ public class TaskExample extends Fragment
                     time = 0;
                     timerRunning = false;
                 } else {
-                    timer();
-                    timerRunning = true;
-                }
-            }
-        }, 1000);
-    }
-    //changetask, add timerCT
-    private static void timerCT() {
-        h3.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                time += 9000;//单位为mm，
-                if (time > maxTrialDuration) {
                     randomiseNoReplacement(cues_O);
-                    time = 0;
-                    timerRunning = false;
-                } else {
                     timer();
                     timerRunning = true;
                 }
             }
-        }, 1000);
+        }, 800);
     }
 
     private void cancelHandlers() {

@@ -35,8 +35,8 @@
             android:layout_height="175dp"
             android:textSize="30sp"
             android:id="@+id/buttonCue1MonkO"
-            android:drawableRight="@drawable/aaban"
-            android:drawablePadding="4dp"/>
+            android:background="@drawable/toggle_button"
+            android:drawableTop="@drawable/dog"/>
 
     <Button
             android:text="Monkey V\n Cue 1"
@@ -50,7 +50,9 @@
             android:layout_width="175dp"
             android:layout_height="175dp"
             android:textSize="30sp"
-            android:id="@+id/buttonCue2MonkO"/>
+            android:id="@+id/buttonCue2MonkO"
+            android:background="@drawable/toggle_button"
+            android:drawableRight="@drawable/monkey13"/>
 
     <Button
             android:text="Monkey V\n Cue 2"

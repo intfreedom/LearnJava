@@ -41,7 +41,7 @@ public class TaskExample extends Fragment
     //如果主体在试验中途停止，则计时器重置任务
     // Timer to reset task if subject stops halfway through a trial
     //changetask the old values is 10000,now it change to 100000
-    private static int maxTrialDuration = 100000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
+    private static int maxTrialDuration = 10000;  // Milliseconds until task timeouts and resets毫秒，直到任务超时和重置
     //上次按下的时间 - 如果达到maxTrialDuration，则用于空闲超时
     private static int time = 0;  // Time from last press - used for idle timeout if it reaches maxTrialDuration
     private static boolean timerRunning;  // Signals if timer currently active如果计时器当前有效则发出信号，静态变量默认值为false;
@@ -229,7 +229,8 @@ public class TaskExample extends Fragment
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkO:
-                deliverReward(0);
+                deliverReward(0);//onePicture
+                timerEnd();//onePicture
                 //incorrectOptionChosen();//changetask
                 break;
             case R.id.buttonCue2MonkV:
@@ -432,6 +433,24 @@ public class TaskExample extends Fragment
     // 用于跟踪任务时间的递归函数
     // Recursive function to track task time
     //当点入Monkey V Cue1或进入奖励界面，如果10s不点击屏幕就返回initiation stage Monkey O Start/Monkey V Start界面；
+//onePicture
+    private void timerEnd(){
+        h3.postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                deliverReward(0);//onePicture here
+                textView.setText("");
+            }
+        },1000);
+    }
+
+
+//    private static void deliverRewardChanel(int juiceChoice) {
+//        logEvent("Stop* Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
+//        TaskManager.deliverReward(juiceChoice, rewardAmount);
+//        endOfTrial(1, rewardAmount + 500);
+//    }
+
     private static void timer() {
         /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
          * public final boolean postDelayed(Runnable r, long delayMillis){}：r 将执行的Runnable。
@@ -442,8 +461,8 @@ public class TaskExample extends Fragment
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
-                time += 1000;//单位为mm，
-                if (time > maxTrialDuration) {
+                time += 10000;//单位为mm，//onePicture 1000 to 10000
+                if (time < maxTrialDuration) {//onePicture > to <
                     disableAllCues();
                     endOfTrial(7, 0);
 

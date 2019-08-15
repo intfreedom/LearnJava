@@ -6,3 +6,20 @@
 
 
 1.1.2为何每次的日志文件都一致，点击之后mymou/date文件夹中的图片数据是改变的，日志文件里的内容不变，文件本身的存储日期是改变的；
+
+
+1.1.3
+Mymou-master20190814RedCircle
+改变button,
+
+<Button
+            android:text="Monkey O\n Cue 2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:textSize="30sp"
+            android:id="@+id/buttonCue2MonkO"
+            android:background="@drawable/toggle_button"
+            android:drawableRight="@drawable/monkey0711"/>
+
+
+

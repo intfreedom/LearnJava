@@ -58,7 +58,8 @@ public class TaskExample extends Fragment
     private static Button[] cues_V = new Button[2];  // List of all trial objects for Subject V
 
     // Reward奖励；
-    static int rewardAmount = 1000;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）
+    //改变rewardAmount=1000,这个量原本为此，但为了改变奖励时间，改为100,这个改为100,按说100ms后，就会停止给水，但未停止，所以加一个timerEnd();//onePicture
+    static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）
     // 可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in
@@ -112,7 +113,6 @@ public class TaskExample extends Fragment
         disableAllCues();
         //准备新的实验；
         PrepareForNewTrial(0);
-        timer();   //onePicture
 
     }
 
@@ -229,9 +229,11 @@ public class TaskExample extends Fragment
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkO:
+                toggleButton(cues_O[1],false); //onePicture
                 deliverReward(0);//onePicture
                 TaskManager.takePhoto();//bigPicture
                 timerEnd();//onePicture
+                timer();   //onePicture
                 //incorrectOptionChosen();//changetask
                 break;
             case R.id.buttonCue2MonkV:
@@ -340,7 +342,7 @@ public class TaskExample extends Fragment
     private void deliverRewardEnd(int juiceChoice){
         logEvent("this cannel, no juice");//bigpicture
         TaskManager.deliverReward(juiceChoice,rewardAmount);
-        endOfTrial(1,rewardAmount+500);
+        endOfTrial(1,rewardAmount + 500);
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {
@@ -448,9 +450,8 @@ public class TaskExample extends Fragment
                 deliverRewardEnd(0);//onePicture here
                 textView.setText("");
             }
-        },1000);
+        },500);
     }
-
 
 //    private static void deliverRewardChanel(int juiceChoice) {
 //        logEvent("Stop* Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
@@ -468,23 +469,25 @@ public class TaskExample extends Fragment
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
-                time += 10000;//单位为mm，//onePicture 1000 to 10000
+                time += 100000;//单位为mm，//onePicture 1000 to 10000
                 if (time < maxTrialDuration) {//onePicture > to <
-                    disableAllCues();
-                    endOfTrial(7, 0);
-
-                    //Decrease brightness while not in use不使用时降低亮度；
-                    TaskManager.setBrightness(50);
-
                     time = 0;
-                    timerRunning = false;
+//                    disableAllCues();
+//                    endOfTrial(7, 0);
+//
+//                    //Decrease brightness while not in use不使用时降低亮度；
+//                    TaskManager.setBrightness(50);
+//
+//                    time = 0;
+//                    timerRunning = false;
                 } else {
+                    toggleButton(cues_O[1],true); //onePicture
                     randomiseNoReplacement(cues_O);//changetask-onePicture
                     timer();
                     timerRunning = true;
                 }
             }
-        }, 800);//changetask
+        }, 2000);//changetask
     }
 
     private void cancelHandlers() {

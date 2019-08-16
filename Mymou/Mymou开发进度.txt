@@ -21,5 +21,49 @@ Mymou-master20190814RedCircle
             android:background="@drawable/toggle_button"
             android:drawableRight="@drawable/monkey0711"/>
 
+20190816  
+1.1.1//改变rewardAmount=1000,这个量原本为此，但为了改变奖励时间，改为100,这个改为100,按说100ms后，就会停止给水，但未停止，所以加一个timerEnd();//onePicture
+static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）
+设置100ms后就会自动停止，
+对于现在的Arduino就是1，0，1，0，每发送一个1就会在100ms后发送一个0，之前这个值设为1000ms，所以当两次点击间隔小于
+1000ms，就会出现问题，这打开的1就会不起作用；
 
+	  把这个<Button
+            android:text="Monkey O\n Cue 2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:textSize="30sp"
+            android:id="@+id/buttonCue2MonkO"
+            android:background="@drawable/toggle_button"
+            android:drawableRight="@drawable/monkey0711"/>
+	改为<Button
+            android:text="  "
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:textSize="30sp"
+            android:id="@+id/buttonCue2MonkO"
+            android:background="#FF0000"
+            android:drawableRight="@drawable/redcircle"/>这里变为红色方形，
 
+1.1.2下一步把按钮变为圆形；
+1.1.2.1 activity_task_example.xml文件中<Button
+            android:text="  "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:id="@+id/buttonCue2MonkO"
+            android:layout_gravity="center|bottom"
+            android:gravity="center"
+            android:background="@drawable/redcircle"/>
+1.1.2.2然后写一个redcircle.xml文件放在drawable文件夹下，
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape"
+       android:shape="oval">
+    <solid android:color="#FF0000"/>
+    <size android:height="100dp"
+          android:width="100dp"/>
+</shape>
+<!--oval是椭圆，把椭圆的宽高设置为一样，才能出现圆形的效果；-->
+
+1.1.3设置停顿时间，顺便修改圆形大小；
+首先我们设置运动的是@+id/buttonCue2MonkO这个按钮；

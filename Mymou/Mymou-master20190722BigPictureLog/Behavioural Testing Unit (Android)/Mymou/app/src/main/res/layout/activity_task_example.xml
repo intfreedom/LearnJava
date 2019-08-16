@@ -46,13 +46,14 @@
             android:id="@+id/buttonCue1MonkV"/>
 <!--175dp to 300dp as fellow-->
     <Button
-            android:text="Monkey O\n Cue 2"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:text="  "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/buttonCue2MonkO"
-            android:background="@drawable/toggle_button"
-            android:drawableRight="@drawable/monkey0711"/>
+            android:layout_gravity="center|bottom"
+            android:gravity="center"
+            android:background="@drawable/redcircle"/>
 
     <Button
             android:text="Monkey V\n Cue 2"

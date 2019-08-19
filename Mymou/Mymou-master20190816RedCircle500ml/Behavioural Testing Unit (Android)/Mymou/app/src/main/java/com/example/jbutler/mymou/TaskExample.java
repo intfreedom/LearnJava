@@ -113,7 +113,7 @@ public class TaskExample extends Fragment
         disableAllCues();
         //准备新的实验；
         PrepareForNewTrial(0);
-        timer();   //onePicture
+
 
     }
 
@@ -232,6 +232,8 @@ public class TaskExample extends Fragment
             case R.id.buttonCue2MonkO:
                 deliverReward(0);//onePicture
                 TaskManager.takePhoto();//bigPicture
+                toggleButton(cues_O[1],false); //onePicture
+                timer();   //onePicture
                 timerEnd();//onePicture
                 //incorrectOptionChosen();//changetask
                 break;
@@ -335,13 +337,13 @@ public class TaskExample extends Fragment
     private void deliverReward(int juiceChoice) {
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
-        endOfTrial(1, rewardAmount + 500);
+//        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响
     }
 
     private void deliverRewardEnd(int juiceChoice){
         logEvent("this cannel, no juice");//bigpicture
         TaskManager.deliverReward(juiceChoice,rewardAmount);
-        endOfTrial(1,rewardAmount + 500);
+//        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {
@@ -459,6 +461,20 @@ public class TaskExample extends Fragment
 //    }
 
     private static void timer() {
+        h0.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                    randomiseCueLocations();
+                randomiseNoReplacement(cues_O);//changetask-onePicture
+                toggleButton(cues_O[1],true); //onePicture
+            }
+        }, 2000);//changetask
+    }
+
+
+
+
+    private static void timer1() {
         /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
          * public final boolean postDelayed(Runnable r, long delayMillis){}：r 将执行的Runnable。
          * delayMillis 执行Runnable之前的延迟（以毫秒为单位）时间。
@@ -480,7 +496,7 @@ public class TaskExample extends Fragment
                     timerRunning = false;
                 } else {
                     randomiseNoReplacement(cues_O);//changetask-onePicture
-                    timer();
+                    timer1();
                     timerRunning = true;
                 }
             }

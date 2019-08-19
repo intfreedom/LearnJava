@@ -67,3 +67,29 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
 
 1.1.3设置停顿时间，顺便修改圆形大小；
 首先我们设置运动的是@+id/buttonCue2MonkO这个按钮；
+1.1.4
+修改了endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响，
+把这个注释了；
+1.1.5
+按下按钮后，按钮消失；开始奖励，奖励时间设置为500ms，由timerEnd控制;
+ case R.id.buttonCue2MonkO:
+                deliverReward(0);//onePicture
+                TaskManager.takePhoto();//bigPicture
+                toggleButton(cues_O[1],false); //onePicture
+                timer();   //onePicture
+                timerEnd();//onePicture
+                //incorrectOptionChosen();//changetask
+                break;
+
+利用这个private static void timer() {
+        h0.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                    randomiseCueLocations();
+                randomiseNoReplacement(cues_O);//changetask-onePicture
+                toggleButton(cues_O[1],true); //onePicture
+            }
+        }, 2000);//changetask
+    }函数
+设置按下按钮后，2000ms后会重新显示按钮并变动位置；
+timer与timerEnd这两个函数不冲突；

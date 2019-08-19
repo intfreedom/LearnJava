@@ -93,3 +93,5 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
     }函数
 设置按下按钮后，2000ms后会重新显示按钮并变动位置；
 timer与timerEnd这两个函数不冲突；
+
+目前实现了，一开始出现一个圆形按钮，按下后立刻消失，同时给水500ms，消失2000ms后重新在其他位置出现；

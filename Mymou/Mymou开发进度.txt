@@ -99,3 +99,12 @@ timer与timerEnd这两个函数不冲突；
 目前实现了，一开始出现一个圆形按钮，按下后立刻消失，同时给水500ms，消失2000ms后重新在其他位置出现；
 给水时间太短，有问题，把给水时间改为3000ms，按钮消失时间改为3000ms
 若是消失时间改为1000ms,当没有停止给水的时候，再一次按了给水按钮会怎样？研究多线程？？？
+1.1.6
+Mymou-master20190816RedCircle500ml改了给水时间改为3000ms，按钮消失时间改为3000ms
+Mymou-master20190821OtherArduino修改了蓝牙地址，相比Mymou-master20190816RedCircle500ml
+
+新的Arduino蓝牙模块HC-06，98:D3:31:FD:24:E1
+
+
+endOfTrial把这个完全取消，又会有错误，把这个错误注释掉，//        PrepareForNewTrial(newTrialDelay);//onePicture
+验证log文件，是否可以重新正常，

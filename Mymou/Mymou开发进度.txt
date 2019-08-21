@@ -70,6 +70,7 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
 1.1.4
 修改了endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响，
 把这个注释了；
+似乎是这个endOfTrial把.txt的log文件取消了，看不到记录文件了；
 1.1.5
 按下按钮后，按钮消失；开始奖励，奖励时间设置为500ms，由timerEnd控制;
  case R.id.buttonCue2MonkO:
@@ -94,4 +95,7 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
 设置按下按钮后，2000ms后会重新显示按钮并变动位置；
 timer与timerEnd这两个函数不冲突；
 
+1.1.5.1
 目前实现了，一开始出现一个圆形按钮，按下后立刻消失，同时给水500ms，消失2000ms后重新在其他位置出现；
+给水时间太短，有问题，把给水时间改为3000ms，按钮消失时间改为3000ms
+若是消失时间改为1000ms,当没有停止给水的时候，再一次按了给水按钮会怎样？研究多线程？？？

@@ -1,6 +1,5 @@
 package xyz.liuwenjun.chapter9_2;
 
-
 //synchronized--线程同步关键字，实现互斥；
 //用于指定需要同步的代码段或方法，也就是监视区；
 //可实现与一个锁的交互；例如：
@@ -56,7 +55,7 @@ class Consumer extends Thread{
 	
 	public void run() {
 		while(i<t.size) {
-			synchronized(t) {
+			synchronized(t) {//申请对象t的锁
 				if(t.available==true&&i<=t.number)
 					System.out.println("Consumer buys ticket"+(++i));
 				if(i==t.number) {
@@ -67,8 +66,4 @@ class Consumer extends Thread{
 		}
 		System.out.println("Consumer ends");
 	}
-	
-	
-	
-	
 }

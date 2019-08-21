@@ -337,13 +337,13 @@ public class TaskExample extends Fragment
     private void deliverReward(int juiceChoice) {
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
-//        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响
+        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响
     }
 
     private void deliverRewardEnd(int juiceChoice){
         logEvent("this cannel, no juice");//bigpicture
         TaskManager.deliverReward(juiceChoice,rewardAmount);
-//        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响
+        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {
@@ -451,7 +451,7 @@ public class TaskExample extends Fragment
                 deliverRewardEnd(0);//onePicture here
                 textView.setText("");
             }
-        },500);
+        },3000);
     }
 
 //    private static void deliverRewardChanel(int juiceChoice) {
@@ -468,7 +468,7 @@ public class TaskExample extends Fragment
                 randomiseNoReplacement(cues_O);//changetask-onePicture
                 toggleButton(cues_O[1],true); //onePicture
             }
-        }, 2000);//changetask
+        }, 3000);//changetask
     }
 
 

@@ -4,11 +4,11 @@ public class ProducerAndConsumer {
 	
 	public static void main(String[] args) {
 		Tickets t = new Tickets(10);
-//		new Consumer(t).start();//开始卖票线程；
-//		new Producer(t).start();//开始存票线程；
-//		这两行顺序调整的话，会有很大变化；
-		new Producer(t).start();//开始存票线程；
 		new Consumer(t).start();//开始卖票线程；
+		new Producer(t).start();//开始存票线程；
+//		这两行顺序调整的话，会有很大变化；
+//		new Producer(t).start();//开始存票线程；//先生成10张票；
+//		new Consumer(t).start();//开始卖票线程；//再卖掉10张票；
 	}
 
 }

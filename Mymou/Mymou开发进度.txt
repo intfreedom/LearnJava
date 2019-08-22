@@ -104,6 +104,7 @@ Mymou-master20190816RedCircle500ml改了给水时间改为3000ms，按钮消失时间改为3000ms
 Mymou-master20190821OtherArduino修改了蓝牙地址，相比Mymou-master20190816RedCircle500ml
 
 新的Arduino蓝牙模块HC-06，98:D3:31:FD:24:E1
+可以通过RewardSystem.java中的address值切换；
 
 
 endOfTrial把这个完全取消，又会有错误，把这个错误注释掉，//        PrepareForNewTrial(newTrialDelay);//onePicture

@@ -109,3 +109,22 @@ Mymou-master20190821OtherArduino修改了蓝牙地址，相比Mymou-master20190816RedCircl
 
 endOfTrial把这个完全取消，又会有错误，把这个错误注释掉，//        PrepareForNewTrial(newTrialDelay);//onePicture
 验证log文件，是否可以重新正常，
+
+1.1.7遇到两个问题，给水间隔是3000ms，而实测将近5000ms，另一个问题，点击之后不给水，蓝牙有时不识别；
+
+RewardSystem.java里的activateChannel，CountDownTimer里的问题，再关闭销毁activity或fragment时，如果没有调用
+cancle方法，onTick会一直执行；
+
+1.1.7.1
+Mymou-master20190821OtherArduino对于HC-05是OK的；
+
+记住按照当前代码 juiceChoice=0，最终给蓝牙的是数字1
+
+每次Log里，切换的，如001，18到下一个状态，就会出现两次 reward on channel0
+
+每次重新打开，就需要重启蓝牙；
+每次中断了，log文件也中断了，必须重启平板，才会有新的log写入文件；
+
+1.1.7.2
+即使里面不放toggleButton(cues_O[1],false); //onePicture
+点击之后按钮也消失？？？

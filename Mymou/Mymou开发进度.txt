@@ -128,3 +128,8 @@ Mymou-master20190821OtherArduino对于HC-05是OK的；
 1.1.7.2
 即使里面不放toggleButton(cues_O[1],false); //onePicture
 点击之后按钮也消失？？？
+
+1.1.7.3
+当HC-05与HC-06都切换时，这个要依靠添加一次点击，HC-05是1 0 1 0停止，HC-06是1 0停止；
+同时 static int rewardAmount = 100;  这个值对于HC-05来说是100比较好，应为它是可以发出下个命令的之前的清除；小于等于给水时间间隔
+对于HC-06就是停止的时间，设置为想要的值=给水时间，如1000ms

@@ -63,8 +63,8 @@ public class RewardSystem {
 //    private static String address = "FC:A6:21:D8:11:E4";//三星平板设备蓝牙地址
 //    private static String address = "FC:A6:21:D8:11:E5";//三星平板设备MAC地址
     //蓝牙地址必须6个字节，必须大写；
-    private static String address = "98:D3:31:FD:24:E1";//Arduino Uno HC-06设备连接的蓝牙接收发射的地址；
-//    private static String address = "98:D3:81:FD:44:85";//Arduino Uno HC-05设备连接的蓝牙接收发射的地址；可以通过这种注释切换
+//    private static String address = "98:D3:31:FD:24:E1";//Arduino Uno HC-06设备连接的蓝牙接收发射的地址；
+    private static String address = "98:D3:81:FD:44:85";//Arduino Uno HC-05设备连接的蓝牙接收发射的地址；可以通过这种注释切换
 //    private static String address = "20:16:06:08:64:22";//原文蓝牙地址
 //    private static String address = "48:2c:a0:be:7c:7c";//试一试小米note7
 //    对于HC-05蓝牙模块，安卓中用0000  1101-0000-1000-8000-00805F9B34FB这个uuid来进行串口蓝牙通讯SerialPortService

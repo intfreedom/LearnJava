@@ -81,6 +81,7 @@ public class TaskExample extends Fragment
     private static Handler h1 = new Handler();  // Prepare for new trial准备新的试验
     private static Handler h2 = new Handler();  // Timeout go cues超时去提示
     private static Handler h3 = new Handler();  // changeTask,add h3
+    private static Handler h4 = new Handler();  // changeTask,add h4  change TwoCircle
     //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
 
     /*onCreateView实例化fragment视图的布局，然后将实例化的View返回给托管activity，LayoutInflater及ViewGroup是实例化布局的必要参数
@@ -108,11 +109,12 @@ public class TaskExample extends Fragment
         // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
         //设置屏幕亮度；
-        TaskManager.setBrightness(255);//255是最大亮度；
+        TaskManager.setBrightness(50);//255是最大亮度； //change TwoCircle
         //禁用所有的提示or线索
         disableAllCues();
         //准备新的实验；
         PrepareForNewTrial(0);
+        timer();//TwoCircle
 
 
     }
@@ -213,7 +215,7 @@ public class TaskExample extends Fragment
         time = 0;
         // 点亮屏幕；
         // Make screen bright
-        TaskManager.setBrightness(255);
+        TaskManager.setBrightness(50);//change TwoCircle
         // 现在根据按下的按钮决定做什么
         // Now decide what to do based on what button pressed
         switch (view.getId()) {
@@ -224,7 +226,7 @@ public class TaskExample extends Fragment
                 checkMonkeyPressedTheirCue(monkV);
                 break;
             case R.id.buttonCue1MonkO:
-                correctOptionChosen();
+//                correctOptionChosen();   //change TwoCircle
                 break;
             case R.id.buttonCue1MonkV:
                 incorrectOptionChosen();
@@ -232,8 +234,15 @@ public class TaskExample extends Fragment
             case R.id.buttonCue2MonkO:
                 deliverReward(0);//onePicture
                 TaskManager.takePhoto();//bigPicture
+//                h0.removeCallbacks(this::cancelHandlers);//change TwoCircle
+//                h3.removeCallbacks(this::cancelHandlers);//change TwoCircle
+                cancelHandlers();
+                toggleButton(cues_O[1],false); //onePicture TwoCircle
+                toggleButton(cues_O[0],true); //onePicture TwoCircle
+                timerCancerGreen();// TwoCircle
+
 //                toggleButton(cues_O[1],false); //onePicture
-                timer();   //onePicture
+//                timer();   //onePicture TwoCircle
 //                timerEnd();//onePicture
                 //incorrectOptionChosen();//changetask
                 break;
@@ -278,7 +287,7 @@ public class TaskExample extends Fragment
 //                toggleGoCues(true);  //onePicture
 //                textView.setText("Initiation Stage");  //onePicture
 
-                toggleButton(cues_O[1],true); //onePicture
+                toggleButton(cues_O[1],true); //onePicture change TwoCircle
             }
         }, delay);
     }
@@ -438,6 +447,8 @@ public class TaskExample extends Fragment
     private static void fixedCueLocations(){
         cues_O[1].setX(xLocs[0]-400);//befere 350
         cues_O[1].setY(yLocs[1]-550);//before 350 600
+        cues_O[0].setX(xLocs[0]-400);//befere 350   change TwoCircle
+        cues_O[0].setY(yLocs[1]-550);//before 350 600 change TwoCircle
 
     }
 
@@ -453,15 +464,15 @@ public class TaskExample extends Fragment
     // Recursive function to track task time
     //当点入Monkey V Cue1或进入奖励界面，如果10s不点击屏幕就返回initiation stage Monkey O Start/Monkey V Start界面；
 //onePicture
-    private void timerEnd(){
-        h3.postDelayed(new Runnable(){
-            @Override
-            public void run(){
-                deliverRewardEnd(0);//onePicture here
-                textView.setText("");
-            }
-        },3000);
-    }
+//    private void timerEnd(){
+//        h3.postDelayed(new Runnable(){
+//            @Override
+//            public void run(){
+//                deliverRewardEnd(0);//onePicture here
+//                textView.setText("");
+//            }
+//        },3000);
+//    }
 
 //    private static void deliverRewardChanel(int juiceChoice) {
 //        logEvent("Stop* Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
@@ -476,12 +487,41 @@ public class TaskExample extends Fragment
 //                    randomiseCueLocations();
                 fixedCueLocations();//changeDon'tMove
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
-                toggleButton(cues_O[1],true); //onePicture
+                toggleButton(cues_O[1],false); //onePicture TwoCircle
                 textView.setText("  ");
+                timerAppear();//TwoCircle
             }
         }, 2000);//changetask  changeReward
     }
 
+    private static void timerAppear() {
+        h3.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                    randomiseCueLocations();
+                fixedCueLocations();//changeDon'tMove
+//                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
+                toggleButton(cues_O[1],true); //onePicture TwoCircle
+                textView.setText("  ");
+                timer();//TwoCircle
+            }
+        }, 2000);//changetask  changeReward
+    }
+
+    private static void timerCancerGreen() {
+        h4.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                    randomiseCueLocations();
+                fixedCueLocations();//changeDon'tMove
+//                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
+                toggleButton(cues_O[0],false); //onePicture TwoCircle
+                toggleButton(cues_O[1],true); //onePicture TwoCircle
+                textView.setText("  ");
+                timer();//TwoCircle
+            }
+        }, 2000);//changetask  changeReward
+    }
 
     private static void timer1() {
         /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。

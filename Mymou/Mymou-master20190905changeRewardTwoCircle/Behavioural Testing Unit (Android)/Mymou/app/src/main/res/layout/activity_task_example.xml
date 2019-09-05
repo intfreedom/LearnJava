@@ -28,15 +28,16 @@
             android:layout_height="175dp"
             android:textSize="30sp"
             android:id="@+id/buttonGoMonkV"/>
-
+    <!--   //change TwoCircle 175dp to 300dp as fellow-->
     <Button
-            android:text="Monkey O\n Cue 1"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            android:text="  "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/buttonCue1MonkO"
-            android:background="@drawable/toggle_button"
-            android:drawableTop="@drawable/dog"/>
+            android:layout_gravity="center|bottom"
+            android:gravity="center"
+            android:background="@drawable/greencircle"/>
 
     <Button
             android:text="Monkey V\n Cue 1"
@@ -44,7 +45,7 @@
             android:layout_height="175dp"
             android:textSize="30sp"
             android:id="@+id/buttonCue1MonkV"/>
-<!--175dp to 300dp as fellow-->
+<!--   //change TwoCircle 175dp to 300dp as fellow-->
     <Button
             android:text="  "
             android:layout_width="wrap_content"

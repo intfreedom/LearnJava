@@ -279,15 +279,8 @@ public class TaskExample extends Fragment
         h1.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                randomiseCueLocations(); //changeDon'tMove note
-                fixedCueLocations();//changeDon'tMove
-                toggleBackground(backgroundRed, false);
-                toggleBackground(backgroundPink, false);
-                //// Lots of toggles for task objects大量的任务对象切换
-//                toggleGoCues(true);  //onePicture
-//                textView.setText("Initiation Stage");  //onePicture
 
-                toggleButton(cues_O[1],true); //onePicture change TwoCircle
+
             }
         }, delay);
     }

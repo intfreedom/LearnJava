@@ -304,7 +304,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     public static void setBrightness(int brightness) {
         if (Settings.System.canWrite(mContext)) {
             if (brightness > 255) {
-                brightness = 255;
+                brightness = 150;  //change RewardBigCircle
             } else if (brightness < 0) {
                 brightness = 0;
             }

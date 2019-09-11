@@ -108,7 +108,7 @@ public class TaskExample extends Fragment
         // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
         //设置屏幕亮度；
-        TaskManager.setBrightness(255);//255是最大亮度；
+        TaskManager.setBrightness(150);//255是最大亮度； //change RewardBigCircle
         //禁用所有的提示or线索
         disableAllCues();
         //准备新的实验；
@@ -213,7 +213,7 @@ public class TaskExample extends Fragment
         time = 0;
         // 点亮屏幕；
         // Make screen bright
-        TaskManager.setBrightness(255);
+        TaskManager.setBrightness(150);//change RewardBigCircle
         // 现在根据按下的按钮决定做什么
         // Now decide what to do based on what button pressed
         switch (view.getId()) {

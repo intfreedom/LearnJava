@@ -131,7 +131,7 @@ public class TaskFromPaper extends Fragment
         ibGo.setEnabled(true);
         ibGo.setVisibility(View.VISIBLE);
 
-        TaskManager.setBrightness(255);
+        TaskManager.setBrightness(150);//change RewardBigCircle
 
         numStimulus = imageList.length;
 
@@ -277,7 +277,7 @@ public class TaskFromPaper extends Fragment
     @Override
     public void onClick(View view) {
         time = 0;
-        TaskManager.setBrightness(255);
+        TaskManager.setBrightness(150);//change RewardBigCircle
         switch (view.getId()) {
             case R.id.imageButtonGo:
                 startTrial();

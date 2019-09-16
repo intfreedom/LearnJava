@@ -211,6 +211,9 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         numPhotos += 1;
     }
 
+
+
+
     public static void commitTrialData(int overallTrialOutcome) {
         if (dateHasChanged()) {
             trialCounter = 0;

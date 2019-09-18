@@ -59,7 +59,7 @@ public class TaskExample extends Fragment
 
     // Reward奖励；
     //改变rewardAmount=1000,这个量原本为此，但为了改变奖励时间，改为100,这个改为100,按说100ms后，就会停止给水，但未停止，所以加一个timerEnd();//onePicture
-    static int rewardAmount = 800;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）//changeReward
+    static int rewardAmount = 400;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）//changeReward
     // 可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in

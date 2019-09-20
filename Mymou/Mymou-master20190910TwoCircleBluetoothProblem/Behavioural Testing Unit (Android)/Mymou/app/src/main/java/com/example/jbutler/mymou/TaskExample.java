@@ -59,7 +59,7 @@ public class TaskExample extends Fragment
 
     // Reward奖励；
     //改变rewardAmount=1000,这个量原本为此，但为了改变奖励时间，改为100,这个改为100,按说100ms后，就会停止给水，但未停止，所以加一个timerEnd();//onePicture
-    static int rewardAmount = 400;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）//changeReward
+    static int rewardAmount = 800;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）//changeReward
     // 可以在屏幕上显示提示的预定位置，
     // Predetermined locations where cues can appear on screen, calculated by calculateCueLocations()
     private static int maxCueLocations = 8;  // Number of possible locations that cues can appear in
@@ -439,10 +439,10 @@ public class TaskExample extends Fragment
 
     //Fixed position
     private static void fixedCueLocations(){
-        cues_O[1].setX(xLocs[0]-400);//befere 350
-        cues_O[1].setY(yLocs[1]-550);//before 350 600
-        cues_O[0].setX(xLocs[0]-400);//befere 350   change TwoCircle
-        cues_O[0].setY(yLocs[1]-550);//before 350 600 change TwoCircle
+        cues_O[1].setX(xLocs[0]-180);//befere 350  when circle is 700,the two value is 400,550
+        cues_O[1].setY(yLocs[1]-300);//before 350 600
+        cues_O[0].setX(xLocs[0]-180);//befere 350   change TwoCircle
+        cues_O[0].setY(yLocs[1]-300);//before 350 600 change TwoCircle
 
     }
 

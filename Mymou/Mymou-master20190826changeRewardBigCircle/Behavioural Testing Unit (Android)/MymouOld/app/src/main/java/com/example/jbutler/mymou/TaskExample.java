@@ -436,8 +436,8 @@ public class TaskExample extends Fragment
 
     //Fixed position
     private static void fixedCueLocations(){
-        cues_O[1].setX(xLocs[0]-400);//befere 350
-        cues_O[1].setY(yLocs[1]-550);//before 350 600
+        cues_O[1].setX(xLocs[0]-300);//befere 350   红点大小为R700时，这两个值为-400，-550
+        cues_O[1].setY(yLocs[1]-350);//before 350 600
 
     }
 

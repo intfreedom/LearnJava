@@ -37,7 +37,8 @@
             android:id="@+id/buttonCue1MonkO"
             android:layout_gravity="center|bottom"
             android:gravity="center"
-            android:background="@drawable/greencircle"/>
+            android:background="@drawable/bb"/>
+            <!--android:background="@drawable/greencircle"/>-->
 
     <Button
             android:text="Monkey V\n Cue 1"
@@ -54,7 +55,8 @@
             android:id="@+id/buttonCue2MonkO"
             android:layout_gravity="center|bottom"
             android:gravity="center"
-            android:background="@drawable/redcircle"/>
+            android:background="@drawable/aa"/>
+            <!--android:background="@drawable/redcircle"/>-->
 
     <Button
             android:text="Monkey V\n Cue 2"

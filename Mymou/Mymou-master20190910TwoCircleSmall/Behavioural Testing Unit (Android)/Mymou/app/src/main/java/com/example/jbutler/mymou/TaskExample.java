@@ -236,12 +236,15 @@ public class TaskExample extends Fragment
             case R.id.buttonCue2MonkO:
                 deliverReward(0);//onePicture
                 TaskManager.takePhoto();//bigPicture
+                toggleButton(cues_O[0],true); //onePicture TwoCircle  change aa
+                toggleButton(cues_O[1],true); //onePicture TwoCircle  change aa
+                timer();//change aa
 //                h0.removeCallbacks(this::cancelHandlers);//change TwoCircle
 //                h3.removeCallbacks(this::cancelHandlers);//change TwoCircle
-                h0.removeCallbacksAndMessages(null);
-                toggleButton(cues_O[1],false); //onePicture TwoCircle
-                toggleButton(cues_O[0],true); //onePicture TwoCircle
-                timerCancerGreen();// TwoCircle
+//                h0.removeCallbacksAndMessages(null);
+//                toggleButton(cues_O[1],false); //onePicture TwoCircle  change aa
+//                toggleButton(cues_O[0],true); //onePicture TwoCircle change aa
+//                timerCancerGreen();// TwoCircle
 
 //                toggleButton(cues_O[1],false); //onePicture
 //                timer();   //onePicture TwoCircle
@@ -270,6 +273,10 @@ public class TaskExample extends Fragment
     private static void PrepareForNewTrial(int delay) {
         //重置实验数据；
         TaskManager.resetTrialData();
+        fixedCueLocations();//changeDon'tMove  change aa
+//        randomiseCueLocations();//changeDon'tMove  change Move  changeReward  change aa
+        toggleButton(cues_O[0],true); //onePicture TwoCircle   change aa
+        toggleButton(cues_O[1],true); //onePicture TwoCircle   change aa
         //实际上也就实现了一个(delay)s的一个定时器,按照定时时间调用Runnable对象；
 
         /* postDelayed: 导致Runnable r被添加到消息队列中，在指定的时间量过去之后运行。runnable将在连接此处理程序的线程上运行。
@@ -441,10 +448,10 @@ public class TaskExample extends Fragment
 
     //Fixed position
     private static void fixedCueLocations(){
-        cues_O[1].setX(xLocs[0]-180);//befere 350  when circle is 700,the two value is 400,550
-        cues_O[1].setY(yLocs[1]-300);//before 350 600
+        cues_O[1].setX(xLocs[0]+180);//befere 350  when circle is 700,the two value is 400,550
+        cues_O[1].setY(yLocs[1]+300);//before 350 600
         cues_O[0].setX(xLocs[0]-180);//befere 350   change TwoCircle
-        cues_O[0].setY(yLocs[1]-300);//before 350 600 change TwoCircle
+        cues_O[0].setY(yLocs[1]-600);//before 350 600 change TwoCircle
 
     }
 
@@ -480,12 +487,16 @@ public class TaskExample extends Fragment
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
-                randomiseCueLocations();//changeDon'tMove  change Move  changeReward
+                fixedCueLocations();//changeDon'tMove  change aa
+                //randomiseCueLocations();//changeDon'tMove  change Move  changeReward
+                toggleButton(cues_O[0],true); //onePicture TwoCircle  change aa
+                toggleButton(cues_O[1],true); //onePicture TwoCircle  change aa
 //                fixedCueLocations();//changeDon'tMove
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
-                toggleButton(cues_O[1],false); //onePicture TwoCircle
+//                toggleButton(cues_O[1],false); //onePicture TwoCircle  change aa
                 textView.setText("  ");
-                timerAppear();//TwoCircle
+                timer(); //change aa
+                //timerAppear();//TwoCircle  change aa
             }
         }, 2000);//changetask  changeReward
     }

@@ -169,3 +169,15 @@ Plan B:
 001,trialCounter
 String taskId = "001";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
 trialCounter:
+
+1.1.11
+20190926,修改了两个固定的水果，连续点击会有闪退问题；Mymou-master20190910TwoCircleSmall
+
+点击之后即使设定的break，也会永远消失，必须调用timer()，看一下原因，有可能就能解除不稳定的原因；
+
+一直点击bb,没有问题，点击aa到一定程度就会闪退，两者的区别在于deliverReward();
+
+//        PrepareForNewTrial(newTrialDelay); //为了修改点击闪退问题，把这个注释掉；change aa
+
+
+

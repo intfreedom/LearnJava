@@ -37,7 +37,7 @@
             android:id="@+id/buttonCue1MonkO"
             android:layout_gravity="center|bottom"
             android:gravity="center"
-            android:background="@drawable/bb"/>
+            android:background="@drawable/bbmodify"/>
             <!--android:background="@drawable/greencircle"/>-->
 
     <Button

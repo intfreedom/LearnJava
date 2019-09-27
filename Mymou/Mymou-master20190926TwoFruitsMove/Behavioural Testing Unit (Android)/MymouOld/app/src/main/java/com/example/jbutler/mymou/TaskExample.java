@@ -81,7 +81,6 @@ public class TaskExample extends Fragment
     private static Handler h1 = new Handler();  // Prepare for new trial准备新的试验
     private static Handler h2 = new Handler();  // Timeout go cues超时去提示
     private static Handler h3 = new Handler();  // changeTask,add h3
-    private static Handler h4 = new Handler();  // changeTask,add h4  change TwoCircle
     //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
 
     /*onCreateView实例化fragment视图的布局，然后将实例化的View返回给托管activity，LayoutInflater及ViewGroup是实例化布局的必要参数
@@ -109,13 +108,13 @@ public class TaskExample extends Fragment
         // 在屏幕上制作可以放置提示的位置的预定列表
         calculateCueLocations();
         //设置屏幕亮度；
-        TaskManager.setBrightness(50);//255是最大亮度； //change TwoCircle 原来数值为255；
+        TaskManager.setBrightness(150);//255是最大亮度； //change RewardBigCircle
         //禁用所有的提示or线索
         disableAllCues();
         //准备新的实验；
         PrepareForNewTrial(0);
-        timer();//TwoCircle
 
+        timer();//change aa move
 
     }
 
@@ -167,16 +166,46 @@ public class TaskExample extends Fragment
         yLocs[6] = yCenter + distanceFromCenter;
         yLocs[7] = yCenter - distanceFromCenter;
 
-        // X locations
-        xLocs[0] = xCenter;
+        // X locations  change xLocs[0]和xLocs[2]
+//        xLocs[0] = xCenter;  change aa move
+        xLocs[0] = xCenter - distanceFromCenter; //change aa move
         xLocs[1] = xCenter - distanceFromCenter;
-        xLocs[2] = xCenter;
+        xLocs[2] = xCenter - distanceFromCenter;// change aa move
+//        xLocs[2] = xCenter; //change aa move
         xLocs[3] = xCenter + distanceFromCenter;
         xLocs[4] = xCenter - distanceFromCenter;
         xLocs[5] = xCenter - distanceFromCenter;
         xLocs[6] = xCenter + distanceFromCenter;
         xLocs[7] = xCenter + distanceFromCenter;
 
+        int distanceC = 50;//change aa move 把重心整体往上移
+        int ydistanceC = 200;//change aa move 把重心整体往上移
+
+        int ydistance = 100;//change aa move 两个图标间的距离；
+        int yydistance = 350;//change aa move 两个图标间的距离；
+        // Y locations//change aa move
+        yLocs[0] -= distanceC+yydistance;//change aa move
+        yLocs[1] -= ydistanceC;//change aa move
+        yLocs[2] += distanceC+ydistance;//change aa move
+        yLocs[3] -= ydistanceC;//change aa move
+        yLocs[4] += distanceC+ydistance;//change aa move
+        yLocs[5] -= distanceC+yydistance;//change aa move
+        yLocs[6] += distanceC+ydistance;//change aa move
+        yLocs[7] -= distanceC+yydistance;//change aa move
+
+        int xxdistance = 50;//change aa move 两个图标间的距离；
+        int xdistance = 0;//change aa move 两个图标间的距离；
+        // X locations//change aa move
+//        xLocs[0] -= distanceC;//change aa move
+        xLocs[0] -= distanceC+xdistance;//change aa move
+        xLocs[1] -= distanceC+xdistance;//change aa move
+        xLocs[2] -= distanceC+xdistance;//change aa move
+//        xLocs[2] -= distanceC;//change aa move
+        xLocs[3] -= distanceC+xxdistance;//change aa move
+        xLocs[4] -= distanceC+xdistance;//change aa move
+        xLocs[5] -= distanceC+xdistance;//change aa move
+        xLocs[6] -= distanceC+xxdistance;//change aa move
+        xLocs[7] -= distanceC+xxdistance;//change aa move
 
 
         // Go cues are static location so place them now去提示是静态位置，所以现在放置它们
@@ -217,7 +246,7 @@ public class TaskExample extends Fragment
         time = 0;
         // 点亮屏幕；
         // Make screen bright
-        TaskManager.setBrightness(50);//change TwoCircle
+        TaskManager.setBrightness(150);//change RewardBigCircle
         // 现在根据按下的按钮决定做什么
         // Now decide what to do based on what button pressed
         switch (view.getId()) {
@@ -228,23 +257,24 @@ public class TaskExample extends Fragment
                 checkMonkeyPressedTheirCue(monkV);
                 break;
             case R.id.buttonCue1MonkO:
-//                correctOptionChosen();   //change TwoCircle
+//                correctOptionChosen();  change aa
+                h0.removeCallbacksAndMessages(null);//change TwoCircle change aa move
+                h3.removeCallbacksAndMessages(null);//change TwoCircle change aa move
+                toggleButton(cues_O[0],false); //onePicture  change aa move
+                toggleButton(cues_O[1],false); //onePicture  change aa move
+                timerAppear();   //onePicture change aa move
                 break;
             case R.id.buttonCue1MonkV:
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue2MonkO:
                 deliverReward(0);//onePicture
-                TaskManager.takePhoto();//bigPicture
-//                h0.removeCallbacks(this::cancelHandlers);//change TwoCircle
-//                h3.removeCallbacks(this::cancelHandlers);//change TwoCircle
-                h0.removeCallbacksAndMessages(null);
-                toggleButton(cues_O[1],false); //onePicture TwoCircle
-                toggleButton(cues_O[0],true); //onePicture TwoCircle
-                timerCancerGreen();// TwoCircle
-
-//                toggleButton(cues_O[1],false); //onePicture
-//                timer();   //onePicture TwoCircle
+//                TaskManager.takePhoto();//bigPicture change aa
+                h0.removeCallbacksAndMessages(null);//change TwoCircle change aa move
+                h3.removeCallbacksAndMessages(null);//change TwoCircle change aa move
+                toggleButton(cues_O[0],false); //onePicture  change aa move
+                toggleButton(cues_O[1],false); //onePicture  change aa move
+                timerAppear();   //onePicture  change aa move
 //                timerEnd();//onePicture
                 //incorrectOptionChosen();//changetask
                 break;
@@ -281,9 +311,15 @@ public class TaskExample extends Fragment
         h1.postDelayed(new Runnable() {
             @Override
             public void run() {
-                fixedCueLocations();//changeDon'tMove
+//                randomiseCueLocations(); //changeDon'tMove note
+//                fixedCueLocations();//changeDon'tMove  change aa move
                 toggleBackground(backgroundRed, false);
                 toggleBackground(backgroundPink, false);
+                //// Lots of toggles for task objects大量的任务对象切换
+//                toggleGoCues(true);  //onePicture
+//                textView.setText("Initiation Stage");  //onePicture
+//                toggleButton(cues_O[0],true); //onePicture  change aa move
+//                toggleButton(cues_O[1],true); //onePicture  change aa move
             }
         }, delay);
     }
@@ -343,13 +379,13 @@ public class TaskExample extends Fragment
     private void deliverReward(int juiceChoice) {
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
-        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响
+//        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响  change aa
     }
 
     private void deliverRewardEnd(int juiceChoice){
         logEvent("this cannel, no juice");//bigpicture
         TaskManager.deliverReward(juiceChoice,rewardAmount);
-        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响
+//        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响  change aa
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {
@@ -424,6 +460,7 @@ public class TaskExample extends Fragment
     // Utility functions实用功能，randomise No Replacement随机无替换
     //random.nextInt生成随机数；
     private static void randomiseNoReplacement(Button[] buttons) {
+
         int[] chosen = new int[maxCueLocations];
         for (int i = 0; i < maxCueLocations; i++) {
             chosen[i] = 0;
@@ -441,10 +478,11 @@ public class TaskExample extends Fragment
 
     //Fixed position
     private static void fixedCueLocations(){
-        cues_O[1].setX(xLocs[0]-180);//befere 350  when circle is 700,the two value is 400,550
-        cues_O[1].setY(yLocs[1]-300);//before 350 600
-        cues_O[0].setX(xLocs[0]-180);//befere 350   change TwoCircle
-        cues_O[0].setY(yLocs[1]-300);//before 350 600 change TwoCircle
+
+        cues_O[0].setX(xLocs[0]-180);//befere 350   change TwoCircle  change aa
+        cues_O[0].setY(yLocs[1]-800);//before 350 600 change TwoCircle  change aa
+        cues_O[1].setX(xLocs[0]);//befere 350  when circle is 700,the two value is 400,550  change aa
+        cues_O[1].setY(yLocs[1]-80);//before 350 600    this is apple change aa
 
     }
 
@@ -452,23 +490,23 @@ public class TaskExample extends Fragment
     private static void randomiseCueLocations() {
         // Place all trial objects in random locations将所有试用对象放在随机位置
         //randomise No Replacement随机无替换
-        randomiseNoReplacement(cues_Reward);
+        //randomiseNoReplacement(cues_Reward);
         randomiseNoReplacement(cues_O);
-        randomiseNoReplacement(cues_V);
+        //randomiseNoReplacement(cues_V);
     }
     // 用于跟踪任务时间的递归函数
     // Recursive function to track task time
     //当点入Monkey V Cue1或进入奖励界面，如果10s不点击屏幕就返回initiation stage Monkey O Start/Monkey V Start界面；
 //onePicture
-//    private void timerEnd(){
-//        h3.postDelayed(new Runnable(){
-//            @Override
-//            public void run(){
-//                deliverRewardEnd(0);//onePicture here
-//                textView.setText("");
-//            }
-//        },3000);
-//    }
+    private void timerEnd(){
+        h3.postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                deliverRewardEnd(0);//onePicture here
+                textView.setText("");
+            }
+        },3000);
+    }
 
 //    private static void deliverRewardChanel(int juiceChoice) {
 //        logEvent("Stop* Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
@@ -480,38 +518,25 @@ public class TaskExample extends Fragment
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                    randomiseCueLocations();
-                fixedCueLocations();//changeDon'tMove
+//                randomiseCueLocations();//change aa move
+//                fixedCueLocations();//changeDon'tMove  change aa move
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
-                toggleButton(cues_O[1],false); //onePicture TwoCircle
+                toggleButton(cues_O[0],false); //onePicture change aa  move
+                toggleButton(cues_O[1],false); //onePicture  change aa move
                 textView.setText("  ");
-                timerAppear();//TwoCircle
+                timerAppear();// change aa move
             }
-        }, 2000);//changetask  changeReward
+        }, 2000);//changetask  changeReward  change aa
     }
 
     private static void timerAppear() {
         h3.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                    randomiseCueLocations();
-                fixedCueLocations();//changeDon'tMove
+                randomiseCueLocations();//change aa move
+//                fixedCueLocations();//changeDon'tMove
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
-                toggleButton(cues_O[1],true); //onePicture TwoCircle
-                textView.setText("  ");
-                timer();//TwoCircle
-            }
-        }, 2000);//changetask  changeReward
-    }
-
-    private static void timerCancerGreen() {
-        h4.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                    randomiseCueLocations();
-                fixedCueLocations();//changeDon'tMove
-//                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
-                toggleButton(cues_O[0],false); //onePicture TwoCircle
+                toggleButton(cues_O[0],true); //onePicture TwoCircle  change aa move
                 toggleButton(cues_O[1],true); //onePicture TwoCircle
                 textView.setText("  ");
                 timer();//TwoCircle
@@ -540,7 +565,7 @@ public class TaskExample extends Fragment
                     time = 0;
                     timerRunning = false;
                 } else {
-                    randomiseNoReplacement(cues_O);//changetask-onePicture
+//                    randomiseNoReplacement(cues_O);//changetask-onePicture
                     timer1();
                     timerRunning = true;
                 }

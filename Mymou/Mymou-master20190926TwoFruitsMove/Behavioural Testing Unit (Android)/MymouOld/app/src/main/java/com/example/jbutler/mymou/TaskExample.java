@@ -526,7 +526,7 @@ public class TaskExample extends Fragment
                 textView.setText("  ");
                 timerAppear();// change aa move
             }
-        }, 2000);//changetask  changeReward  change aa
+        }, 500);//changetask  changeReward  change aa
     }
 
     private static void timerAppear() {

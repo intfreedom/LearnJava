@@ -222,7 +222,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         }
         if (trialData != null) {
             int length = trialData.size();
-            for (int i = 0; i < length; i++) {
+            for (int i = 0; i < length-length+1; i++) {//change aa BananaReward i<length
                 String s = trialData.get(i);
                 // Prefix variables that were constant throughout trial (trial result, which monkey, etc)
                 s = taskId +"," + trialCounter +"," + monkeyId + "," + overallTrialOutcome + "," + s;

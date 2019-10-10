@@ -379,7 +379,7 @@ public class TaskExample extends Fragment
     private void deliverReward(int juiceChoice) {
         logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
         TaskManager.deliverReward(juiceChoice, rewardAmount);
-//        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响  change aa
+        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响  change aa BananaReward
     }
 
     private void deliverRewardEnd(int juiceChoice){

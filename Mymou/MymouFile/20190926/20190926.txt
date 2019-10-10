@@ -1,0 +1,171 @@
+001,0,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,0,-1,1,null,140617_544,Bluetooth not connection!!!
+001,1,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,1,-1,1,null,140617_544,Bluetooth not connection!!!
+001,1,-1,1,null,140618_377,Bluetooth not connection!!!
+001,2,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,2,-1,1,null,140617_544,Bluetooth not connection!!!
+001,2,-1,1,null,140618_377,Bluetooth not connection!!!
+001,2,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,2,-1,1,null,140619_064,Bluetooth not connection!!!
+001,3,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,3,-1,1,null,140617_544,Bluetooth not connection!!!
+001,3,-1,1,null,140618_377,Bluetooth not connection!!!
+001,3,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,3,-1,1,null,140619_064,Bluetooth not connection!!!
+001,3,-1,1,null,140619_877,Bluetooth not connection!!!
+001,4,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,4,-1,1,null,140617_544,Bluetooth not connection!!!
+001,4,-1,1,null,140618_377,Bluetooth not connection!!!
+001,4,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,4,-1,1,null,140619_064,Bluetooth not connection!!!
+001,4,-1,1,null,140619_877,Bluetooth not connection!!!
+001,4,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,4,-1,1,null,140620_419,Bluetooth not connection!!!
+001,5,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,5,-1,1,null,140617_544,Bluetooth not connection!!!
+001,5,-1,1,null,140618_377,Bluetooth not connection!!!
+001,5,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,5,-1,1,null,140619_064,Bluetooth not connection!!!
+001,5,-1,1,null,140619_877,Bluetooth not connection!!!
+001,5,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,5,-1,1,null,140620_419,Bluetooth not connection!!!
+001,5,-1,1,null,140621_238,Bluetooth not connection!!!
+001,6,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,6,-1,1,null,140617_544,Bluetooth not connection!!!
+001,6,-1,1,null,140618_377,Bluetooth not connection!!!
+001,6,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,6,-1,1,null,140619_064,Bluetooth not connection!!!
+001,6,-1,1,null,140619_877,Bluetooth not connection!!!
+001,6,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,6,-1,1,null,140620_419,Bluetooth not connection!!!
+001,6,-1,1,null,140621_238,Bluetooth not connection!!!
+001,6,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,6,-1,1,null,141323_247,Bluetooth not connection!!!
+001,7,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,7,-1,1,null,140617_544,Bluetooth not connection!!!
+001,7,-1,1,null,140618_377,Bluetooth not connection!!!
+001,7,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,7,-1,1,null,140619_064,Bluetooth not connection!!!
+001,7,-1,1,null,140619_877,Bluetooth not connection!!!
+001,7,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,7,-1,1,null,140620_419,Bluetooth not connection!!!
+001,7,-1,1,null,140621_238,Bluetooth not connection!!!
+001,7,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,7,-1,1,null,141323_247,Bluetooth not connection!!!
+001,7,-1,1,null,141324_059,Bluetooth not connection!!!
+001,8,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,8,-1,1,null,140617_544,Bluetooth not connection!!!
+001,8,-1,1,null,140618_377,Bluetooth not connection!!!
+001,8,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,8,-1,1,null,140619_064,Bluetooth not connection!!!
+001,8,-1,1,null,140619_877,Bluetooth not connection!!!
+001,8,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,8,-1,1,null,140620_419,Bluetooth not connection!!!
+001,8,-1,1,null,140621_238,Bluetooth not connection!!!
+001,8,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,8,-1,1,null,141323_247,Bluetooth not connection!!!
+001,8,-1,1,null,141324_059,Bluetooth not connection!!!
+001,8,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,8,-1,1,null,143002_917,Bluetooth not connection!!!
+001,9,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,9,-1,1,null,140617_544,Bluetooth not connection!!!
+001,9,-1,1,null,140618_377,Bluetooth not connection!!!
+001,9,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,9,-1,1,null,140619_064,Bluetooth not connection!!!
+001,9,-1,1,null,140619_877,Bluetooth not connection!!!
+001,9,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,9,-1,1,null,140620_419,Bluetooth not connection!!!
+001,9,-1,1,null,140621_238,Bluetooth not connection!!!
+001,9,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,9,-1,1,null,141323_247,Bluetooth not connection!!!
+001,9,-1,1,null,141324_059,Bluetooth not connection!!!
+001,9,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,9,-1,1,null,143002_917,Bluetooth not connection!!!
+001,9,-1,1,null,143009_769,Bluetooth not connection!!!
+001,10,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,10,-1,1,null,140617_544,Bluetooth not connection!!!
+001,10,-1,1,null,140618_377,Bluetooth not connection!!!
+001,10,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,10,-1,1,null,140619_064,Bluetooth not connection!!!
+001,10,-1,1,null,140619_877,Bluetooth not connection!!!
+001,10,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,10,-1,1,null,140620_419,Bluetooth not connection!!!
+001,10,-1,1,null,140621_238,Bluetooth not connection!!!
+001,10,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,10,-1,1,null,141323_247,Bluetooth not connection!!!
+001,10,-1,1,null,141324_059,Bluetooth not connection!!!
+001,10,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,10,-1,1,null,143002_917,Bluetooth not connection!!!
+001,10,-1,1,null,143009_769,Bluetooth not connection!!!
+001,10,-1,1,null,143044_103,Delivering 800ms reward on channel 0
+001,10,-1,1,null,143044_106,Bluetooth not connection!!!
+001,11,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,11,-1,1,null,140617_544,Bluetooth not connection!!!
+001,11,-1,1,null,140618_377,Bluetooth not connection!!!
+001,11,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,11,-1,1,null,140619_064,Bluetooth not connection!!!
+001,11,-1,1,null,140619_877,Bluetooth not connection!!!
+001,11,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,11,-1,1,null,140620_419,Bluetooth not connection!!!
+001,11,-1,1,null,140621_238,Bluetooth not connection!!!
+001,11,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,11,-1,1,null,141323_247,Bluetooth not connection!!!
+001,11,-1,1,null,141324_059,Bluetooth not connection!!!
+001,11,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,11,-1,1,null,143002_917,Bluetooth not connection!!!
+001,11,-1,1,null,143009_769,Bluetooth not connection!!!
+001,11,-1,1,null,143044_103,Delivering 800ms reward on channel 0
+001,11,-1,1,null,143044_106,Bluetooth not connection!!!
+001,11,-1,1,null,143044_911,Bluetooth not connection!!!
+001,12,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,12,-1,1,null,140617_544,Bluetooth not connection!!!
+001,12,-1,1,null,140618_377,Bluetooth not connection!!!
+001,12,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,12,-1,1,null,140619_064,Bluetooth not connection!!!
+001,12,-1,1,null,140619_877,Bluetooth not connection!!!
+001,12,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,12,-1,1,null,140620_419,Bluetooth not connection!!!
+001,12,-1,1,null,140621_238,Bluetooth not connection!!!
+001,12,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,12,-1,1,null,141323_247,Bluetooth not connection!!!
+001,12,-1,1,null,141324_059,Bluetooth not connection!!!
+001,12,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,12,-1,1,null,143002_917,Bluetooth not connection!!!
+001,12,-1,1,null,143009_769,Bluetooth not connection!!!
+001,12,-1,1,null,143044_103,Delivering 800ms reward on channel 0
+001,12,-1,1,null,143044_106,Bluetooth not connection!!!
+001,12,-1,1,null,143044_911,Bluetooth not connection!!!
+001,12,-1,1,null,143055_967,Delivering 800ms reward on channel 0
+001,12,-1,1,null,143055_969,Bluetooth not connection!!!
+001,13,-1,1,null,140617_536,Delivering 800ms reward on channel 0
+001,13,-1,1,null,140617_544,Bluetooth not connection!!!
+001,13,-1,1,null,140618_377,Bluetooth not connection!!!
+001,13,-1,1,null,140619_059,Delivering 800ms reward on channel 0
+001,13,-1,1,null,140619_064,Bluetooth not connection!!!
+001,13,-1,1,null,140619_877,Bluetooth not connection!!!
+001,13,-1,1,null,140620_414,Delivering 800ms reward on channel 0
+001,13,-1,1,null,140620_419,Bluetooth not connection!!!
+001,13,-1,1,null,140621_238,Bluetooth not connection!!!
+001,13,-1,1,null,141323_244,Delivering 800ms reward on channel 0
+001,13,-1,1,null,141323_247,Bluetooth not connection!!!
+001,13,-1,1,null,141324_059,Bluetooth not connection!!!
+001,13,-1,1,null,143002_915,Delivering 800ms reward on channel 0
+001,13,-1,1,null,143002_917,Bluetooth not connection!!!
+001,13,-1,1,null,143009_769,Bluetooth not connection!!!
+001,13,-1,1,null,143044_103,Delivering 800ms reward on channel 0
+001,13,-1,1,null,143044_106,Bluetooth not connection!!!
+001,13,-1,1,null,143044_911,Bluetooth not connection!!!
+001,13,-1,1,null,143055_967,Delivering 800ms reward on channel 0
+001,13,-1,1,null,143055_969,Bluetooth not connection!!!
+001,13,-1,1,null,143056_779,Bluetooth not connection!!!
+001,1,-1,1,null,144201_593,Delivering 800ms reward on channel 0
+001,1,-1,1,null,144201_603,Bluetooth not connection!!!
+001,2,-1,1,null,144201_593,Delivering 800ms reward on channel 0
+001,2,-1,1,null,144201_603,Bluetooth not connection!!!
+001,2,-1,1,null,144202_424,Bluetooth not connection!!!
+001,1,-1,1,null,144842_535,Delivering 800ms reward on channel 0
+001,1,-1,1,null,144842_545,Bluetooth not connection!!!
+001,2,-1,1,null,144842_535,Delivering 800ms reward on channel 0
+001,2,-1,1,null,144842_545,Bluetooth not connection!!!
+001,2,-1,1,null,144843_384,Bluetooth not connection!!!

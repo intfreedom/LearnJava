@@ -240,7 +240,7 @@ public class TaskExample extends Fragment
 
         // Always disable all cues after a press as monkeys love to bash repeatedly
         //因为猴子喜欢反复点击，所以在按下后总是禁用所有提示
-        disableAllCues();
+        disableAllCues();     //change aa BananaReward
         //重置任务计时器（用于空闲超时并根据需要计算反应时间）
         // Reset task timer (used for idle timeout and calculating reaction times if desired)
         time = 0;
@@ -258,6 +258,7 @@ public class TaskExample extends Fragment
                 break;
             case R.id.buttonCue2MonkO:  //change aa move Banana
 //                correctOptionChosen();  change aa
+                deliverRewardWrong(2);  //change aa BananaReward
                 h0.removeCallbacksAndMessages(null);//change TwoCircle change aa move
                 h3.removeCallbacksAndMessages(null);//change TwoCircle change aa move
                 toggleButton(cues_O[0],false); //onePicture  change aa move
@@ -268,7 +269,7 @@ public class TaskExample extends Fragment
                 incorrectOptionChosen();
                 break;
             case R.id.buttonCue1MonkO:  ////change aa move Banana
-                deliverReward(0);//onePicture
+                deliverReward(1);//onePicture
 //                TaskManager.takePhoto();//bigPicture change aa
                 h0.removeCallbacksAndMessages(null);//change TwoCircle change aa move
                 h3.removeCallbacksAndMessages(null);//change TwoCircle change aa move
@@ -377,15 +378,16 @@ public class TaskExample extends Fragment
     }
     //传递奖励；
     private void deliverReward(int juiceChoice) {
-        logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
+//        logEvent("Delivering "+rewardAmount+"ms reward on channel "+juiceChoice);
+        logEvent(rewardAmount+"ms reward");   //change aa BananaReward
         TaskManager.deliverReward(juiceChoice, rewardAmount);
-        endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响  change aa BananaReward
+        endOfTrial(juiceChoice, rewardAmount + 500);//暂时取消，不知道会有何影响  change aa BananaReward
     }
 
-    private void deliverRewardEnd(int juiceChoice){
-        logEvent("this cannel, no juice");//bigpicture
-        TaskManager.deliverReward(juiceChoice,rewardAmount);
-        endOfTrial(1,rewardAmount + 500);//暂时取消，不知道会有何影响  change aa
+    private void deliverRewardWrong(int juiceChoice){
+        logEvent("Wrong Button, no juice");//bigpicture
+//        TaskManager.deliverReward(juiceChoice,rewardAmount);  //change aa BananaReward
+        endOfTrial(juiceChoice,rewardAmount + 500);//暂时取消，不知道会有何影响  change aa
     }
 
     private static void endOfTrial(int outcome, int newTrialDelay) {
@@ -502,7 +504,7 @@ public class TaskExample extends Fragment
         h3.postDelayed(new Runnable(){
             @Override
             public void run(){
-                deliverRewardEnd(0);//onePicture here
+                deliverRewardWrong(0);//onePicture here
                 textView.setText("");
             }
         },3000);

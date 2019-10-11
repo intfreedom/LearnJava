@@ -1,16 +1,16 @@
-1.1.1
-20190711���Կ��Ʊø�ˮ���ڵ����1s��ֹͣ��ˮ��
-��һ���о���ˮ����־�ļ�������ģ�ͬʱ�õ��֮������գ�
-����ʹ�����չ���ʱ����־�ļ����Ǹ�ˮ��������ļ���mymou/"time"������ʹ������ʱ����һЩ�ڵ��ļ����ļ���mymou/"time"/f��
+﻿1.1.1
+20190711可以控制泵给水，在点击后，1s后停止给水；
+下一步研究给水的日志文件存放在哪，同时让点击之后就拍照；
+当不使用拍照功能时，日志文件就是给水的情况（文件夹mymou/"time"），当使用拍照时，是一些节点文件（文件夹mymou/"time"/f）
 
 
 
-1.1.2Ϊ��ÿ�ε���־�ļ���һ�£����֮��mymou/date�ļ����е�ͼƬ�����Ǹı�ģ���־�ļ�������ݲ��䣬�ļ������Ĵ洢�����Ǹı�ģ�
+1.1.2为何每次的日志文件都一致，点击之后mymou/date文件夹中的图片数据是改变的，日志文件里的内容不变，文件本身的存储日期是改变的；
 
 
 1.1.3
 Mymou-master20190814RedCircle
-�ı�button,
+改变button,
 
 <Button
             android:text="Monkey O\n Cue 2"
@@ -22,13 +22,13 @@ Mymou-master20190814RedCircle
             android:drawableRight="@drawable/monkey0711"/>
 
 20190816  
-1.1.1//�ı�rewardAmount=1000,�����ԭ��Ϊ�ˣ���Ϊ�˸ı佱��ʱ�䣬��Ϊ100,�����Ϊ100,��˵100ms�󣬾ͻ�ֹͣ��ˮ����δֹͣ�����Լ�һ��timerEnd();//onePicture
-static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for����ϵͳ����ĳ���ʱ�䣨ms��
-����100ms��ͻ��Զ�ֹͣ��
-�������ڵ�Arduino����1��0��1��0��ÿ����һ��1�ͻ���100ms����һ��0��֮ǰ���ֵ��Ϊ1000ms�����Ե����ε�����С��
-1000ms���ͻ�������⣬��򿪵�1�ͻ᲻�����ã�
+1.1.1//改变rewardAmount=1000,这个量原本为此，但为了改变奖励时间，改为100,这个改为100,按说100ms后，就会停止给水，但未停止，所以加一个timerEnd();//onePicture
+static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for奖励系统激活的持续时间（ms）
+设置100ms后就会自动停止，
+对于现在的Arduino就是1，0，1，0，每发送一个1就会在100ms后发送一个0，之前这个值设为1000ms，所以当两次点击间隔小于
+1000ms，就会出现问题，这打开的1就会不起作用；
 
-	  �����<Button
+	  把这个<Button
             android:text="Monkey O\n Cue 2"
             android:layout_width="300dp"
             android:layout_height="300dp"
@@ -36,17 +36,17 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
             android:id="@+id/buttonCue2MonkO"
             android:background="@drawable/toggle_button"
             android:drawableRight="@drawable/monkey0711"/>
-	��Ϊ<Button
+	改为<Button
             android:text="  "
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:textSize="30sp"
             android:id="@+id/buttonCue2MonkO"
             android:background="#FF0000"
-            android:drawableRight="@drawable/redcircle"/>�����Ϊ��ɫ���Σ�
+            android:drawableRight="@drawable/redcircle"/>这里变为红色方形，
 
-1.1.2��һ���Ѱ�ť��ΪԲ�Σ�
-1.1.2.1 activity_task_example.xml�ļ���<Button
+1.1.2下一步把按钮变为圆形；
+1.1.2.1 activity_task_example.xml文件中<Button
             android:text="  "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
             android:layout_gravity="center|bottom"
             android:gravity="center"
             android:background="@drawable/redcircle"/>
-1.1.2.2Ȼ��дһ��redcircle.xml�ļ�����drawable�ļ����£�
+1.1.2.2然后写一个redcircle.xml文件放在drawable文件夹下，
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape"
        android:shape="oval">
@@ -63,16 +63,16 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
     <size android:height="100dp"
           android:width="100dp"/>
 </shape>
-<!--oval����Բ������Բ�Ŀ�������Ϊһ�������ܳ���Բ�ε�Ч����-->
+<!--oval是椭圆，把椭圆的宽高设置为一样，才能出现圆形的效果；-->
 
-1.1.3����ͣ��ʱ�䣬˳���޸�Բ�δ�С��
-�������������˶�����@+id/buttonCue2MonkO�����ť��
+1.1.3设置停顿时间，顺便修改圆形大小；
+首先我们设置运动的是@+id/buttonCue2MonkO这个按钮；
 1.1.4
-�޸���endOfTrial(1, rewardAmount + 500);//��ʱȡ������֪�����к�Ӱ�죬
-�����ע���ˣ�
-�ƺ������endOfTrial��.txt��log�ļ�ȡ���ˣ���������¼�ļ��ˣ�
+修改了endOfTrial(1, rewardAmount + 500);//暂时取消，不知道会有何影响，
+把这个注释了；
+似乎是这个endOfTrial把.txt的log文件取消了，看不到记录文件了；
 1.1.5
-���°�ť�󣬰�ť��ʧ����ʼ����������ʱ������Ϊ500ms����timerEnd����;
+按下按钮后，按钮消失；开始奖励，奖励时间设置为500ms，由timerEnd控制;
  case R.id.buttonCue2MonkO:
                 deliverReward(0);//onePicture
                 TaskManager.takePhoto();//bigPicture
@@ -82,7 +82,7 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
                 //incorrectOptionChosen();//changetask
                 break;
 
-�������private static void timer() {
+利用这个private static void timer() {
         h0.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -91,93 +91,117 @@ static int rewardAmount = 100;  // Duration (ms) that rewardSystem activated for
                 toggleButton(cues_O[1],true); //onePicture
             }
         }, 2000);//changetask
-    }����
-���ð��°�ť��2000ms���������ʾ��ť���䶯λ�ã�
-timer��timerEnd��������������ͻ��
+    }函数
+设置按下按钮后，2000ms后会重新显示按钮并变动位置；
+timer与timerEnd这两个函数不冲突；
 
 1.1.5.1
-Ŀǰʵ���ˣ�һ��ʼ����һ��Բ�ΰ�ť�����º�������ʧ��ͬʱ��ˮ500ms����ʧ2000ms������������λ�ó��֣�
-��ˮʱ��̫�̣������⣬�Ѹ�ˮʱ���Ϊ3000ms����ť��ʧʱ���Ϊ3000ms
-������ʧʱ���Ϊ1000ms,��û��ֹͣ��ˮ��ʱ����һ�ΰ��˸�ˮ��ť���������о����̣߳�����
+目前实现了，一开始出现一个圆形按钮，按下后立刻消失，同时给水500ms，消失2000ms后重新在其他位置出现；
+给水时间太短，有问题，把给水时间改为3000ms，按钮消失时间改为3000ms
+若是消失时间改为1000ms,当没有停止给水的时候，再一次按了给水按钮会怎样？研究多线程？？？
 1.1.6
-Mymou-master20190816RedCircle500ml���˸�ˮʱ���Ϊ3000ms����ť��ʧʱ���Ϊ3000ms
-Mymou-master20190821OtherArduino�޸���������ַ�����Mymou-master20190816RedCircle500ml
+Mymou-master20190816RedCircle500ml改了给水时间改为3000ms，按钮消失时间改为3000ms
+Mymou-master20190821OtherArduino修改了蓝牙地址，相比Mymou-master20190816RedCircle500ml
 
-�µ�Arduino����ģ��HC-06��98:D3:31:FD:24:E1
-����ͨ��RewardSystem.java�е�addressֵ�л���
+新的Arduino蓝牙模块HC-06，98:D3:31:FD:24:E1
+可以通过RewardSystem.java中的address值切换；
 
 
-endOfTrial�������ȫȡ�����ֻ��д��󣬰��������ע�͵���//        PrepareForNewTrial(newTrialDelay);//onePicture
-��֤log�ļ����Ƿ��������������
+endOfTrial把这个完全取消，又会有错误，把这个错误注释掉，//        PrepareForNewTrial(newTrialDelay);//onePicture
+验证log文件，是否可以重新正常，
 
-1.1.7�����������⣬��ˮ�����3000ms����ʵ�⽫��5000ms����һ�����⣬���֮�󲻸�ˮ��������ʱ��ʶ��
+1.1.7遇到两个问题，给水间隔是3000ms，而实测将近5000ms，另一个问题，点击之后不给水，蓝牙有时不识别；
 
-RewardSystem.java���activateChannel��CountDownTimer������⣬�ٹر�����activity��fragmentʱ�����û�е���
-cancle������onTick��һֱִ�У�
+RewardSystem.java里的activateChannel，CountDownTimer里的问题，再关闭销毁activity或fragment时，如果没有调用
+cancle方法，onTick会一直执行；
 
 1.1.7.1
-Mymou-master20190821OtherArduino����HC-05��OK�ģ�
+Mymou-master20190821OtherArduino对于HC-05是OK的；
 
-��ס���յ�ǰ���� juiceChoice=0�����ո�������������1
+记住按照当前代码 juiceChoice=0，最终给蓝牙的是数字1
 
-ÿ��Log��л��ģ���001��18����һ��״̬���ͻ�������� reward on channel0
+每次Log里，切换的，如001，18到下一个状态，就会出现两次 reward on channel0
 
-ÿ�����´򿪣�����Ҫ����������
-ÿ���ж��ˣ�log�ļ�Ҳ�ж��ˣ���������ƽ�壬�Ż����µ�logд���ļ���
+每次重新打开，就需要重启蓝牙；
+每次中断了，log文件也中断了，必须重启平板，才会有新的log写入文件；
 
 1.1.7.2
-��ʹ���治��toggleButton(cues_O[1],false); //onePicture
-���֮��ťҲ��ʧ������
+即使里面不放toggleButton(cues_O[1],false); //onePicture
+点击之后按钮也消失？？？
 
 1.1.7.3
-��HC-05��HC-06���л�ʱ�����Ҫ��������һ�ε����HC-05��1 0 1 0ֹͣ��HC-06��1 0ֹͣ��
-ͬʱ static int rewardAmount = 100;  ���ֵ����HC-05��˵��100�ȽϺã�ӦΪ���ǿ��Է����¸������֮ǰ�������С�ڵ��ڸ�ˮʱ����
-����HC-06����ֹͣ��ʱ�䣬����Ϊ��Ҫ��ֵ=��ˮʱ�䣬��1000ms
-Mymou-master20190826changeRewardBigCircleHC-05�����Ŀֻ�����ڱõ�1010Ӳ��ģʽ��1 0Ϊ�����ٸ�һ��1 0Ϊ�أ�
-���������ñ�����������1 0 1 0��1 0���Ƶ�����
+当HC-05与HC-06都切换时，这个要依靠添加一次点击，HC-05是1 0 1 0停止，HC-06是1 0停止；
+同时 static int rewardAmount = 100;  这个值对于HC-05来说是100比较好，应为它是可以发出下个命令的之前的清除；小于等于给水时间间隔
+对于HC-06就是停止的时间，设置为想要的值=给水时间，如1000ms
+Mymou-master20190826changeRewardBigCircleHC-05这个项目只适用于泵的1010硬件模式（1 0为开，再给一个1 0为关）
+可以用万用表测量，两个1 0 1 0，1 0控制的区别；
 
-������һ���ģ�û�����⣻ͨ�����ıõ�ģʽ����Ϊ1��ˮ��0ֹͣ��ˮ����������ʹ�õĶ���Mymou-master20190826changeRewardBigCircle��һ��ϵͳ��
-Ŀǰ��ˮʱ����800ms������������ƣ�������ٴ�֮��û�з�Ӧ��
+代码是一样的，没有问题；通过更改泵的模式，改为1给水，0停止给水，所以现在使用的都是Mymou-master20190826changeRewardBigCircle这一套系统；
+目前给水时间是800ms，点击次数限制；点击几百次之后，没有反应；
 
 
 1.1.8
-Plan A��
-�������ֹͣR-->W�̣߳���ΪG��1s���R��������R-->�̣߳�
-�����㣺һ�����ֹͣһ��ѭ�����̣߳�h0.postDelayed�����ֹ
-�������ʵ�ְ�ť��ɫ(����ͬһ��������������ť)��
+Plan A：
+监测点击，停止R-->W线程，变为G，1s后变R，并开启R-->线程；
+技术点：一，如何停止一个循环的线程，h0.postDelayed如何终止
+二，如何实现按钮变色(或者同一个点设置两个按钮)；
 Plan B:
-����������ť��һ��R-->W�̣߳�
-������R--W��ťʱ�������̣߳�����R-->G�̣߳���R-->G����ʱ����R-->W�İ�ť��ʾ��Ȼ������
-���������ƻ��Ĺؼ����ǽ����̣߳�
+设置两个按钮，一个R-->W线程；
+当按下R--W按钮时，结束线程，启动R-->G线程，当R-->G结束时，把R-->W的按钮显示，然后启动
+所以两个计划的关键都是结束线程；
 
 1.1.9
-��������һֱ�����⣻ż�������޷����ӣ������Ͽ�����Ļ������û�б䰵��
-�������������һֱ���ڣ�������״̬���������ťʱ��arduino�ϵ�TX�ƺܿ�������£�
+现在运行一直出问题；偶尔蓝牙无法连接，蓝牙断开，屏幕常亮，没有变暗；
+点击，看看蓝牙一直处于，可连接状态；当点击按钮时，arduino上的TX灯很快的闪两下；
 
 1.1.9.1
-�ǲ��ǰ����еĽ��̶�ȡ���ˣ��������⣬��ȡ����Ҫȡ�����Ǹ���
+是不是把所有的进程都取消了，会有问题，就取消需要取消的那个；
 1.1.9.2
-��θ���־�ļ�����¼ÿ�ε��ʱ������״̬�������ʱ�䣻
+如何改日志文件，记录每次点击时蓝牙的状态，点击的时间；
 1.1.9.3
-�о����������ü���ԭ������֤�����Ͽ�ʱ����Ļ�ǲ����ģ�
-����HC-05����ģ���ԭ���������ж����Ƿ����ӣ�
+研究下蓝牙调用及其原理；保证蓝牙断开时，屏幕是不亮的；
+关于HC-05蓝牙模块的原理，可以判断其是否连接；
 
 1.1.10
-�鿴��־��¼��Ϣ���˽�ÿһ���ֵĺ��壬Ȼ�󣬰�����ģ��������Ҫ����־�д�����ʾʱ�䣻
+查看日志记录信息，了解每一数字的含义，然后，按需更改，例如可以要求日志中带有显示时间；
 
-��־�ļ���
+日志文件：
 001,trialCounter
-String taskId = "001";  // Unique string prefixed to all log entries������־��Ŀǰ׺��Ψһ�ַ���
+String taskId = "001";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
 trialCounter:
 
 1.1.11
-20190926,�޸��������̶���ˮ����������������������⣻Mymou-master20190910TwoCircleSmall
+20190926,修改了两个固定的水果，连续点击会有闪退问题；Mymou-master20190910TwoCircleSmall
 
-���֮��ʹ�趨��break��Ҳ����Զ��ʧ���������timer()����һ��ԭ���п��ܾ��ܽ�����ȶ���ԭ��
+点击之后即使设定的break，也会永远消失，必须调用timer()，看一下原因，有可能就能解除不稳定的原因；
 
-һֱ���bb,û�����⣬���aa��һ���̶Ⱦͻ����ˣ����ߵ���������deliverReward();
+一直点击bb,没有问题，点击aa到一定程度就会闪退，两者的区别在于deliverReward();
 
-//        PrepareForNewTrial(newTrialDelay); //Ϊ���޸ĵ���������⣬�����ע�͵���change aa
+//        PrepareForNewTrial(newTrialDelay); //为了修改点击闪退问题，把这个注释掉；change aa
+
+
+1.1.12
+20191011，文件，Mymou-master20190926TwoFruitsMoveBananaReward会出现点击几次后，有一次，banana不出来，点击多次后，就会出现某一次，香蕉不出现；数了即使不点击，每20次会出现一次香蕉不出现；现在香蕉对应的是cues_o[0],即buttonCue1MonkO,
+思路：一，查看两个按钮相关的区别，cues_o[0]，cues_o[1]；二，不点击也会出现，就是和按钮无关，会不会出现，这种情况，两个超出了边界，或者重叠，这个可说通，因为这样总是先出现香蕉，后出现苹果，苹果可以把香蕉盖住；而苹果不会消失；要验证这个观点，就是把timerAppear里的苹果和香蕉出现的次序更改下，以前没有发现这个问题的原因是，不用点击香蕉，所以没有关注香蕉的情况；
+这个显示次序不一定，就是同步的，但这个分配次序不同步，总是先分配cues_o[0]
+如果位置重叠，先分配那个会被覆盖；
+思路很重要，
+randomiseNoReplacement()这个函数里可以发现一下坐标是重叠的
+它的避免重叠机制，无法规避这个问题；
+//坐标（0，0）和（5，5）重叠，（2，2）和（4，4)重叠； //change aa BananaReward
 
 
 
+1.点击错误按钮也要出现log;
+2.点击所有按钮的开始时间，和结束时间；
+3.点击后拍照，会影响蓝牙问题；已确认，把功能注释掉，就没有蓝牙问题了；
+
+
+遇到这个问题，因为点击出现，所以把点击造成的代码修改下；
+
+2.
+把同一项目修改为不同的版本，运行在同一设备上；
+applicationId "com.example.jbutler.mymouOnlyBanana"这个是唯一标识一个项目的，
+applicationId "com.example.jbutler.mymou"属于不同的项目；
+修改（Android模式）Gradle Scripts中的build gradle(Module:app)中的applicationId，
+然后Rebuild Project

@@ -36,7 +36,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     private static String taskId = "001";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
 
     //Bluetooth variables蓝牙变量；
-    public static int monkeyId = -1;
+    public static int monkeyId = 1; //1 now is present Monkey Shift
     public static int numPhotos = 0;
     private static int trialCounter = 0;
     public static RewardSystem rewardSystem;
@@ -220,7 +220,8 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
         } else {
             trialCounter++;
         }
-        if (trialData != null) {
+        if (
+                trialData != null) {
             int length = trialData.size();
             for (int i = 0; i < length-length+1; i++) {//change aa BananaReward i<length
                 String s = trialData.get(i);
@@ -228,6 +229,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
                 s = taskId +"," + trialCounter +"," + monkeyId + "," + overallTrialOutcome + "," + s;
                 logHandler.post(new LogEvent(s));
                 Log.d("log", s);
+                resetTrialData();   //change aa BananaReward
             }
         }
     }
@@ -321,7 +323,8 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
 
     public static void logEvent(String data) {
         String timestamp = new SimpleDateFormat("HHmmss_SSS").format(Calendar.getInstance().getTime());
-        String msg = TaskManager.photoTimestamp + "," + timestamp + "," + data;
+//        String msg = TaskManager.photoTimestamp + "," + timestamp + "," + data; //change aa BananaReward
+        String msg = "," + timestamp + "," + data;
         trialData.add(msg);
     }
     //重置实验数据；

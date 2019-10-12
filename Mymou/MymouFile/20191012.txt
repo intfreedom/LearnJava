@@ -1,0 +1,44 @@
+% 点击香蕉出水\n% 001,1,1,1,170358_137,170358_910,800ms reward\n% 任务，点击次数，猴子名称，按钮标识，水果出现时间，点击时间，是否给水信息或蓝牙状态
+% 点击香蕉出水\n% 001,1,1,1,170358_137,170358_910,800ms reward\n% 任务，点击次数，猴子名称，按钮标识，水果出现时间，点击时间，是否给水信息或蓝牙状态
+001,0,1,1,092346_155,092346_877,800ms reward
+001,1,1,1,092348_896,092349_640,800ms reward
+001,2,1,1,092351_653,092352_313,800ms reward
+%Task: Click no banana to get rewards
+2019-10-12, 09:26:00
+%LogExample: 001,1,1,1,170358_137,170358_910,800ms reward
+%LogExample: TaskName，click count，MonkeyName，ButtonName，Button appearance time，Button click time, Data%Data: when bluetooth is disconnected, 'Bluetooth not connection!!!' is displayed, otherwise show rewards
+001,0,1,1,092706_204,092707_276,800ms reward
+001,1,1,1,092709_302,092710_167,800ms reward
+001,2,1,1,092712_178,092713_039,800ms reward
+001,3,1,1,092715_051,092715_712,800ms reward
+001,4,1,1,092717_723,092718_239,800ms reward
+%Task: Click no banana to get rewards
+%Date: 2019-10-12, 09:29:42
+%LogExample: 001,1,1,1,170358_137,170358_910,800ms reward
+%LogExample: TaskName，click count，MonkeyName，ButtonName，Button appearance time，Button click time, Data%Data: when bluetooth is disconnected, 'Bluetooth not connection!!!' is displayed, otherwise show rewards
+001,0,1,1,092957_720,092958_674,800ms reward
+001,1,1,1,093000_704,093001_806,800ms reward
+001,2,1,1,093003_820,093004_352,800ms reward
+001,3,1,1,093006_365,093007_367,800ms reward
+001,4,1,1,093009_383,093010_172,800ms reward
+001,5,1,1,093012_186,093013_014,800ms reward
+001,6,1,1,093015_028,093016_121,800ms reward
+001,7,1,1,093018_134,093019_559,800ms reward
+001,8,1,1,093021_578,093022_424,800ms reward
+001,9,1,1,093024_438,093025_113,800ms reward
+001,10,1,1,093027_127,093027_691,800ms reward
+001,11,1,1,093029_710,093030_708,800ms reward
+%Task: Click no banana to get rewards
+%Date: 2019-10-12, 09:37:08
+%LogExample: 001,1,1,1,170358_137,170358_910,800ms reward
+%LogExample: TaskName，click count，MonkeyName，ButtonName，Button appearance time，Button click time, Data
+%Remarks: Data:when bluetooth is disconnected, 'Bluetooth not connection!!!' is displayed, otherwise show rewards,170358_137 stands for HoursMinutesSeconds_Milliseconds
+
+001,0,1,1,093719_025,093720_366,800ms reward
+001,1,1,1,093722_391,093723_146,800ms reward
+001,2,1,1,093725_164,093726_022,800ms reward
+001,3,1,1,093728_037,093728_857,800ms reward
+001,4,1,1,093730_871,093731_595,800ms reward
+001,5,1,1,093733_611,093734_539,800ms reward
+001,6,1,1,093736_553,093737_261,800ms reward
+001,7,1,1,093811_439,093812_549,800ms reward

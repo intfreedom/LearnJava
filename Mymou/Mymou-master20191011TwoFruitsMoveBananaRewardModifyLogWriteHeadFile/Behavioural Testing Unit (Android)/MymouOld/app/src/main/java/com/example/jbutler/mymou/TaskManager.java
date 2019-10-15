@@ -33,7 +33,7 @@ public class TaskManager extends Activity implements Thread.UncaughtExceptionHan
     //Task you want to run goes here你想要运行的任务就在这里
     private static TaskExample task = new TaskExample();
     //private static TaskFromPaper task = new TaskFromPaper();
-    private static String taskId = "001";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
+    private static String taskId = "002";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
 
     //Bluetooth variables蓝牙变量；
     public static int monkeyId = 1; //1 now is present Monkey Shift

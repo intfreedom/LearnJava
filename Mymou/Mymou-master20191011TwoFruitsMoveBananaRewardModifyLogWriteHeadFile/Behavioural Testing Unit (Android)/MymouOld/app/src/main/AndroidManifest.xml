@@ -17,7 +17,7 @@
     <application
         android:label="Mymou"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/bbtwo"
         android:theme="@android:style/Theme.Black.NoTitleBar">
         <activity
             android:name=".MainMenu"

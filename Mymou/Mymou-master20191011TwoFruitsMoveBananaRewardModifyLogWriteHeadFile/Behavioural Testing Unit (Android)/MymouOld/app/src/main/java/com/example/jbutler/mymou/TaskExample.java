@@ -86,12 +86,13 @@ public class TaskExample extends Fragment
 
     public static String timestampStart;//change aa BananaReward
     public static String timestampToday = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());//change aa BananaReward
-    public static String HeadMessage = "%HeadFile\nTask: Click on 'Banana' to get rewards\n" +"Date: "+timestampToday+
+    public static String HeadMessage = "\n%HeadFile\nTask: 002 is TaskID, only Banana is exist, Click on 'Banana' to get rewards\n" +"Date: "+timestampToday+
             "\nLogExample: xxx,x,x,x,170358_137,170358_910,800ms reward\n" +
             "LogExample: TaskID, Counts, MonkeyID, ButtonID, ButtonAppearanceTime, ClickTime, Data\n" +
             "Remarks: Data: When bluetooth is disconnected, 'Bluetooth not connection!!!' is displayed, otherwise show rewards; " +
             "and '170358_137' stands for HoursMinutesSeconds_Milliseconds\n%HeadFile\n";
     //change aa BananaReward WriteHeadFile
+    //在TaskManager.java文件中修改，private static String taskId = "002";  // Unique string prefixed to all log entries所有日志条目前缀的唯一字符串
     //2. onCreateView是创建该fragment对应的视图，其中需要创建自己的视图并返回给调用者；
 
     /*onCreateView实例化fragment视图的布局，然后将实例化的View返回给托管activity，LayoutInflater及ViewGroup是实例化布局的必要参数

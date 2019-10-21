@@ -86,7 +86,7 @@ public class TaskExample extends Fragment
 
     public static String timestampStart;//change aa BananaReward
     public static String timestampToday = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());//change aa BananaReward
-    public static String HeadMessage = "\n%HeadFile\nTask: 001 is TaskID, Apple and Banana is coexist, Click on 'Banana' to get rewards\n" +"Date: "+timestampToday+
+    public static String HeadMessage = "\n%HeadFile\nTask: 001 is TaskID, Apple and Banana is coexist, Click on 'Banana' to get rewards，Button display time is 1000ms，The button disappears time is 2000ms.\n" +"Date: "+timestampToday+
             "\nLogExample: xxx,x,x,x,170358_137,170358_910,800ms reward\n" +
             "LogExample: TaskID, Counts, MonkeyID, ButtonID, ButtonAppearanceTime, ClickTime, Data\n" +
             "Remarks: Data: When bluetooth is disconnected, 'Bluetooth not connection!!!' is displayed, otherwise show rewards; " +
@@ -543,7 +543,7 @@ public class TaskExample extends Fragment
                 textView.setText("  ");
                 timerAppear();// change aa move
             }
-        }, 2000);//changetask  changeReward  change aa
+        }, 1000);//changetask  changeReward  change aa
     }
 
     private static void timerAppear() {

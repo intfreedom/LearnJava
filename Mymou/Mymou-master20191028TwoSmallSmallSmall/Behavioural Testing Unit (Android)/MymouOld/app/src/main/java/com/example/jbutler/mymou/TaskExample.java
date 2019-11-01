@@ -495,14 +495,18 @@ public class TaskExample extends Fragment
     }
 
     //Fixed position
-//    private static void fixedCueLocations(){
-//
+    private static void fixedCueLocations(){
+
 //        cues_O[0].setX(xLocs[0]-180);//befere 350   change TwoCircle  change aa
 //        cues_O[0].setY(yLocs[1]-800);//before 350 600 change TwoCircle  change aa
 //        cues_O[1].setX(xLocs[0]);//befere 350  when circle is 700,the two value is 400,550  change aa
 //        cues_O[1].setY(yLocs[1]-80);//before 350 600    this is apple change aa
-//
-//    }
+        cues_O[0].setX(xLocs[3]);
+        cues_O[0].setY(yLocs[6]);
+        cues_O[1].setX(xLocs[1]);
+        cues_O[1].setY(yLocs[1]);
+
+    }
 
     //随机提示位置
     private static void randomiseCueLocations() {
@@ -537,7 +541,7 @@ public class TaskExample extends Fragment
             @Override
             public void run() {
 //                randomiseCueLocations();//change aa move
-//                fixedCueLocations();//changeDon'tMove  change aa move
+                fixedCueLocations();//changeDon'tMove  change aa move  fix20191101
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
                 toggleButton(cues_O[0],true); //onePicture change aa  move  change aa BananaReward small
                 toggleButton(cues_O[1],true); //onePicture  change aa move  change aa BananaReward small
@@ -551,8 +555,8 @@ public class TaskExample extends Fragment
         h3.postDelayed(new Runnable() {
             @Override
             public void run() {
-                randomiseCueLocations();//change aa move
-//                fixedCueLocations();//changeDon'tMove
+//                randomiseCueLocations();//change aa move fix20191101
+                fixedCueLocations();//changeDon'tMove fix20191101
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
                 timestampStart = new SimpleDateFormat("HHmmss_SSS").format(Calendar.getInstance().getTime());//change aa BananaReward
                 toggleButton(cues_O[1],true); //onePicture TwoCircle  change aa BananaReward

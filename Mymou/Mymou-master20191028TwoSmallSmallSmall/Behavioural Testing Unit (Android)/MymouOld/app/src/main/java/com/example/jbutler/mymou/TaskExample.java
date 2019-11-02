@@ -502,7 +502,7 @@ public class TaskExample extends Fragment
 //        cues_O[1].setX(xLocs[0]);//befere 350  when circle is 700,the two value is 400,550  change aa
 //        cues_O[1].setY(yLocs[1]-80);//before 350 600    this is apple change aa
         cues_O[0].setX(xLocs[3]);
-        cues_O[0].setY(yLocs[6]);
+        cues_O[0].setY(yLocs[3]);
         cues_O[1].setX(xLocs[1]);
         cues_O[1].setY(yLocs[1]);
 
@@ -544,7 +544,7 @@ public class TaskExample extends Fragment
                 fixedCueLocations();//changeDon'tMove  change aa move  fix20191101
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
                 toggleButton(cues_O[0],true); //onePicture change aa  move  change aa BananaReward small
-                toggleButton(cues_O[1],true); //onePicture  change aa move  change aa BananaReward small
+                toggleButton(cues_O[1],false); //onePicture  change aa move  change aa BananaReward small
                 textView.setText("  ");
                 timerAppear();// change aa move
             }
@@ -559,8 +559,8 @@ public class TaskExample extends Fragment
                 fixedCueLocations();//changeDon'tMove fix20191101
 //                randomiseNoReplacement(cues_O);//changetask-onePicture //changeDon'tMove note
                 timestampStart = new SimpleDateFormat("HHmmss_SSS").format(Calendar.getInstance().getTime());//change aa BananaReward
-                toggleButton(cues_O[1],true); //onePicture TwoCircle  change aa BananaReward
-                toggleButton(cues_O[0],true); //onePicture TwoCircle  change aa move
+                toggleButton(cues_O[0],true); //onePicture TwoCircle  change aa BananaReward
+                toggleButton(cues_O[1],false); //onePicture TwoCircle  change aa move
 
                 textView.setText("  ");
                 timer();//TwoCircle

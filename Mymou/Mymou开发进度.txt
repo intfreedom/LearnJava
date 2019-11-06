@@ -205,3 +205,9 @@ applicationId "com.example.jbutler.mymouOnlyBanana"这个是唯一标识一个�
 applicationId "com.example.jbutler.mymou"属于不同的项目；
 修改（Android模式）Gradle Scripts中的build gradle(Module:app)中的applicationId，
 然后Rebuild Project
+
+
+3.把Android Studio更新到最新版本，现在版本是3.3.1
+更新方法，File-Settings-System Settings-Updates-Stable Channel
+
+重点是再github创建分支；

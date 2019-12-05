@@ -3,6 +3,10 @@ Android Studio项目从哪个文件启动？
 是extends Activity的文件吗？
 AndroidManifext.xml文件中有所有的activity文件连接，android可以通过这个找到它；
 是不是按顺序启动？
+the reason is that: 
+使用应用向导创建mymou应用以及MainMenu时，MainMenu默认被设置为launcher activity；
+在配置文件中，MainMenu声明的intent-filter元素节点下，可看到MainMenu被指定为
+launcher activity;
 
 2.
 可用Intent来开启另一个activity，默认点击返回键退出，

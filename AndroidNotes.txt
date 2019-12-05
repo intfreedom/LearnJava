@@ -1,3 +1,9 @@
 ﻿1.
 Android Studio项目从哪个文件启动？
 是extends Activity的文件吗？
+AndroidManifext.xml文件中有所有的activity文件连接，android可以通过这个找到它；
+是不是按顺序启动？
+
+2.
+可用Intent来开启另一个activity，默认点击返回键退出，
+如何设置同时点击返回键和最近键才退出；

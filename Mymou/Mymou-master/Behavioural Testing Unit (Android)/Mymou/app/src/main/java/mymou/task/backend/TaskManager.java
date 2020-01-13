@@ -247,6 +247,7 @@ public class TaskManager extends FragmentActivity implements View.OnClickListene
         rewardSystem = new RewardSystem(this, this);
         if (rewardSystem.bluetoothConnection | !preferencesManager.bluetooth) {
             successfullyEstablished = enableApp(true);
+
         }
 
         // Repeat if either couldn't connect or couldn't enable app
@@ -259,6 +260,7 @@ public class TaskManager extends FragmentActivity implements View.OnClickListene
                 }
             }, 5000);
         } else {
+            tvErrors.setVisibility(View.INVISIBLE);
 
             // Register listener to disable tablet if bluetooth gets DC'ed
             rewardSystem.setCustomObjectListener(new RewardSystem.MyCustomObjectListener() {
@@ -273,7 +275,6 @@ public class TaskManager extends FragmentActivity implements View.OnClickListene
 
 
     public static void startTrial(int monkId) {
-
         if (!task_enabled) {
             return;
         }  // Abort if task currently disabled
@@ -328,8 +329,12 @@ public class TaskManager extends FragmentActivity implements View.OnClickListene
             case 12:
                 task = new TaskSequentialLearning();
                 break;
+            case 13:
+                task = new TaskRandomDotMotion();
+                break;
             default:
                 new Exception("No valid task specified");
+                break;
         }
 
         task.setFragInterfaceListener(new TaskInterface() {

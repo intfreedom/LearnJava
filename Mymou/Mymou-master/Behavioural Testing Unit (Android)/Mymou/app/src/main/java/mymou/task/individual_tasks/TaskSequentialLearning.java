@@ -35,28 +35,28 @@ public class TaskSequentialLearning extends Task {
 
     // Task objects
     private int[] seq_one = {
-                R.drawable.aaaaa,
-                R.drawable.aaaab,
-//                R.drawable.slaac,
-//                R.drawable.slaad,
-//                R.drawable.slaae,
-//                R.drawable.slaaf,
-//                R.drawable.slaag,
-//                R.drawable.slaah,
-//                R.drawable.slaai,
-//                R.drawable.slaaj,
+                R.drawable.slaaa,
+                R.drawable.slaab,
+                R.drawable.slaac,
+                R.drawable.slaad,
+                R.drawable.slaae,
+                R.drawable.slaaf,
+                R.drawable.slaag,
+                R.drawable.slaah,
+                R.drawable.slaai,
+                R.drawable.slaaj,
         };
     private int[] seq_two = {
-                R.drawable.aabab,
-                R.drawable.aabac,
-//                R.drawable.slabc,
-//                R.drawable.slabd,
-//                R.drawable.slabe,
-//                R.drawable.slabf,
-//                R.drawable.slabg,
-//                R.drawable.slabh,
-//                R.drawable.slabi,
-//                R.drawable.slabj,
+                R.drawable.slaba,
+                R.drawable.slabb,
+                R.drawable.slabc,
+                R.drawable.slabd,
+                R.drawable.slabe,
+                R.drawable.slabf,
+                R.drawable.slabg,
+                R.drawable.slabh,
+                R.drawable.slabi,
+                R.drawable.slabj,
         };
     private static int[] cue_images;  // The images to be used in the task
     private static ImageButton cue_forced_choice, cue_choice_corr, cue_choice_incorr;  // The 3 buttons in the task

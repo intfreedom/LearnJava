@@ -199,15 +199,12 @@ randomiseNoReplacement()这个函数里可以发现一下坐标是重叠的
 
 遇到这个问题，因为点击出现，所以把点击造成的代码修改下；
 
-2.
-把同一项目修改为不同的版本，运行在同一设备上；
-applicationId "com.example.jbutler.mymouOnlyBanana"这个是唯一标识一个项目的，
-applicationId "com.example.jbutler.mymou"属于不同的项目；
-修改（Android模式）Gradle Scripts中的build gradle(Module:app)中的applicationId，
-然后Rebuild Project
 
 
 3.把Android Studio更新到最新版本，现在版本是3.3.1
 更新方法，File-Settings-System Settings-Updates-Stable Channel
 
 重点是再github创建分支；
+
+3.1
+新版本的mymou，一定要选择chanel 0，对应的是Arduino的上连接的通道2；

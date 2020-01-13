@@ -11,3 +11,15 @@ launcher activity;
 2.
 可用Intent来开启另一个activity，默认点击返回键退出，
 如何设置同时点击返回键和最近键才退出；
+
+3.android项目不同版本的设置：
+3.1
+在manifests中，AndroidManifest.xml文件中 <application 
+android:icon="@drawable/ic_launcher"可以更改应用图标；
+android:label="MymouTwoButton"可以修改应用的名字；
+3.2.
+把同一项目修改为不同的版本，运行在同一设备上；
+applicationId "com.example.jbutler.mymouOnlyBanana"这个是唯一标识一个项目的，
+applicationId "com.example.jbutler.mymou"属于不同的项目；
+修改（Android模式）Gradle Scripts中的build gradle(Module:app)中的applicationId，
+然后Rebuild Project

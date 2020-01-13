@@ -72,6 +72,13 @@ public class TaskSpatialResponse extends Task {
                 @Override
                 public void run() {
                     UtilsTask.toggleCues(cues, true);
+//                    for (int i = 0; i < cues.length; i++) { //new add
+//                        UtilsTask.toggleView(cues[i],false);
+//                        UtilsTask.toggleView(cues[chosen_cues[num_steps - 1]],true);
+//                        UtilsTask.toggleView(cues[chosen_cues[num_steps - 1]+4],true);
+//                        cues[i].setEnabled(false);  //if is for button don't function
+//                    }
+
                     cues[chosen_cues[num_steps - 1]].setBackgroundDrawable(drawable_red);
 
                 }

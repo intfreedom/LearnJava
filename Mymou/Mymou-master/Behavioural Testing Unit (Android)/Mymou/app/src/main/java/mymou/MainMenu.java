@@ -35,7 +35,6 @@ public class MainMenu extends Activity {
     private static int reward_chan;
 
     // The task to be loaded, set by the spinner
-    // TODO: Convert this to string UIDs, rather than numbers
     private static int taskSelected = 2;
 
     // Tasks cannot run unless permissions have been granted
@@ -82,7 +81,7 @@ public class MainMenu extends Activity {
 
         Log.d(TAG, "Starting TaskManager as Intent...");
 
-        rewardSystem.quitBt();  // Reconnect from next activity重新连接，对下一个任务；
+        rewardSystem.quitBt();  // Reconnect from next activity
 
         Intent intent = new Intent(this, TaskManager.class);
         intent.putExtra("tasktoload", taskSelected);
@@ -113,8 +112,8 @@ public class MainMenu extends Activity {
         }
     }
 
-    // This is the dropdown menu to select task to load 下拉菜单；
-    private void initialiseSpinner() {//select task to load, spinner layout context
+    // This is the dropdown menu to select task to load
+    private void initialiseSpinner() {
         Spinner spinner = (Spinner) findViewById(R.id.spinnerTaskMenu);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -228,7 +227,7 @@ public class MainMenu extends Activity {
                 case R.id.rb_chan3:
                     reward_chan = 3;
                     break;
-                case R.id.rb_pumpon://bluetoothConnetion, not connected/enabled
+                case R.id.rb_pumpon:
                     if (!rewardSystem.bluetoothConnection) {
                         Log.d(TAG, "Error: Bluetooth not connected");
                         Toast.makeText(MainMenu.this, "Error: Bluetooth not connected/enabled", Toast.LENGTH_LONG).show();
@@ -268,7 +267,7 @@ public class MainMenu extends Activity {
                 case R.id.buttonTaskSettings:
                     Intent intent2 = new Intent(context, PrefsActSystem.class);
 
-                    // Load task specific settings  加载任务特殊设置
+                    // Load task specific settings
                     if (taskSelected < 5) {
                         intent2.putExtra(getString(R.string.preftag_settings_to_load), getString(R.string.preftag_task_t_one_settings));
                     } else if (taskSelected == 6) {
@@ -285,6 +284,8 @@ public class MainMenu extends Activity {
                         intent2.putExtra(getString(R.string.preftag_settings_to_load), getString(R.string.preftag_task_sr_settings));
                     } else if (taskSelected == 12) {
                         intent2.putExtra(getString(R.string.preftag_settings_to_load), getString(R.string.preftag_task_sl_settings));
+                    } else if (taskSelected == 13) {
+                        intent2.putExtra(getString(R.string.preftag_settings_to_load), getString(R.string.preftag_task_rdm_settings));
                     }
 
                     startActivity(intent2);

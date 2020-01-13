@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="mymou">   <!--配置文件头部包，指定路径，下文的 .MainMenu 中的 . 告诉操着系统在此路径下
-
-          -->
+          package="mymou">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
